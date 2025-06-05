@@ -23,9 +23,9 @@ $label = $size['choices'][ $value ];
 					if( have_rows('tabs') ) : 
 						while( have_rows('tabs') ) : the_row();
 
-						$tabs = get_field_object('tabs');
+						/*$tabs = get_field_object('tabs');
 						$tabvalue = $tabs['value']; 
-						$tab_label = $tabs['choices'][ $tabvalue ];
+						$tab_label = $tabs['choices'][ $tabvalue ];*/
 
 					?>
 					<div class="tab-content-link" > 

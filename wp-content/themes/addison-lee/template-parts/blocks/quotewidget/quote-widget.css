@@ -1,0 +1,246 @@
+#get-a-quote {
+    width: 400px;
+}
+
+#get-a-quote:hover {
+    background-color: #fedb00;
+    color: #fff;
+}
+
+.quote-widget-container {
+    border-radius: 10px;
+    position: relative;
+}
+
+.Half {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.Full {
+    width: 100%;
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #000;
+    border-radius: 50%;
+    width: 21px;
+    height: 21px;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+    position: absolute;
+    top:0;
+    right:0;
+    display: none; /* Initially hide the spinner */
+  }
+
+  .spinner-2 {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #000;
+    border-radius: 50%;
+    width: 21px;
+    height: 21px;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+    position: absolute;
+    top:6px;
+    right:104px;
+    display: none; /* Initially hide the spinner */
+  }
+
+#return-response-data {
+    display: flex;
+    border-bottom: 1px solid #B4B4B4;
+}
+
+#return-response-data label span {
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+#return-response-data img {
+    position: absolute;
+    width: 4%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 6% 34% 6% 48%;
+    grid-gap: 20px;
+    padding: 10px;
+    padding-left: 50px;
+    width: 96%;
+}
+
+ul#address-search__results {
+    height: auto;
+    max-height: 173px;
+    max-width: 426px;
+    overflow-y: scroll;
+    border: solid 1px #fedb00;
+    display: none;
+    background-color: #fff;
+}
+
+
+ul#address-search-dropoff__results {
+    height: auto;
+    max-height: 173px;
+    max-width: 426px;
+    overflow-y: scroll;
+    border: solid 1px #fedb00;
+    display: none;
+    background-color: #fff;
+    
+}
+
+ul#address-search__results li button  {
+    border: none;
+    background-color: #fff;
+    color:#000;
+    cursor: pointer;
+    display: inline;
+    font-family: Steagal, Arial, Helvetica, sans-serif;
+    line-height: 1.3;
+    margin: 0;
+    padding: 10px 14px;
+    text-decoration: none;
+    text-align: left;
+    width: 100%;         
+}
+
+
+ul#address-search__results li button:hover {
+    background-color: #f7f7ef;
+}
+
+.form-control {
+    position: relative;
+}
+
+.form-control input {
+    border: none;
+    color: #000;
+    width: 100%;
+    
+}
+
+.item1 .pickup-pin {
+    background-image: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/05/pin-A.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    
+}
+
+.item1 .airport-pickup-container {
+    background-image: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/06/flight.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+}
+
+.item4 {    
+    width: 390px; 
+}
+
+.item4 .get-a-quote {
+    width: 100%;
+    text-align: center;
+}
+
+.item6 {
+    max-width: 400px;
+    width: 100%;
+}
+
+#date-of-journey span {
+    text-transform: uppercase;
+    font-weight: 500;
+
+}
+
+.main-content {
+    height: 245px;
+    padding-top: 61px;
+}
+
+.main-content::after {
+    position: relative;
+}
+
+.tabcontent {
+    display: flex;
+    width: 100%;
+    max-width: 765px;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left:0;
+
+}
+
+.tab-content-link {
+    display: flex;
+    width: 202px;
+    padding: 12px 16px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.tab-content-link.active {
+    border-bottom: solid 2px #000;
+}
+
+.tab-content-link button.tablink {
+    text-transform: uppercase;
+}
+
+#tabs {
+    display: flex;
+}
+
+.tabslink {
+    background-color: #fff; 
+    color: #000; 
+    width: auto; 
+    height:auto; 
+    padding-right: 40px;
+    padding-top: 20px;
+}
+
+
+
+.item6 a.get-a-quote .btn {
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    right: 0;
+    overflow: hidden;
+    width: 400px;
+    height: 100%;
+    transition: .5s ease;
+    transition-delay: 2s;
+    -moz-transition-delay: 2s;
+}
+
+.animate {
+    background-color: #000;
+    white-space: nowrap; 
+    color: white;
+    font-size: 20px;
+    overflow: hidden;
+    transform: translate(0%, 0%);
+    -ms-transform: translate(0%, 0%);
+}
+
+@media screen and (max-width: 1300px) {
+    .grid-container {
+        grid-template-columns: 3% 30% 3% 30%;
+    }  
+}

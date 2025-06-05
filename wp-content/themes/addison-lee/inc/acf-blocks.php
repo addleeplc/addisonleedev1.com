@@ -62,6 +62,8 @@ function addisonlee_acf_block_types() {
 	register_block_type( get_template_directory() . '/template-parts/blocks/table-block' );
 	register_block_type( get_template_directory() . '/template-parts/blocks/account-form' );
 	register_block_type( get_template_directory() . '/template-parts/blocks/iframe' );
+	register_block_type( get_template_directory() . '/template-parts/blocks/add-html' );
+	register_block_type( get_template_directory() . '/template-parts/blocks/add-javascript' );
 	register_block_type( get_template_directory() . '/template-parts/blocks-blog/blog-content' );
 	register_block_type( get_template_directory() . '/template-parts/blocks-blog/blog-content-heading' );
 	register_block_type( get_template_directory() . '/template-parts/blocks-blog/blog-content-book-now' );
@@ -71,6 +73,7 @@ function addisonlee_acf_block_types() {
 	register_block_type( get_template_directory() . '/template-parts/blocks-resources/resources-content' );
 	register_block_type( get_template_directory() . '/template-parts/blocks-resources/resources-image' );
 	register_block_type( get_template_directory() . '/template-parts/blocks-resources/resources-video' );
+	register_block_type( get_template_directory() . '/template-parts/blocks/voucher-list' );
 	register_block_type( get_template_directory() . '/template-parts/blocks/quotewidget' );
 }
 
@@ -139,6 +142,9 @@ function addisonlee_allowed_block_types( $allowed_blocks, $editor_context ) {
 		'acf/table-block',
 		'acf/account-form',
 		'acf/iframe',
+		'acf/add-html',
+		'acf/add-javascript',
+		'acf/voucher-list',
 		'acf/quotewidget',
 	);
 

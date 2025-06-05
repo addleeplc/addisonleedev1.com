@@ -56,7 +56,7 @@ $label = $size['choices'][ $value ];
 					<div class="form-control">
 						<label>
 						<span><?php echo $pickup; ?></span><br>
-							<input id="myInput"  type="text" maxlength="100" name="pickup-form" placeholder="Enter Location">
+							<input id="myInput"  onfocus="this.value=''" type="text" maxlength="100" name="pickup-form" placeholder="Enter Location">
 							<span id="sendCodeSpinner" class="spinner"></span>
 						</label>
 					</div>
@@ -71,7 +71,7 @@ $label = $size['choices'][ $value ];
 					<div class="form-control">
 						<label>
 						<span><?php echo $dropoff; ?></span><br>
-							<input placeholder="Enter Location" id="myInputDropOff"  type="text">
+							<input placeholder="Enter Location" id="myInputDropOff"  onfocus="this.value=''" type="text">
 							<span id="sendSpinner" class="spinner-2"></span>
 						</label>
 					</div>

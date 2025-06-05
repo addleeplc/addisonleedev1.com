@@ -232,7 +232,6 @@ document.addEventListener("DOMContentLoaded", () => {
         d.addEventListener('click', function(e){
             const { target: { dataset: {id} } } = e;
             searchBarDrpOff.setAttribute('value', id);
-            searchBarDrpOff.setAttribute('onfocus', `this.value='${id}'`);
             searchBarDrpOff.value = id;
             dropoff_address = localStorage.setItem("dropoff_address", document.getElementById('myInputDropOff').value);
         }); 
@@ -323,7 +322,6 @@ function handleClick(e){
     const { target: { dataset: {id} } } = e;
     console.log(id);
     searchbar.setAttribute('value',id);
-    searchbar.setAttribute('onfocus', `this.value='${id}'`);
     searchbar.value = id;
     pickup_address = localStorage.setItem("pickup_address", document.getElementById('myInput').value);
 }

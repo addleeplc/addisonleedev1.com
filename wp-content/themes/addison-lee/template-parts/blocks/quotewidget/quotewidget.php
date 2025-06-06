@@ -64,7 +64,7 @@ $label = $size['choices'][ $value ];
 					</div>
 				</div>
 				<div class="item3" id="pin">
-					<img class="dropoff" src="./wp-content/uploads/2025/05/pin-B.svg">
+					<img class="dropoff" src="/wp-content/uploads/2025/06/pin-B.svg">
 				</div>
 				<div class="item4">
 					<div title="pickup" name="pick" id="dropoff-point" value="PICK UP" class="address-search__combobox">
@@ -84,7 +84,7 @@ $label = $size['choices'][ $value ];
 		<div id="return-response-data">
 			<div class="grid-container">
 				<div class="item4">
-					<img src="./wp-content/uploads/2025/06/Date.svg">
+					<img src="/wp-content/uploads/2025/06/Date.svg">
 				</div>
 				<div class="item5" id="date-of-journey">
 					<label for="">

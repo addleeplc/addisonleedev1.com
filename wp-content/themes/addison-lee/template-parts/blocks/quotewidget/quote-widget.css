@@ -127,7 +127,7 @@ ul#address-search__results li button:hover {
 }
 
 .item1 .pickup-pin {
-    background-image: url('./wp-content/uploads/2025/06/pin-A.svg');
+    background-image: url('/wp-content/uploads/2025/06/pin-A.svg');
     background-repeat: no-repeat;
     background-size: cover;
     width: 50px;
@@ -136,7 +136,7 @@ ul#address-search__results li button:hover {
 }
 
 .item1 .airport-pickup-container {
-    background-image: url('./wp-content/uploads/2025/06/flight.svg');
+    background-image: url('/wp-content/uploads/2025/06/flight.svg');
     background-repeat: no-repeat;
     background-size: cover;
     width: 50px;

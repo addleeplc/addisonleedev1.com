@@ -16,7 +16,7 @@ const formlabel = pickupform.querySelector('.form-control label');
 
 const createSpan = document.createElement('span');
 let item1 = document.querySelector('.item1');
-
+let label = document.createElement('label');
 let input = document.createElement('input');
 
 function getDropOff(currentword) {
@@ -246,6 +246,7 @@ function openTab(id) {
     const dontKnow = document.createElement("input");
     const a = document.createElement('div');
     const dateLabel = document.querySelector('#date-of-journey span');
+    const getFlightCheckbox = document.querySelector('.flight-number-checkbox');
     
     
     console.log(id);
@@ -257,6 +258,7 @@ function openTab(id) {
         dateLabel.textContent = 'Date of journey';
         document.getElementsByName('pickup-form')[0].placeholder='Enter Location';
         dontKnow.remove();
+        getFlightCheckbox.style.display = 'none';
     } 
     else if (tabid === '2') {
         updatePins();
@@ -265,6 +267,7 @@ function openTab(id) {
         dateLabel.textContent = 'Date of journey';
         document.getElementsByName('pickup-form')[0].placeholder='Enter Location';
         dontKnow.remove();
+        getFlightCheckbox.style.display = 'none';
     }
     else if(tabid === '1' ) {    
         dateLabel.textContent = 'Date of flight arrival';            
@@ -277,19 +280,13 @@ function openTab(id) {
         const responsedatalayer = document.getElementById('return-response-data');
         mainContent.insertBefore(dontKnow, responsedatalayer);
         a.classList.add('pickup-pin');
-        
-        if(a.length > 0 ){
-            console.log("we have a div");
-        } else {
-            console.log("needs some work");
-        }
-    
+        getFlightCheckbox.style.display = 'block';
 
-        console.log(span); 
     } else {
         responsedatalayer.style.display = 'block';
         document.getElementsByName('pickup-form')[0].placeholder='Enter location';
         document.getElementsByClassName('.airport-pickup-container').remove();
+        
     }
 
     const tabscont = document.getElementById('tabs');

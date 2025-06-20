@@ -15,8 +15,7 @@ $label = $size['choices'][ $value ];
 ?>
 
 <div class="section mk-w-full mk-h-full mk-mx-auto mk-w-900 mk-h-500 pt-3 mk-mt-10 mk-mb-10">
-	<div class="quote-widget-container mk-bg-white mx-auto mk-w-md mk-mt-2 mk-mb-2 <?php echo $label; ?>">
-		<div class="tabcontent">
+	<div class="tabcontent mk-bg-white mx-auto mk-w-mf mk-mt-2 mk-mb-2 mk-rounded-t-2xl <?php echo $label; ?>">
 			<div id="tabs" class=" mk-w-full mk-h-full mk-w-900 mk-h-500">
 				<?php
 					$y = 0;
@@ -29,26 +28,35 @@ $label = $size['choices'][ $value ];
 
 					?>
 					<div class="tab-content-link" > 
-						<img class="img-icons" src="<?php the_sub_field('tab_icon');  ?>" />
+						<img class="img-icons mk-pr-2" src="<?php the_sub_field('tab_icon');  ?>" />
 						<button 
 						class="tablink" 
 						id="<?php echo $y++; ?>" 
 						onclick="openTab(id)"
 						><?php $tab_label = the_sub_field('tab_label'); ?>
 						</button>
+						
 					</div>
 					<?php		
 					endwhile;
 					endif;
-
+					
 				?>
+				<div style="width: 551px; background: #000"></div>
 			</div>
+			
 		</div>
+	<div class="quote-widget-container mk-rounded-b-2xl mk-rounded-r-2xl mk-bg-white mx-auto mk-w-md mk-mt-2 mk-mb-2 <?php echo $label; ?>">
+		
 		<div class="main-content" id="main-cont">
+			<div class="flight-number-checkbox">
+				<input type="checkbox" id="flight-checkbox" class="flight-checkbox">
+				<label>I don't know my flight number</label>
+			</div>
 		<div id="return-response-data">
 			<div class="grid-container">
 			
-				<div class="item1" id="pin">
+				<div class="item1 mk:w:48" id="pin">
 					<div class="pickup-pin"></div>
 				</div>
 				<div class="item2" id="pickup-form">
@@ -100,7 +108,7 @@ $label = $size['choices'][ $value ];
 				</div>
 			</div>
 			</div>
-	</div>	
+		</div>	
 	</div>
 
 

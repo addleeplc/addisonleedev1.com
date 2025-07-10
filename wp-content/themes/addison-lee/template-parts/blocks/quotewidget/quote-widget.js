@@ -81,7 +81,7 @@ function getPickUpApi(currentword) {
             mode: 'cors',
             body: JSON.stringify()
          }).then(res => {
-            if(res.statusText = "ok"){
+            if(res.statusText = "ok" ){
                 console.log("SUCCESS");
                  const data = res.json();
                  console.log(data)
@@ -126,6 +126,11 @@ function getPickUpApi(currentword) {
              
         }).catch(error => { console.log(error.message)})
     } 
+
+
+    function getFlightNumber() {
+        console.log('flights');
+    }
 
 
 window.onload = function(){
@@ -282,6 +287,15 @@ function openTab(id) {
         a.classList.add('pickup-pin');
         getFlightCheckbox.style.display = 'block';
 
+
+        // function on click of flight number 
+
+        document.getElementById('myInput').addEventListener('click',  () => {
+            console.log('flight input is working');
+        })
+
+
+
     } else {
         responsedatalayer.style.display = 'block';
         document.getElementsByName('pickup-form')[0].placeholder='Enter location';
@@ -299,7 +313,13 @@ function openTab(id) {
                 current[0].className = current[0].className.replace(" active", "");
             }
             this.className += " active";
+            document.getElementById('myInput').value = '';
+            searchBarDrpOff.value = '';
+            document.getElementById('choosedate').value = '';
+            document.querySelectorAll('a.get-a-quote').value = '';
         });
+
+
     } 
 
 
@@ -324,10 +344,23 @@ function handleClick(e){
 }
 
 document.getElementById('choosedate').addEventListener('click', function(){
-    const selected_date = document.getElementById('choosedate');
-    const datechange = selected_date.value.toString();
-    const date_collected =  selected_date.setAttribute('value', document.getElementById('choosedate').value);
-    localStorage.setItem('date_selected', datechange);
+    const selected_date = document.getElementById('choosedate').value;
+    const datechange = new Date(selected_date);
+    const year = datechange.getFullYear();
+    const month = String(datechange.getMonth() +1 ).padStart(2,'0'); 
+    const day = String(datechange.getDate()).padStart(2, '0');
+    const hour = String(datechange.getHours());
+    const min = String(datechange.getMinutes());
+    const formatted_date = `${day}/${month}/${year}:${hour}:${min}`;
+
+    const date_collected =  document.getElementById('choosedate').setAttribute('value', formatted_date);
+
+    if(document.getElementById('choosedate').value){
+        localStorage.setItem('date_selected', formatted_date);
+    }
+    
+
+    console.log(formatted_date);
 });
 
 
@@ -342,10 +375,77 @@ function myFunction(e){
 getQuoteBtn.addEventListener('click', function(e){
     e.preventDefault();
     console.log('Coming from quote button 2 values' );
-    if(searchBarDrpOff.value == "28 Bannard Road, Maidenhead, SL6 4NR" && searchbar.value == "28 Bannard Road, Maidenhead, SL6 4NR" && !document.getElementById('choosedate').value == 0 ) { 
+    if(searchBarDrpOff.value && searchbar.value && !document.getElementById('choosedate').value == 0 ) { 
         document.getElementById('get-a-quote').classList.add('animate');
         document.getElementById('get-a-quote').innerHTML = 'BOOK FROM £20.54';
         dateselected = localStorage.setItem('selected_date', document.getElementById('choosedate').value);   
+        console.log('amend the date format',dateselected);  
+    }
+
+    if(document.getElementById('myInput').value == ""){
+        document.getElementById('display_errors').innerText = 'Pick field requires a value';
+    } else {
+        document.getElementById('display_errors').innerText = '';
+    }
+
+    if(document.getElementById('myInputDropOff').value == ""){
+        document.getElementById('display_error').innerText = 'Drop Off field requires a value';
+    } else {
+        document.getElementById('display_error').innerText = '';
     }
     
 });
+
+function showQuoteWidget(){    
+    const tabContent = document.querySelector('.tabcontent');
+    tabContent.classList.toggle('visible');
+    const mainContent = document.querySelector('.main-content');
+    mainContent.classList.toggle('visible');
+ 
+}
+
+function loadWidget() {
+
+    let hasBeenCalled = false;
+
+    return function() {
+        if(!hasBeenCalled){
+            const cta = document.querySelector('a.quote-cta');
+            const a = document.createElement('div');
+            a.setAttribute('class','widget-wrapper active');
+            a.setAttribute('id', 'quote-widget-wrapper');
+            cta.after(a);
+
+            if(a){
+                 const tabContent = document.querySelector('.tabcontent');
+                 const mainContent = document.querySelector('.main-content');
+                a.append(tabContent);
+                a.append(mainContent)
+            }
+
+            hasBeenCalled = true;
+        } else {
+            console.log('Function can only be called once');
+        }
+
+    }
+
+}
+
+const callOnce =  loadWidget();
+
+function widgetTransition() {
+    const tabs = document.getElementById('quote-widget-wrapper');
+    
+    setTimeout(() => {
+        tabs.classList.toggle('showItem');
+    }, '0.5');
+}
+
+document.querySelector('.quote-cta').addEventListener('click', function() {
+    callOnce();
+    showQuoteWidget(); 
+    widgetTransition();
+
+});
+

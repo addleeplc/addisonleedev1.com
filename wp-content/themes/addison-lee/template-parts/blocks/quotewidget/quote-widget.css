@@ -1,7 +1,3 @@
-#get-a-quote {
-    width: 400px;
-}
-
 #get-a-quote:hover {
     background-color: #fedb00;
     color: #fff;
@@ -9,11 +5,20 @@
 
 .quote-widget-container {
     position: relative;
+    display: block;
 }
+
+
 
 .Half {
     width: 50%;
-    margin: 0 auto;
+}
+
+@media screen and ( max-width: 1400px) {
+    .Half {
+        width: 75%;
+    }
+    
 }
 
 .Full {
@@ -50,7 +55,6 @@
 
 #return-response-data {
     display: flex;
-    border-bottom: 1px solid #B4B4B4;
 }
 
 #return-response-data label span {
@@ -58,17 +62,11 @@
     font-weight: 500;
 }
 
-#return-response-data img {
-    position: absolute;
-    width: 4%;
-}
-
 .grid-container {
-    display: grid;
-    grid-template-columns: 6% 34% 6% 48%;
+    
+    grid-template-columns: auto auto auto auto;
     grid-gap: 20px;
     padding: 10px;
-    padding-left: 50px;
     width: 96%;
 }
 
@@ -121,29 +119,23 @@ ul#address-search__results li button:hover {
 .form-control input {
     border: none;
     color: #000;
-    width: 100%;
     
 }
 
 .item1 .pickup-pin {
-    background-image: url('/wp-content/uploads/2025/06/pin-A.svg');
+    background-image: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/05/pin-A.svg');
     background-repeat: no-repeat;
-    background-size: cover;
-    width: 50px;
-    height: 50px;
-    
+    background-size: cover; 
+    width: 52px;
+    height: 52px;   
 }
 
 .item1 .airport-pickup-container {
-    background-image: url('/wp-content/uploads/2025/06/flight.svg');
+    background-image: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/06/flight.svg');
     background-repeat: no-repeat;
     background-size: cover;
-    width: 50px;
-    height: 50px;
-}
-
-.item4 {    
-    width: 390px; 
+    width: 32px;
+    height: 32px;
 }
 
 .item4 .get-a-quote {
@@ -163,7 +155,6 @@ ul#address-search__results li button:hover {
 }
 
 .main-content {
-    height: 245px;
     padding-top: 19px;
 }
 
@@ -171,17 +162,37 @@ ul#address-search__results li button:hover {
     position: relative;
 }
 
-/*.tabcontent {
-    display: flex;
-    width: 100%;
-    max-width: 765px;
-    height: auto;
-    position: absolute;
-    top: 0;
-    left:0;
-
+#quote-widget-wrapper {
+    opacity: 0;
+    transition: opacity 2s ease-in;
+    -webkit-transition: opacity 2s ease-in;
+    
 }
-*/
+
+#tabs {
+    border-top-right-radius: 8px;
+}
+
+.showItem {
+    opacity: 1 !important;
+    
+}
+
+
+
+.tabcontent,
+.main-content {
+    display: none;
+}
+
+.visible {
+    display: block;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    
+}
+
 .tab-content-link {
     display: flex;
     width: 202px;
@@ -211,10 +222,6 @@ ul#address-search__results li button:hover {
     text-transform: uppercase;
 }
 
-#tabs {
-    display: flex;
-}
-
 .tabslink {
     background-color: #fff; 
     color: #000; 
@@ -224,7 +231,9 @@ ul#address-search__results li button:hover {
     padding-top: 20px;
 }
 
-
+#display_errors, #display_error {
+    color: #ff0000;
+}
 
 .item6 a.get-a-quote .btn {
     position: absolute;
@@ -238,6 +247,7 @@ ul#address-search__results li button:hover {
     transition-delay: 2s;
     -moz-transition-delay: 2s;
 }
+
 
 .animate {
     background-color: #000;
@@ -253,4 +263,15 @@ ul#address-search__results li button:hover {
     .grid-container {
         grid-template-columns: 3% 30% 3% 30%;
     }  
+}
+
+@media screen and (max-width: 767px) {
+    .quote-widget-container, .tabcontent {
+        margin: 0 auto;
+        width: 90%;
+    }  
+
+    .grid-container{
+        padding-left: 0;
+    }
 }

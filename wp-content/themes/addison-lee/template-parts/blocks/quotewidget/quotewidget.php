@@ -68,7 +68,7 @@ $label = $size['choices'][ $value ];
 					<ul id="address-search__results"></ul>
 					</div>
 				</div>
-				<div class="item3 sm-max:mk-w-[68px]" id="pin">
+				<div class="item3 sm-max:mk-w-[68px] md:mk-w-[52px]" id="pin">
 					<img class="dropoff md:mk-absolute md:mk-w-[52px] sm-max:mk-mr-[20px] sm-max:mk-w-[32px] sm-max:mk-h-[32px] sm-max:mk-float-left sm-max:mk-relative" src="http://localhost/dev.addisonlee.com/wp-content/uploads/2025/05/pin-B.svg">
 				</div>
 				<div class="item4 mk-border-b-2 mk-border-solid mk-border-black-500  md:mk-w-[390px] sm-max:mk-w-[100%] sm-max:mk-pb-[20px] ">

@@ -51,7 +51,7 @@ $label = $size['choices'][ $value ];
 				<label>I don't know my flight number</label>
 			</div>
 		<div id="return-response-data">
-			<div class="grid-container site-md:mk-pl-[0px] md:mk-pl-[50px] md:mk-block lg:mk-grid">			
+			<div class="grid-container site-md:mk-pl-[0px] md:mk-pl-[50px] md:mk-grid">			
 				<div class="item1 site-md:mk-float-left sm-max:mk-float-left" id="pin">
 					<div class="pickup-pin sm-max:mk-w-[32px] sm-max:mk-h-[32px] sm-max:mk-mr-[20px]"></div>
 				</div>
@@ -87,7 +87,7 @@ $label = $size['choices'][ $value ];
 		</div>
 		</div>
 		<div id="return-response-data">
-			<div class="grid-container site-md:mk-pl-[0px] md:mk-block lg:mk-grid md:mk-p-0">
+			<div class="grid-container site-md:mk-pl-[0px] md:mk-block md:mk-grid md:mk-p-0">
 				<div class="item4">
 					<img src="http://localhost/dev.addisonlee.com/wp-content/uploads/2025/06/Date.svg">
 				</div>

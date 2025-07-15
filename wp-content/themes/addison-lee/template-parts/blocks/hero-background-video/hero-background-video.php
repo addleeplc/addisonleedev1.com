@@ -70,7 +70,11 @@ if ( ! empty( $block['className'] ) ) {
 					<p class="mk-block mk-text-yellow md:mk-ml-40"><?php echo esc_html( $heading_yellow_text ); ?></p>
 				<?php } ?>
 			</div>
-			<div class="md:mk-pl-40">
+			<?php if(is_front_page()) : ?>
+				<div class="md:mk-pl-0">
+				<?php else : ?>
+				<div class="md:mk-pl-40">
+			<?php endif; ?>
 				<p class="mk-text-xl md:mk-text-2xl mk-text-white !mk-leading-tight"><?php echo wp_kses_post( $text ); ?></p>
 				<?php if ( is_front_page() ) : ?>
 					<a class="btn mk-mt-8 md:mk-mt-12 quote-cta" href="<?php echo esc_html( $cta['url'] ); ?>" target="<?php echo esc_html( $cta['target'] ); ?>"><?php echo esc_html( $cta['title'] ); ?><?php echo wp_kses( addisonlee_svgs( 'arrow-right' ), allowed_svg_tags() ); ?></a>
@@ -79,6 +83,7 @@ if ( ! empty( $block['className'] ) ) {
 				<?php endif; ?>
 				
 			</div>
+			
 		</div>
 	</div>
 </div>

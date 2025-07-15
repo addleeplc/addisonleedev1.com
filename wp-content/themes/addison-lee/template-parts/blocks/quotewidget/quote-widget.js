@@ -372,12 +372,39 @@ function myFunction(e){
 }
 
 
+function sendData() {
+const timeToSend  = document.querySelector('.time-to-send');
+
+const pickupAddress = localStorage.getItem('pickup_address');
+const dropOffAddress = localStorage.getItem('dropoff_address');
+const dateSelected = localStorage.getItem('date_selected');
+
+const base_url = 'https://book.addisonlee.com/al/booking/new/car?'
+
+const bookingUrl = `${base_url} & ${pickupAddress} & ${dropOffAddress} & ${dateSelected}`;
+
+
+if(timeToSend){
+    console.log('Yes we have the class', pickupAddress, dropOffAddress, dateSelected);
+    window.location = bookingUrl;
+} else {
+    console.log('no class is present');
+}
+}
+
+
 getQuoteBtn.addEventListener('click', function(e){
     e.preventDefault();
     console.log('Coming from quote button 2 values' );
     if(searchBarDrpOff.value && searchbar.value && !document.getElementById('choosedate').value == 0 ) { 
         document.getElementById('get-a-quote').classList.add('animate');
         document.getElementById('get-a-quote').innerHTML = 'BOOK FROM £20.54';
+
+        // function to collect the data and send
+        document.getElementById('get-a-quote').classList.add('time-to-send');
+
+        sendData();
+
         dateselected = localStorage.setItem('selected_date', document.getElementById('choosedate').value);   
         console.log('amend the date format',dateselected);  
     }

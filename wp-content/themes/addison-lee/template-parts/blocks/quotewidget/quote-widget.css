@@ -92,7 +92,8 @@ ul#address-search-dropoff__results {
     
 }
 
-ul#address-search__results li button  {
+ul#address-search__results li button,
+ul#address-search-dropoff__results li button  {
     border: none;
     background-color: #fff;
     color:#000;
@@ -112,6 +113,7 @@ ul#address-search__results li button:hover {
     background-color: #f7f7ef;
 }
 
+
 .form-control {
     position: relative;
 }
@@ -123,7 +125,7 @@ ul#address-search__results li button:hover {
 }
 
 .item1 .pickup-pin {
-    background-image: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/05/pin-A.svg');
+    background-image: url('/wp-content/uploads/2025/06/pin-A.svg');
     background-repeat: no-repeat;
     background-size: cover; 
     width: 52px;
@@ -131,7 +133,7 @@ ul#address-search__results li button:hover {
 }
 
 .item1 .airport-pickup-container {
-    background-image: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/06/flight.svg');
+    background-image: url('/wp-content/uploads/2025/06/flight.svg');
     background-repeat: no-repeat;
     background-size: cover;
     width: 32px;
@@ -148,14 +150,14 @@ ul#address-search__results li button:hover {
     width: 100%;
 }
 
+.item3 img {
+   width:  52px;
+}
+
 #date-of-journey span {
     text-transform: uppercase;
     font-weight: 500;
 
-}
-
-.main-content {
-    padding-top: 19px;
 }
 
 .main-content::after {

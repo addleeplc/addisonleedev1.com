@@ -89,7 +89,7 @@ $label = $size['choices'][ $value ];
 		<div id="return-response-data">
 			<div class="grid-container site-md:mk-pl-[0px] md:mk-block md:mk-grid md:mk-p-0">
 				<div class="item4">
-					<img src="http://localhost/dev.addisonlee.com/wp-content/uploads/2025/06/Date.svg">
+					<img src="/wp-content/uploads/2025/06/Date.svg" class="md:mk-w-[52px] sm-max:mk-mr-[20px] sm-max:mk-w-[32px] sm-max:mk-h-[32px]">
 				</div>
 				<div class="item5" id="date-of-journey">
 					<label for="">

@@ -1,0 +1,22 @@
+{
+    "name": "blog-content-book-now",
+    "title": "Blog Content with Book Now",
+    "description": "Contnet with, heading, and cta in a reduced width container.",
+    "category": "blog",
+    "icon": "editor-alignleft",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "blog-content-book-now.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/blog-content-book-now.jpg"
+        }
+    }
+}

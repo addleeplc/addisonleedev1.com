@@ -1,0 +1,22 @@
+{
+    "name": "faqs",
+    "title": "FAQs",
+    "description": "Pulls FAQs from the post type and displays in accordions.",
+    "category": "layout",
+    "icon": "editor-help",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "faqs.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/faqs.jpg"
+        }
+    }
+}

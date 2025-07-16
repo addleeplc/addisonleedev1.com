@@ -1,0 +1,23 @@
+{
+    "name": "multistep-form",
+    "title": "Multi Step Form",
+    "description": "Multi step WPForms form.",
+    "style": [ "file:./multistep-form.css" ],
+    "category": "layout",
+    "icon": "email",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "multistep-form.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/multistep-form.jpg"
+        }
+    }
+}

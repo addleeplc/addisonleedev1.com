@@ -1,0 +1,22 @@
+{
+    "name": "simple-grid-carousel",
+    "title": "Simple Grid Carousel",
+    "description": "Simple carousel with cards containing image and title in two rows.",
+    "category": "layout",
+    "icon": "images-alt2",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "simple-grid-carousel.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/simple-grid-carousel.jpg"
+        }
+    }
+}

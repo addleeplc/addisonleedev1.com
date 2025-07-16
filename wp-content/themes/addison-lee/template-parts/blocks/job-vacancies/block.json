@@ -1,0 +1,22 @@
+{
+    "name": "job-vacancies",
+    "title": "Job Vacancies",
+    "description": "Job vacancies pulled from Workable in 3 columns.",
+    "category": "layout",
+    "icon": "groups",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "job-vacancies.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/job-vacancies.jpg"
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "full-page-video",
+    "title": "Full Page Video",
+    "description": "Full page video set to autoplay.",
+    "category": "layout",
+    "icon": "video-alt",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "full-page-video.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewvideo": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/full-page-video.jpg"
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "key-points-simple",
+    "title": "Key Points Simple",
+    "description": "Key points with icon and text in three columns",
+    "category": "layout",
+    "icon": "screenoptions",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "key-points-simple.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/key-points-three-cols.jpg"
+        }
+    }
+}

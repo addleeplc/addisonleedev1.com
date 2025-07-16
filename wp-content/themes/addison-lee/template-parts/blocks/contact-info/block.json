@@ -1,0 +1,22 @@
+{
+    "name": "contact-info",
+    "title": "Contact Info",
+    "description": "Pulls cContac info block with title; subtitle and a row with 3 columns.",
+    "category": "layout",
+    "icon": "sticky",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "contact-info.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/contact-info.jpg"
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "name": "just-call-to-action",
+    "title": "Just Call to Action",
+    "description": "Simple heading with text and a call to action",
+    "category": "layout",
+    "icon": "paragraph",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "just-call-to-action.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    }
+}

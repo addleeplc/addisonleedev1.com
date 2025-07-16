@@ -1,0 +1,41 @@
+@layer base {
+	@font-face {
+		font-family: "Steagal";
+		src: url('../fonts/Steagal-Me.woff2') format('woff2'),
+		url('../fonts/Steagal-Me.woff') format('woff'),
+		url('../fonts/Steagal-Me.ttf') format('truetype'),
+		url('../fonts/Steagal-Me.svg') format('svg'),
+		url('../fonts/Steagal-Me.eot') format('embedded-opentype');
+		font-weight: 500;
+	}
+}
+
+/* Block title. */
+.acf-field.acf-field-accordion > .acf-accordion-title,
+.acf-field.acf-accordion .acf-accordion-title:hover{
+	background-color: #000000;
+}
+
+.acf-accordion .acf-accordion-title label{
+	font-size: 18px !important;
+	font-family: 500;
+	margin: 0;
+	font-family: "Steagal";
+	text-transform: uppercase;
+	color: #fff;
+	letter-spacing: 1.4px;
+}
+
+.acf-accordion .acf-accordion-title svg.acf-accordion-icon{
+	fill: white !important;
+}
+
+/* WYSIWYG editor. */
+.acf-fields > .acf-field.acf-field-wysiwyg.smaller textarea{
+	height: 180px !important;
+}
+
+.acf-fields > .acf-field.acf-field-wysiwyg.smaller iframe{
+	min-height: 155px !important;
+	height: 155px !important;
+}

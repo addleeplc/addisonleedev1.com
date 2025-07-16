@@ -1,0 +1,22 @@
+{
+    "name": "full-page-image-text-overlay",
+    "title": "Full Page Image with Text Overlay",
+    "description": "Full page image with sticky text overlay.",
+    "category": "layout",
+    "icon": "cover-image",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "full-page-image-text-overlay.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/full-page-image-text-overlay.jpg"
+        }
+    }
+}

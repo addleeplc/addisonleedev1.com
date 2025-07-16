@@ -1,0 +1,22 @@
+{
+    "name": "detail-carousel",
+    "title": "Detail Carousel",
+    "description": "Detail carousel with cards containing image, subtitle, title text and cta.",
+    "category": "layout",
+    "icon": "images-alt2",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "detail-carousel.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/detail-carousel.jpg"
+        }
+    }
+}

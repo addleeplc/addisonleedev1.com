@@ -1,0 +1,22 @@
+{
+    "name": "hero-background-video",
+    "title": "Hero with Background Video",
+    "description": "Hero with staggered text heading, text and background video.",
+    "category": "layout",
+    "icon": "video-alt",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "hero-background-video.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewvideo": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/hero-background-video.jpg"
+        }
+    }
+}

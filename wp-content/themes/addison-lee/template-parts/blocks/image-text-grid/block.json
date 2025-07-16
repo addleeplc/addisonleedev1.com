@@ -1,0 +1,22 @@
+{
+    "name": "image-text-grid",
+    "title": "Image / Text Grid",
+    "description": "Multiple image / text cards in a two column grid layout.",
+    "category": "layout",
+    "icon": "editor-table",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "image-text-grid.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/image-text-grid.jpg"
+        }
+    }
+}

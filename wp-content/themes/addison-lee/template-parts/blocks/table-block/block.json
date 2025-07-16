@@ -1,0 +1,22 @@
+{
+    "name": "table-block",
+    "title": "Table Block",
+    "description": "Team grid in three columns with fields for image, title and text.",
+    "category": "layout",
+    "icon": "editor-table",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "table-block.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/table-block.jpg"
+        }
+    }
+}

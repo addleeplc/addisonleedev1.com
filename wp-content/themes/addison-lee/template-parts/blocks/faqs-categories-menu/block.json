@@ -1,0 +1,22 @@
+{
+    "name": "faqs-categories-menu",
+    "title": "FAQs Categories Menu",
+    "description": "Displays all FAQs on the main FAQs page, organized by category in a menu block.",
+    "category": "layout",
+    "icon": "editor-help",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "faqs-categories-menu.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/faqs-categories-menu.jpg"
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "name": "body-text-with-nav",
+    "title": "Body Text With Navigation",
+    "description": "Body Text with navigation to show and hide different sections.",
+    "category": "layout",
+    "icon": "editor-alignleft",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "body-text-with-nav.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    }
+}

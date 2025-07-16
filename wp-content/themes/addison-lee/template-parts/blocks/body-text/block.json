@@ -1,0 +1,16 @@
+{
+    "name": "body-text",
+    "title": "Body Text",
+    "description": "Hero with simple text heading.",
+    "category": "layout",
+    "icon": "paragraph",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "body-text.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    }
+}

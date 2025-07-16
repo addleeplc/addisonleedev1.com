@@ -1,0 +1,22 @@
+{
+    "name": "featured-videos",
+    "title": "Featured Videos",
+    "description": "Large video with title, text and cta.",
+    "category": "layout",
+    "icon": "format-video",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "featured-videos.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/featured-videos.jpg"
+        }
+    }
+}

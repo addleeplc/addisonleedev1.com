@@ -1,0 +1,22 @@
+{
+    "name": "roadmap",
+    "title": "Roadmap",
+    "description": "Roadmap diagram.",
+    "category": "layout",
+    "icon": "controls-repeat",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "roadmap.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/roadmap.jpg"
+        }
+    }
+}

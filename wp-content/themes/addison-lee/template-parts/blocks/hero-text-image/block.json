@@ -1,0 +1,22 @@
+{
+    "name": "hero-text-image",
+    "title": "Hero with Text / Image split",
+    "description": "Hero with heading, text, cta and image.",
+    "category": "layout",
+    "icon": "cover-image",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "hero-text-image.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/hero-text-image.jpg"
+        }
+    }
+}

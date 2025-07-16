@@ -1,0 +1,22 @@
+{
+    "name": "key-points-numbered",
+    "title": "Key Points Numbered",
+    "description": "Numbered key points in three columns with a white background.",
+    "category": "layout",
+    "icon": "screenoptions",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "key-points-numbered.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/key-points-numbered.jpg"
+        }
+    }
+}

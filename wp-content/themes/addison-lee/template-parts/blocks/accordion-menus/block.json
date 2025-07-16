@@ -1,0 +1,22 @@
+{
+    "name": "accordion-menus",
+    "title": "Accordion Menus",
+    "description": "Full page video set to autoplay.",
+    "category": "layout",
+    "icon": "arrow-down-alt2",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "accordion-menus.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewvideo": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/accordion-menus.jpg"
+        }
+    }
+}

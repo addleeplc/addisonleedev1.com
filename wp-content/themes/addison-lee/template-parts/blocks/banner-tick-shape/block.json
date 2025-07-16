@@ -1,0 +1,22 @@
+{
+    "name": "banner-tick-shape",
+    "title": "Banner Tick shape",
+    "description": "Banner with title and subtitle in a background tick shape.",
+    "category": "layout",
+    "icon": "welcome-widgets-menus",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "banner-tick-shape.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/banner-tick-shape.jpg"
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "info-cards",
+    "title": "Info Cards",
+    "description": "Cards containing image, title and text in three columns.",
+    "category": "layout",
+    "icon": "editor-table",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "info-cards.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/info-cards.jpg"
+        }
+    }
+}

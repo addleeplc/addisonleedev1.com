@@ -1,0 +1,22 @@
+{
+    "name": "about-us",
+    "title": "About Us",
+    "description": "Company information.",
+    "category": "layout",
+    "icon": "car",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "about-us.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/about-us.jpg"
+        }
+    }
+}

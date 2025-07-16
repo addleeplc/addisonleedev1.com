@@ -1,0 +1,16 @@
+{
+    "name": "hero-heading",
+    "title": "Hero Heading",
+    "description": "Hero with simple text heading.",
+    "category": "layout",
+    "icon": "heading",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "hero-heading.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    }
+}

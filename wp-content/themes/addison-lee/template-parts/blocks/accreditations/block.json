@@ -1,0 +1,22 @@
+{
+    "name": "accreditations",
+    "title": "Accreditations",
+    "description": "Full page video set to autoplay.",
+    "category": "layout",
+    "icon": "star-filled",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "accreditations.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewvideo": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/accreditations.jpg"
+        }
+    }
+}

@@ -1,0 +1,459 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	@font-face {
+		font-family: "Steagal";
+		src: url('../fonts/Steagal-Re.woff2') format('woff2'),
+		url('../fonts/Steagal-Re.woff') format('woff'),
+		url('../fonts/Steagal-Re.ttf') format('truetype'),
+		url('../fonts/Steagal-Re.svg') format('svg'),
+		url('../fonts/Steagal-Re.eot') format('embedded-opentype');
+		font-weight: 400;
+	}
+
+	@font-face {
+		font-family: "Steagal";
+		src: url('../fonts/Steagal-Me.woff2') format('woff2'),
+		url('../fonts/Steagal-Me.woff') format('woff'),
+		url('../fonts/Steagal-Me.ttf') format('truetype'),
+		url('../fonts/Steagal-Me.svg') format('svg'),
+		url('../fonts/Steagal-Me.eot') format('embedded-opentype');
+		font-weight: 500;
+	}
+
+	@font-face {
+		font-family: "Steagal";
+		src: url('../fonts/Steagal-Li.woff2') format('woff2'),
+		url('../fonts/Steagal-Li.woff') format('woff'),
+		url('../fonts/Steagal-Li.ttf') format('truetype'),
+		url('../fonts/Steagal-Li.svg') format('svg'),
+		url('../fonts/Steagal-Li.eot') format('embedded-opentype');
+		font-weight: 300;
+	}
+}
+
+/* Links and buttons*/
+a,
+.link-transition{
+	@apply mk-transition-all mk-duration-300 mk-ease-bezier;
+}
+
+.btn,
+.form-wrap .wpforms-submit-container .btn,
+.form-wrap .wpforms-page-button.wpforms-page-next,
+.form-wrap .wpforms-page-button.wpforms-page-prev,
+.form-wrap .wpforms-submit{
+	@apply mk-inline-flex mk-items-center mk-gap-3 mk-bg-yellow mk-px-3.5 mk-py-[13px] mk-border mk-border-yellow mk-rounded-sm mk-text-sm mk-text-black mk-font-medium mk-tracking-space mk-uppercase mk-transition-all mk-duration-300 mk-ease-bezier hover:mk-bg-transparent hover:mk-text-white hover:mk-gap-4;
+}
+
+.btn svg path{
+	@apply mk-transition-colors mk-duration-300;
+}
+
+.btn:hover svg path{
+	@apply mk-fill-white;
+}
+
+.btn.btn-black,
+.form-wrap .wpforms-submit-container .btn.btn-black,
+.form-wrap .wpforms-page-button.wpforms-page-next,
+.form-wrap .wpforms-page-button.wpforms-page-prev,
+.form-wrap .wpforms-submit{
+	@apply !mk-bg-black !mk-text-white mk-border-black hover:!mk-bg-transparent hover:!mk-text-black;
+}
+
+.btn.btn-black:hover svg path{
+	@apply mk-fill-black;
+}
+
+.btn.btn-black-border{
+	@apply mk-border-black mk-bg-transparent hover:mk-bg-black;
+}
+
+.btn-clear{
+	@apply mk-inline-flex mk-items-center mk-bg-transparent mk-text-sm mk-text-black mk-gap-1 mk-px-0 mk-py-3.5 mk-font-medium mk-tracking-space mk-cursor-pointer mk-uppercase mk-transition-all mk-duration-300 mk-ease-bezier hover:mk-opacity-60;
+}
+
+.btn-clear svg{
+	@apply mk-transition-transform mk-duration-300;
+}
+
+.btn-clear:hover svg{
+	@apply mk-translate-x-1;
+}
+
+.btn-clear.btn-clear-white{
+	@apply mk-text-white;
+}
+
+.btn-clear.btn-clear-white svg path{
+	@apply mk-stroke-white;
+}
+
+.cta_svg_animation svg{
+	@apply mk-transition-transform mk-duration-300;
+}
+
+.cta_svg_animation:hover svg{
+	@apply mk-translate-x-1;
+}
+.mk-disabled-glide-button, .glide__arrow--disabled {
+	@apply mk-opacity-35 mk-pointer-events-none;
+}
+
+/* Typography */
+.mk-prose{
+	@apply mk-max-w-none mk-text-black mk-leading-normal marker:mk-text-black;
+}
+
+.mk-prose.mk-prose-white p,
+.mk-prose.mk-prose-white li{
+	@apply mk-text-white marker:mk-text-black;
+}
+
+.mk-prose.mk-prose-grey p,
+.mk-prose.mk-prose-grey li{
+	@apply mk-text-black/64 marker:mk-text-black/64;
+}
+
+.mk-prose p strong,
+.mk-prose li strong,
+.mk-prose p a,
+.mk-prose li a{
+	@apply mk-text-inherit;
+}
+
+.mk-prose.mk-prose-grey strong {
+	@apply mk-text-black/64;
+}
+
+.mk-prose.mk-prose-light-grey p,
+.mk-prose.mk-prose-light-grey li{
+	@apply mk-text-white/64 marker:mk-text-white/64;
+}
+
+.mk-prose.mk-prose-lighter-grey p,
+.mk-prose.mk-prose-lighter-grey li {
+	color: rgb(255 255 255 / 0.80);
+}
+
+.mk-prose.mk-prose-lighter-grey p *::marker,
+.mk-prose.mk-prose-lighter-grey li *::marker {
+	color: rgb(255 255 255 / 0.80);
+}
+
+.mk-prose.mk-prose-lighter-grey p::marker,
+.mk-prose.mk-prose-lighter-grey li::marker {
+	color: rgb(255 255 255 / 0.80);
+}
+
+.mk-prose ul{
+	@apply mk-pl-5;
+}
+.mk-content-list ul {
+	@apply mk-pl-5 mk-list-disc;
+}
+
+/* Blog specific */
+.mk-prose.blog-content-wrapper h2,
+.mk-prose.blog-content-wrapper h3,
+.mk-prose.blog-content-wrapper h4,
+.mk-prose.blog-content-wrapper h5,
+.mk-prose.blog-content-wrapper h6 {
+	@apply mk-font-medium mk-text-1sm-title mk-uppercase;
+}
+.mk-prose.blog-content-wrapper strong {
+	@apply mk-font-medium mk-text-black/64;
+}
+.mk-prose.blog-content-wrapper p, .mk-prose.blog-content-wrapper li {
+	@apply mk-text-black/64;
+}
+.mk-prose.blog-content-wrapper a {
+	@apply mk-text-inherit;
+}
+.mk-prose.blog-content-wrapper > *:last-child {
+	@apply mk-pb-0 mk-mb-0;
+}
+/* Resources Specific (Blog extension) */
+.resources-content .mk-prose h2,
+.resources-content .mk-prose h3,
+.resources-content .mk-prose h4,
+.resources-content .mk-prose h5,
+.resources-content .mk-prose h6 {
+	@apply mk-font-medium mk-text-1sm-title mk-uppercase;
+}
+
+.selectric-blog-mobile-filter .selectric, .selectric-select-body-text-nav .selectric {
+	background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8L9.5 12.5L14 8" stroke="%23FFD900" stroke-width="2" stroke-linecap="square"/></svg>') no-repeat right 1rem center;
+	@apply mk-border mk-border-third-grey/64 mk-rounded-md;
+}
+
+.selectric-blog-mobile-filter .selectric .label, .selectric-select-body-text-nav .selectric .label {
+	@apply mk-text-yellow;
+}
+
+/* CTA clickable hovers */
+.mk-cta-group-element:hover .btn-clear svg{
+	@apply mk-translate-x-1;
+}
+.mk-cta-group-element:hover .cta_svg_animation svg {
+	@apply mk-translate-x-1;
+}
+/* Form fields */
+select#body-nav-select{
+	background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8L9.5 12.5L14 8" stroke="%23FFD900" stroke-width="2" stroke-linecap="square"/></svg>');
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	background-size: 20px 20px;
+}
+
+.form-wrap .wpforms-field{
+	@apply mk-py-2;
+}
+
+.form-wrap .wpforms-field input,
+.form-wrap .wpforms-field select,
+.form-wrap .wpforms-field textarea{
+	@apply mk-w-full !mk-max-w-none mk-p-3 mk-border mk-border-black/64 mk-rounded-sm mk-outline-none;
+}
+
+.float-checkbox-left input[type="checkbox"]{
+	@apply mk-w-auto mk-float-left;
+}
+
+.form-wrap .wpforms-field label,
+.form-wrap .wpforms-field legend,
+.form-wrap .wpforms-field.wpforms-field-repeater h3{
+	@apply mk-block !mk-text-base !mk-font-normal mk-mb-2 !mk-mt-0;
+}
+
+.form-wrap .wpforms-field label span{
+	@apply mk-text-black;
+}
+
+.form-wrap .wpforms-field.wpforms-field-divider h3{
+	@apply mk-text-2xl mk-font-medium mk-mb-2 mk-mt-6;
+}
+
+.selectric{
+	@apply mk-p-1.5 mk-text-base mk-border mk-border-black/64 mk-rounded-sm;
+}
+
+.form-wrap .wpforms-submit-container{
+	@apply mk-mt-6;
+}
+
+.form-wrap .wpforms-field-gdpr-checkbox ul li,
+.form-wrap  .wpforms-field-checkbox ul li{
+	@apply mk-flex mk-mt-2;
+}
+
+.form-wrap .wpforms-field-gdpr-checkbox ul li input,
+.form-wrap .wpforms-field-checkbox ul li input{
+	@apply mk-w-10 mk-mt-1;
+}
+
+.form-wrap .wpforms-field-gdpr-checkbox ul li label,
+.form-wrap .wpforms-field-checkbox ul li label{
+	@apply mk-text-sm;
+}
+
+.form-wrap .consent-field ul li{
+	@apply mk-flex;
+}
+
+.form-wrap .consent-field ul li input{
+	@apply !mk-max-w-5;
+}
+div.wpforms-container .wpforms-form .wpforms-field:not(.wpforms-field-phone):not(.wpforms-field-select-style-modern):not(.wpforms-field-radio):not(.wpforms-field-checkbox):not(.wpforms-field-layout):not(.wpforms-field-repeater) {
+	@apply mk-overflow-visible;
+}
+
+.wpforms-container .wpforms-datepicker-wrap .wpforms-field-medium+.wpforms-datepicker-clear{
+	right: 10px;
+}
+
+.form-wrap .wpforms-confirmation-container{
+	@apply mk-pt-10 mk-text-xl mk-font-medium;
+}
+
+.form-wrap .has-tooltip label,
+.form-wrap .has-tooltip legend{
+	@apply mk-flex mk-items-center;
+}
+.form-wrap .has-tooltip label .wpforms-tooltip,
+.form-wrap .has-tooltip legend .wpforms-tooltip{
+	@apply mk-ml-2;
+}
+
+.form-wrap .wpforms-page-button.wpforms-page-prev{
+	margin-right: 16px;
+}
+
+
+
+/* Newsletter Input */
+.newsletter-signup {
+	@apply mk-rounded-sm mk-outline-none mk-bg-midnight mk-text-white mk-w-full mk-py-1;
+}
+.newsletter-wrapper .btn {
+	@apply mk-rounded-none mk-block mk-mt-4 mk-bg-transparent mk-text-white mk-border-white;
+}
+.newsletter-wrapper .btn:hover {
+	@apply mk-bg-white mk-text-black;
+}
+
+/* Account form */
+.account-form input[type=text],
+.account-form input[type=number],
+.account-form input[type=password]{
+	@apply mk-w-full mk-mt-2 mk-p-3 mk-block mk-border mk-border-black/64 mk-rounded-sm;
+}
+
+/* Multi step form */
+.form-wrap .wpforms-field.wpforms-field-content.form-page-heading{
+	@apply mk-mb-12;
+}
+.form-wrap .wpforms-field.wpforms-field-content h3{
+	@apply mk-text-2sm-title mk-font-medium mk-mb-5 mk-uppercase;
+}
+
+.form-wrap .wpforms-field.wpforms-field-content p{
+	@apply mk-text-lg;
+}
+
+.form-wrap .wpforms-field.wpforms-field-content img{
+	@apply mk-w-full mk-mt-12;
+}
+
+
+/* Pagination */
+.pagination .page-numbers{
+	@apply mk-min-w-8 mk-h-8 mk-p-2 mk-bg-third-grey mk-rounded-sm mk-flex mk-justify-center mk-items-center;
+}
+
+.pagination .page-numbers.current{
+	@apply mk-bg-black mk-text-white;
+}
+
+.pagination .page-numbers.prev,
+.pagination .page-numbers.next{
+	@apply mk-bg-transparent mk-px-0;
+}
+
+.social-links a svg path{
+	@apply mk-transition-colors mk-duration-300;
+}
+
+.social-links a:hover svg path{
+	@apply mk-fill-yellow;
+}
+
+/* Glide fade transition */
+.fade-slider .glide__slides {transform:none !important; width:auto !important; display:block;}
+.fade-slider .glide__slide {position:absolute; left:0; top:0; opacity:0; transition:opacity .3s;}
+.fade-slider .glide__slide:first-child {position:relative;}
+.fade-slider .glide__slide--active {z-index:1; opacity:1;}
+
+/* Progress Bar */
+.slider-progress {
+	@apply mk-cursor-pointer;
+}
+.slider-progress .progress-bar {
+	@apply mk-pointer-events-none; /* important for JS click event handling */
+}
+
+/* Scrolling styles */
+.fade-up{
+	@apply mk-opacity-0 mk-translate-y-10 mk-transition-all mk-duration-700 mk-ease-bezier;
+}
+
+.fade-up.loaded{
+	@apply mk-opacity-100 mk-translate-y-0;
+}
+
+.whr-items{
+	@apply mk-grid sm:mk-grid-cols-2 lg:mk-grid-cols-3 mk-gap-x-4 mk-gap-y-4 md:mk-gap-y-12;
+}
+
+.whr-items .whr-item{
+	@apply mk-bg-third-grey mk-px-6 mk-py-8 mk-rounded-sm;
+}
+
+.whr-items .whr-item .whr-title{
+	@apply mk-text-xl md:mk-text-2xl mk-font-medium mk-mb-4;
+}
+
+.whr-items .whr-item .whr-date,
+.whr-items .whr-item .whr-code,
+.whr-items .whr-item .whr-location span {
+	@apply mk-hidden;
+}
+
+.whr-items .whr-item .whr-info {
+	@apply mk-text-xxxs-title mk-text-black mk-opacity-60;
+}
+
+.whr-items .whr-item .whr-dept {
+	@apply mk-mb-3;
+}
+
+/* FAQS Categories Menu */
+.category-link:hover, .category-link.active {
+	color: #FFD700;
+}
+.chevron-down {
+	font-size: 1.5rem;
+}
+
+.faqs-categories-menu-block .selectric{
+	@apply mk-p-1.5 mk-text-base mk-border mk-border-secondary-grey mk-rounded-lg;
+}
+
+.faqs-categories-menu-block .selectric .selectric-scroll{
+	@apply mk-p-1.5 mk-text-yellow mk-font-medium;
+}
+/* Add to any */
+.addtoany_shortcode .a2a_kit{
+	@apply mk-flex  mk-gap-3;
+}
+
+/* Trustpilot */
+iframe {
+	@apply !mk-outline-none;
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+.no-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+/* On Page */
+.mk-line-breaked-text br {
+	@apply mk-hidden md:mk-block;
+}
+.mk-title-link a,  .contact-info-subheading a {
+	@apply mk-underline;
+}
+.mk-title-link a:hover, .contact-info-subheading a:hover {
+	@apply mk-no-underline;
+}
+
+/* Page specific Hero Block styling */
+.hero-background-image.post-1505 h1 span.mk-text-white {
+	@apply xxl-lg:mk-max-w-[600px];
+}
+.hero-background-image.post-1505 h1 span.mk-text-yellow {
+	@apply xxl-lg:mk-max-w-[750px];
+}
+
+/* Footer */
+img.payment-methods {
+	@apply mk-max-w-[42px];
+}

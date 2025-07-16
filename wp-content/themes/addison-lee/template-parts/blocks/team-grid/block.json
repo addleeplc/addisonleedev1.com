@@ -1,0 +1,22 @@
+{
+    "name": "team-grid",
+    "title": "Team Grid",
+    "description": "Team grid in three columns with fields for image, title and text.",
+    "category": "layout",
+    "icon": "groups",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "team-grid.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/team-grid.jpg"
+        }
+    }
+}

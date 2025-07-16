@@ -1,0 +1,22 @@
+{
+    "name": "image-text-carousel-tabs",
+    "title": "Image Text Carousel with Tabs",
+    "description": "Carousel displaying text and images. It has tabs over the image.",
+    "category": "layout",
+    "icon": "images-alt",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "image-text-carousel-tabs.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/image-text-carousel-tabs.jpg"
+        }
+    }
+}

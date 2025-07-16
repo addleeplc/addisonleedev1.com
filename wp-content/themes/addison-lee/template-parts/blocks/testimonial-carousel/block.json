@@ -1,0 +1,22 @@
+{
+    "name": "testimonial-carousel",
+    "title": "Testimonial Carousel",
+    "description": "Carousel showing testimonials with photo, name, title and quote.",
+    "category": "layout",
+    "icon": "format-quote",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "testimonial-carousel.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/testimonial-carousel.jpg"
+        }
+    }
+}

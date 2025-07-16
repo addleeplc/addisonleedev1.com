@@ -1,0 +1,24 @@
+{
+    "name": "account-form",
+    "title": "Account Form",
+    "description": "account form pulled from WPForms.",
+    "style": [ "file:./account-form.css" ],
+    "viewScript": [ "file:./account-form.js" ],
+    "category": "layout",
+    "icon": "email",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "account-form.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/account-form.jpg"
+        }
+    }
+}

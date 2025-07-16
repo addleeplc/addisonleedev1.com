@@ -1,0 +1,22 @@
+{
+    "name": "hero-background-image",
+    "title": "Hero with Background Image",
+    "description": "Hero with staggered text heading, text and background image.",
+    "category": "layout",
+    "icon": "cover-image",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "hero-background-image.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/hero-background-image.jpg"
+        }
+    }
+}

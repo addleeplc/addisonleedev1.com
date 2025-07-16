@@ -1,0 +1,22 @@
+{
+    "name": "trustpilot-logo",
+    "title": "Trustpilot Logo",
+    "description": "Displays the global Trustpilot logo.",
+    "category": "layout",
+    "icon": "star-filled",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "trustpilot-logo.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/trustpilot-logo.jpg"
+        }
+    }
+}

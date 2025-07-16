@@ -1,0 +1,22 @@
+{
+    "name": "callout-banner",
+    "title": "Callout Banner",
+    "description": "Callout banner with heading, text and CTA.",
+    "category": "layout",
+    "icon": "editor-bold",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "callout-banner.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/callout-banner.jpg"
+        }
+    }
+}

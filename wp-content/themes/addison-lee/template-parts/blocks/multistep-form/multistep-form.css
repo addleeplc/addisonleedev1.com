@@ -1,0 +1,132 @@
+/* Progress bar. */
+.wpforms-page-indicator.connector{
+	overflow:visible;
+	margin-bottom: 64px;
+	padding: 24px 16px;
+	border-radius: 2px;
+	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.10);
+}
+
+@media (max-width: 768px) {
+	.wpforms-page-indicator.connector{
+		display: none !important;
+	}
+}
+
+.wpforms-page-indicator.connector .wpforms-page-indicator-page-number{
+	height: 2px !important;
+	transform: translateX(-50%);
+}
+
+.wpforms-page-indicator-page-triangle{
+	width: 8px !important;
+	height: 8px !important;
+	border-radius: 100%;
+	border: none !important;
+	transform: translateY(-3px);
+	top: 0 !important;
+}
+
+.wpforms-page-indicator-page.wpforms-page-completed .wpforms-page-indicator-page-number{
+	background-color: black !important;
+}
+
+.wpforms-page-indicator-page.wpforms-page-indicator-page-1 .wpforms-page-indicator-page-number{
+	background-color: transparent !important;
+	margin-left: auto !important;
+}
+
+.wpforms-page-indicator-page .wpforms-page-indicator-page-triangle{
+	right: -3px !important;
+	left: auto !important;
+}
+
+.wpforms-page-indicator-page.active .wpforms-page-indicator-page-triangle{
+	background-color: black;
+}
+
+.wpforms-page-indicator-page.active img{
+	opacity: 1;
+}
+
+.wpforms-page-indicator-page .wpforms-page-indicator-page-title{
+	opacity: .32;
+}
+
+.wpforms-page-indicator-page.active .wpforms-page-indicator-page-title{
+	opacity: 1;
+}
+
+/* Form */
+.multi-step-form .form-wrap form{
+	margin-top: -120px;
+	padding-top: 120px;
+}
+
+@media (min-width: 768px) {
+	.wpforms-field-container,
+	.wpforms-submit-container{
+		padding: 0 16px;
+	}
+}
+
+.wpforms-clear.wpforms-pagebreak-left .wpforms-page-button.wpforms-page-prev{
+	margin-right: 16px;
+	margin-top: 32px;
+}
+
+.wpforms-page-button.wpforms-page-next{
+	margin-top: 40px;
+}
+
+/* Fields */
+.account-type ul li{
+	display: flex;
+	position: relative;
+	margin-bottom: 16px;
+	border-radius: 2px;
+	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.10);
+}
+
+@media (min-width: 768px) {
+	.account-type ul{
+		display: flex;
+		gap: 16px;
+		width: 100%;
+	}
+
+	.account-type ul li{
+		width: 50%;
+		margin-bottom: 0;
+	}
+}
+
+.account-consent{
+	margin-top: 48px;
+}
+
+.form-wrap .wpforms-field.account-type ul li input{
+	max-width: 20px !important;
+	position: absolute;
+	top: 25px;
+	left: 16px;
+	cursor: pointer;
+}
+
+.form-wrap .wpforms-field.account-type ul li label{
+	width: 100%;
+	padding: 24px 16px 24px 48px;
+	cursor: pointer;
+}
+
+.wpforms-field-label-inline p{
+	word-break: auto-phrase !important;
+}
+
+.after-submit{
+	margin-top: 32px;
+}
+
+.base-text p{
+	font-size: 16px !important;
+}

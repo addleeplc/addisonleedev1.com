@@ -1,0 +1,22 @@
+{
+    "name": "text-video-split",
+    "title": "Text / Video Split",
+    "description": "Text and Video split into two columns.",
+    "category": "layout",
+    "icon": "format-video",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "text-video-split.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/text-video-split.jpg"
+        }
+    }
+}

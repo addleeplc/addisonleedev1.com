@@ -1,0 +1,22 @@
+{
+    "name": "image-text-tabs",
+    "title": "Image / Text with Tabs",
+    "description": "Image and text in two columns with tabs to change the content.",
+    "category": "layout",
+    "icon": "format-image",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "image-text-tabs.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/image-text-tabs.jpg"
+        }
+    }
+}

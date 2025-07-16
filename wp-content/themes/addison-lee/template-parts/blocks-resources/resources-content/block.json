@@ -1,0 +1,22 @@
+{
+    "name": "resources-content",
+    "title": "Resources Content",
+    "description": "Hero with simple text heading.",
+    "category": "resources",
+    "icon": "editor-paragraph",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "resources-content.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/blog-content.jpg"
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "blog-video",
+    "title": "Blog Video",
+    "description": "Full width video with play button.",
+    "category": "blog",
+    "icon": "format-video",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "blog-video.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/blog-video.jpg"
+        }
+    }
+}

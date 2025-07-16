@@ -1,0 +1,22 @@
+{
+    "name": "blog-content-heading",
+    "title": "Blog Content with Heading",
+    "description": "Contnet with, heading, and cta in a reduced width container.",
+    "category": "blog",
+    "icon": "heading",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "blog-content-heading.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/blog-content-heading.jpg"
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "key-points",
+    "title": "Key Points",
+    "description": "Key points with icon, title and text in either two or three columns",
+    "category": "layout",
+    "icon": "screenoptions",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "key-points.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/key-points-two-cols.jpg"
+        }
+    }
+}

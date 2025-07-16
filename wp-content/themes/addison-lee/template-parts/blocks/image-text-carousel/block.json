@@ -1,0 +1,22 @@
+{
+    "name": "image-text-carousel",
+    "title": "Image / Text Carousel",
+    "description": "Carousel displaying text and images.",
+    "category": "layout",
+    "icon": "images-alt",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "image-text-carousel.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/image-text-carousel.jpg"
+        }
+    }
+}

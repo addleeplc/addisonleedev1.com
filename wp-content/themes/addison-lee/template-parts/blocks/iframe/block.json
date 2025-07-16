@@ -1,0 +1,16 @@
+{
+    "name": "iframe",
+    "title": "iframe",
+    "description": "Block for embedding iframes.",
+    "category": "layout",
+    "icon": "controls-repeat",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "iframe.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    }
+}

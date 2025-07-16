@@ -1,0 +1,22 @@
+{
+    "name": "feedback-carousel",
+    "title": "Feedback Carousel",
+    "description": "Carousel showing three cards with a title and text.",
+    "category": "layout",
+    "icon": "editor-insertmore",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "feedback-carousel.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/feedback-carousel.jpg"
+        }
+    }
+}

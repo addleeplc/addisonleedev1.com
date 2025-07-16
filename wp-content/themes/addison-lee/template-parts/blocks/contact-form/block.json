@@ -1,0 +1,22 @@
+{
+    "name": "contact-form",
+    "title": "Contact Form",
+    "description": "Contact form pulled from WPForms.",
+    "category": "layout",
+    "icon": "email",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "contact-form.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/contact-form.jpg"
+        }
+    }
+}

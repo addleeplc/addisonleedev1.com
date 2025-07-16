@@ -1,0 +1,22 @@
+{
+    "name": "tabs-content-split",
+    "title": "Tabs / Content Split",
+    "description": "Tabs on the left which changes the content on the right.",
+    "category": "layout",
+    "icon": "align-right",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "tabs-content-split.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/tabs-content-split.jpg"
+        }
+    }
+}

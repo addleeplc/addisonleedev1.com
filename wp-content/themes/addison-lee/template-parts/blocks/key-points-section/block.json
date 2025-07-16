@@ -1,0 +1,22 @@
+{
+    "name": "key-points-section",
+    "title": "Key Points Section",
+    "description": "Key points with icon, title and text in three column sections.",
+    "category": "layout",
+    "icon": "screenoptions",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "key-points-section.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/key-points-section.jpg"
+        }
+    }
+}

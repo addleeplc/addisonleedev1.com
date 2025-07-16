@@ -1,0 +1,22 @@
+{
+    "name": "track-your-job",
+    "title": "Track Your Job",
+    "description": "Search field to find a parcel or job.",
+    "category": "layout",
+    "icon": "location",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "track-your-job.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/track-your-job.jpg"
+        }
+    }
+}

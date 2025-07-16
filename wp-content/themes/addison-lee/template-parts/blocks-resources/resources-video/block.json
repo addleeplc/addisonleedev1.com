@@ -1,0 +1,22 @@
+{
+    "name": "resources-video",
+    "title": "Resources Video",
+    "description": "Full width video with play button.",
+    "category": "resources",
+    "icon": "format-video",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "resources-video.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/blog-video.jpg"
+        }
+    }
+}

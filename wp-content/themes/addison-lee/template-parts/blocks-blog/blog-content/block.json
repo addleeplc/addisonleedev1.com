@@ -1,0 +1,22 @@
+{
+    "name": "blog-content",
+    "title": "Blog Content",
+    "description": "Hero with simple text heading.",
+    "category": "blog",
+    "icon": "editor-paragraph",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "blog-content.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/blog-content.jpg"
+        }
+    }
+}

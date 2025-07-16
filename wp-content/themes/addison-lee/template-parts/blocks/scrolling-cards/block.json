@@ -1,0 +1,22 @@
+{
+    "name": "scrolling-cards",
+    "title": "Scrolling Cards",
+    "description": "Cards that can be scrolled or dragged. The contain Image, title, text and link",
+    "category": "layout",
+    "icon": "images-alt2",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "scrolling-cards.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/scrolling-cards.jpg"
+        }
+    }
+}

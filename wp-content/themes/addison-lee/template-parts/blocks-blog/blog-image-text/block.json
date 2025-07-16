@@ -1,0 +1,22 @@
+{
+    "name": "blog-image-text",
+    "title": "Blog Image / Text",
+    "description": "Image / Text split for blog posts.",
+    "category": "blog",
+    "icon": "format-image",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "blog-image-text.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/blog-image-text.jpg"
+        }
+    }
+}

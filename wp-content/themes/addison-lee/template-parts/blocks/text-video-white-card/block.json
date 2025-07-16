@@ -1,0 +1,22 @@
+{
+    "name": "text-video-white-card",
+    "title": "Text / Video White Card",
+    "description": "Text and Video split into two columns on a white card background.",
+    "category": "layout",
+    "icon": "format-video",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "text-video-white-card.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/text-video-white-card.jpg"
+        }
+    }
+}

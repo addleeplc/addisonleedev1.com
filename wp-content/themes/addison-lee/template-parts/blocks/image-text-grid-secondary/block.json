@@ -1,0 +1,22 @@
+{
+    "name": "image-text-grid-secondary",
+    "title": "Image / Text Grid Secondary",
+    "description": "Multiple image / text cards with a main block and combined supporting row.",
+    "category": "layout",
+    "icon": "editor-table",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "image-text-grid-secondary.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/image-text-grid.jpg"
+        }
+    }
+}

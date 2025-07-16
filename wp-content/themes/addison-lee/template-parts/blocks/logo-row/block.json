@@ -1,0 +1,22 @@
+{
+    "name": "logo-row",
+    "title": "Logo row",
+    "description": "Displays logos in rows.",
+    "category": "layout",
+    "icon": "shield-alt",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "logo-row.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    },
+    "attributes": {
+        "previewImage": {
+            "type": "string",
+            "default": "/wp-content/themes/addison-lee/assets/src/img/blocks/logo-row.jpg"
+        }
+    }
+}

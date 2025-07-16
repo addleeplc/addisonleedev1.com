@@ -1,0 +1,219 @@
+.step-content {
+    display: none;
+}
+
+.step-content.active {
+    display: block;
+}
+
+
+@media  screen and (max-width: 1000px) and (min-width: 768px){
+#debitcard iframe {
+    height: 2400px !important;
+}
+}
+
+@media screen and (max-width: 767px) {
+  
+    input[type="radio"]:checked {
+      padding: 2% !important; 
+      background-color: #000 !important;
+    }
+
+    #debitcard iframe {
+      height: 3000px !important;
+    }
+
+    #debitcard iframe {
+      height: 2446px !important;
+    }
+
+    #companyList, #companyList_sole_trader, #postcode_list {
+      width: 98% !important;
+    }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+-moz-appearance: textfield;
+}
+
+input[type="radio"]:checked {
+padding: 1%;
+background-color: #000000;
+border: 1px solid #232320;
+}
+
+input[type="radio"] {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+
+background-clip: content-box;
+border: 1px solid #bbbbbb;
+border-radius: 50%;
+}
+
+
+.radio input:checked + span::before {
+border-color: #f8dc3d;
+background-color: #f8dc3d;
+}
+
+.radio input + span::before {
+border-color: #2196f3;
+background-color: #2196f3;
+}
+
+
+#inputfields_code {
+display: flex;
+width: 198px;
+flex-direction: column;
+align-items: flex-start;
+gap: 4px;
+}
+
+#companyList,
+#companyList_sole_trader {
+width: 653px;
+height: auto;
+flex-shrink: 0;
+border: 2px solid #fedb00;
+margin-top: -1%;
+list-style: none;
+padding: 0;
+overflow-y: auto;
+/* Add scrollbar for overflow */
+z-index: 1;
+}
+
+#postcode_list {
+width: 420px;
+height: 210px;
+flex-shrink: 0;
+border: 2px solid #fedb00;
+margin-top: -1%;
+list-style: none;
+padding: 0;
+overflow-y: auto;
+/* Add scrollbar for overflow */
+z-index: 1;
+}
+
+#companyList li,
+#companyList_sole_trader li,
+#postcode_list li {
+padding: 8px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+/* Smooth hover effect */
+}
+
+#companyList li:hover,
+#companyList_sole_trader li:hover,
+#postcode_list li:hover {
+background-color: #f8ec95;
+}
+
+#companyList li.selected,
+#companyList_sole_trader li.selected,
+#postcode_list li.selected {
+background-color: #f8ec95;
+}
+
+input.error {
+border: 1px red solid;
+}
+
+#b_firstName_error_msg,
+#b_lastName_error_msg,
+#b_mobile_error_msg,
+#errors,
+#b_registered_companyName_err_msg,
+#b_cname_err_msg,
+#b_cnum_err_msg,
+#b_countryName_err_msg,
+#b_countryPostcode_err_msg,
+#b_buildingNoName_err_msg,
+#b_address_err_msg,
+#b_townCity_err_msg,
+#b_in_mobile_err_msg,
+#errors_personal,
+#p_mobile_err_msg,
+#p_lastName_err_msg,
+#p_firstName_err_msg,
+#p_postcode_err_msg,
+#p_buildingNoName_err_msg,
+#p_address_err_msg,
+#p_towncity_err_msg,
+#p_registered_company_err_msg,
+#tcs_err_msg,
+#account_details_error {
+margin-top: 5px;
+color: red;
+font-family: Steagal;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+}
+
+.spinner {
+border: 4px solid rgba(255, 255, 255, 0.3);
+border-top: 4px solid #fff;
+border-radius: 50%;
+width: 16px;
+height: 16px;
+animation: spin 1s linear infinite;
+margin-left: 10px;
+display: none; /* Initially hide the spinner */
+}
+.spinner2 {
+border: 4px solid rgba(255, 255, 255, 0.3);
+border-top: 4px solid #fff; /* Match the button's text color */
+border-radius: 50%;
+width: 16px;
+height: 16px;
+animation: spin 1s linear infinite;
+margin-left: 10px;
+display: none; /* Initially hide the spinner */
+}
+.spinner3 {
+border: 2px solid rgba(255, 255, 255, 0.3);
+border-top: 2px solid #232320; /* Match the input's text color */
+border-radius: 50%;
+width: 16px;
+height: 16px;
+animation: spin 1s linear infinite;
+position: absolute;
+top: 18px;
+right: 88px; /* Adjust as needed */
+display: none; /* Initially hide the spinner */
+}
+
+.spinner4 {
+border: 4px solid rgba(255, 255, 255, 0.3);
+border-top: 4px solid #fff;
+border-radius: 50%;
+width: 16px;
+height: 16px;
+animation: spin 1s linear infinite;
+margin-left: 45%;
+display: none; /* Initially hide the spinner */
+}
+
+@keyframes spin {
+0% {
+  transform: rotate(0deg);
+}
+100% {
+  transform: rotate(360deg);
+}
+}

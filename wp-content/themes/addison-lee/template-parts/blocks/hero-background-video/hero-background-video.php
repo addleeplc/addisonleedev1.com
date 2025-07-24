@@ -87,7 +87,6 @@ if ( ! empty( $block['className'] ) ) {
 		</div>
 	</div>
 </div>
-
 <style>
 .site-header{
 	background-color: transparent;

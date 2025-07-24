@@ -281,9 +281,9 @@ function openTab(id) {
         puppin.remove();
         span.textContent = 'Flight Number';
         document.getElementsByName('pickup-form')[0].placeholder='Enter flight number';
-        const mainContent = document.getElementById('main-cont');
+        /*const mainContent = document.getElementById('main-cont');
         const responsedatalayer = document.getElementById('return-response-data');
-        mainContent.insertBefore(dontKnow, responsedatalayer);
+        //mainContent.insertBefore(dontKnow, responsedatalayer);*/
         a.classList.add('pickup-pin');
         getFlightCheckbox.style.display = 'block';
 
@@ -393,6 +393,8 @@ if(timeToSend){
 }
 
 
+let isDataRec = true;
+
 getQuoteBtn.addEventListener('click', function(e){
     e.preventDefault();
     console.log('Coming from quote button 2 values' );
@@ -403,7 +405,9 @@ getQuoteBtn.addEventListener('click', function(e){
         // function to collect the data and send
         document.getElementById('get-a-quote').classList.add('time-to-send');
 
-        sendData();
+        document.getElementById('get-a-quote').setAttribute('disable', '');
+
+        isDataRec = false;
 
         dateselected = localStorage.setItem('selected_date', document.getElementById('choosedate').value);   
         console.log('amend the date format',dateselected);  
@@ -423,6 +427,25 @@ getQuoteBtn.addEventListener('click', function(e){
     
 });
 
+
+if(document.querySelector('.time-to-send')) {
+document.querySelector('.time-to-send').addEventListener('click', onClickTwice);
+};
+
+function onClickTwice(){
+    // onclick disable the button
+    
+    document.getElementById('get-a-quote').removeAttribute('disable');
+
+        setTimeout(() => {
+            sendData();
+        },0.5);
+    
+    //
+}
+
+
+
 function showQuoteWidget(){    
     const tabContent = document.querySelector('.tabcontent');
     tabContent.classList.toggle('visible');
@@ -432,7 +455,6 @@ function showQuoteWidget(){
 }
 
 function loadWidget() {
-
     let hasBeenCalled = false;
 
     return function() {

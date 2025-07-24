@@ -15,7 +15,7 @@ $label = $size['choices'][ $value ];
 ?>
 
 <div class="quote-widget mk-w-full mk-h-full mk-mx-auto mk-w-900 mk-h-500 pt-3 mk-mt-10 mk-mb-10" id="quote-widget">
-	<div class="tabcontent mk-bg-white mx-auto <?php echo $label; ?>">
+	<div class="tabcontent mk-bg-white sm-max:mk-mx-0 <?php echo $label; ?>">
 			<div id="tabs" class="mk-w-full mk-h-full mk-w-900 mk-h-500 mk-flex mk-bg-white">
 				<?php
 					$y = 0;
@@ -38,10 +38,8 @@ $label = $size['choices'][ $value ];
 					<?php		
 					endwhile;
 					endif;
-					
 				?>
 			</div>
-			
 		</div>
 	<div class="quote-widget-container md:mk-hidden md:max-lg-200 mk-rounded-b-2xl mk-rounded-r-2xl mk-bg-white mx-auto mk-w-md mk-mt-2 mk-mb-2 sm-max:mk-rounded-r-[0px] <?php echo $label; ?>">
 		

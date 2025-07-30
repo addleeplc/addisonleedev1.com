@@ -4422,6 +4422,10 @@ img.payment-methods {
     width: 52px;
   }
 
+  .md\:mk-w-\[530px\] {
+    width: 530px;
+  }
+
   .md\:mk-min-w-80 {
     min-width: 20rem;
   }
@@ -4460,6 +4464,10 @@ img.payment-methods {
 
   .md\:mk-max-w-xs {
     max-width: 20rem;
+  }
+
+  .md\:mk-max-w-\[530px\] {
+    max-width: 530px;
   }
 
   .md\:mk-table-fixed {
@@ -4930,6 +4938,16 @@ img.payment-methods {
   }
 }
 
+@media (min-width: 400px) {
+  .sm-max-xs\:mk-block {
+    display: block;
+  }
+
+  .sm-max-xs\:mk-w-\[100\%\] {
+    width: 100%;
+  }
+}
+
 @media (max-width: 767px) {
   .sm-max\:mk-relative {
     position: relative;
@@ -4939,14 +4957,14 @@ img.payment-methods {
     float: left;
   }
 
+  .sm-max\:mk-mx-2 {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
   .sm-max\:mk-mx-auto {
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .sm-max\:mk-mx-0 {
-    margin-left: 0px;
-    margin-right: 0px;
   }
 
   .sm-max\:mk-mb-\[40px\] {
@@ -4969,8 +4987,8 @@ img.payment-methods {
     margin-top: 25px;
   }
 
-  .sm-max\:mk-hidden {
-    display: none;
+  .sm-max\:mk-block {
+    display: block;
   }
 
   .sm-max\:mk-h-\[32px\] {

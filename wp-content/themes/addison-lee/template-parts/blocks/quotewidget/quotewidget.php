@@ -15,8 +15,8 @@ $label = $size['choices'][ $value ];
 ?>
 
 <div class="quote-widget mk-w-full mk-h-full mk-mx-auto mk-w-900 mk-h-500 pt-3 mk-mt-10 mk-mb-10" id="quote-widget">
-	<div class="tabcontent mk-bg-white sm-max:mk-mx-0 <?php echo $label; ?>">
-			<div id="tabs" class="mk-w-full mk-h-full mk-w-900 mk-h-500 mk-flex mk-bg-white">
+	<div class="tabcontent mk-bg-white sm-max:mk-mx-2 <?php echo $label; ?>">
+			<div id="tabs" class="mk-w-full mk-h-full mk-w-900 mk-h-500 mk-flex mk-bg-white sm-max-xs:mk-w-[100%]">
 				<?php
 					$y = 0;
 					if( have_rows('tabs') ) : 
@@ -67,7 +67,7 @@ $label = $size['choices'][ $value ];
 					</div>
 				</div>
 				<div class="item3 sm-max:mk-w-[68px] md:mk-w-[52px]" id="pin">
-					<img class="dropoff md:mk-absolute md:mk-w-[52px] sm-max:mk-mr-[20px] sm-max:mk-w-[32px] sm-max:mk-h-[32px] sm-max:mk-float-left sm-max:mk-relative" src="http://localhost/dev.addisonlee.com/wp-content/uploads/2025/05/pin-B.svg">
+					<img class="dropoff md:mk-absolute md:mk-w-[52px] sm-max:mk-mr-[20px] sm-max:mk-w-[32px] sm-max:mk-h-[32px] sm-max:mk-float-left sm-max:mk-relative" src="/wp-content/uploads/2025/06/pin-B.svg">
 				</div>
 				<div class="item4 mk-border-b-2 mk-border-solid mk-border-black-500  md:mk-w-[390px] sm-max:mk-w-[100%] sm-max:mk-pb-[20px] ">
 					<div title="pickup" name="pick" id="dropoff-point" value="PICK UP" class="address-search__combobox">
@@ -96,7 +96,7 @@ $label = $size['choices'][ $value ];
 					</label>			
 				</div>
 				<div class="item6">
-					<a href="#" id="get-a-quote" class="get-a-quote btn md:mk-min-w-[530px] sm-max:mk-w-[100%] sm-max:mk-mt-[25px]">
+					<a href="#" id="get-a-quote" class="get-a-quote btn md:mk-w-[530px] sm-max:mk-w-[100%] sm-max:mk-mt-[25px]">
 						<span class="sm-max:mk-mx-auto mk-mx-auto md:mk-px-[158px] md:mk-py-[3px] ">GET QUOTE</span>
 					</a>
 					<div class="display-error"></div>

@@ -71,6 +71,8 @@ function getDropOff(currentword) {
     }).catch(error => { console.log(error.message)})
 }
 
+
+
 function getPickUpApi(currentword) {
     const apiFetched = currentword;
     console.log('currentword is working', apiFetched);

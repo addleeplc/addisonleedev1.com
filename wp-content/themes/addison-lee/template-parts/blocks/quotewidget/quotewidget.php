@@ -96,7 +96,7 @@ $label = $size['choices'][ $value ];
 					</label>			
 				</div>
 				<div class="item6">
-					<a href="#" id="get-a-quote" class="get-a-quote btn md:mk-w-[530px] sm-max:mk-w-[100%] sm-max:mk-mt-[25px]">
+					<a href="#" id="get-a-quote" class="get-a-quote btn md:mk-w-[530px] sm-max:mk-w-[100%] sm-max:mk-mt-[25px] md:mk-py-[24px]">
 						<span class="sm-max:mk-mx-auto mk-mx-auto md:mk-px-[158px] md:mk-py-[3px] ">GET QUOTE</span>
 					</a>
 					<div class="display-error"></div>

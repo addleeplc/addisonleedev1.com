@@ -4618,6 +4618,11 @@ img.payment-methods {
     padding-bottom: 3px;
   }
 
+  .md\:mk-py-\[24px\] {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
   .md\:mk-pb-0 {
     padding-bottom: 0px;
   }

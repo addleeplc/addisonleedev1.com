@@ -3,7 +3,7 @@
     "title": "Quote Widget",
     "description": "Get a quick price quote.",
     "style": [ "file:./quote-widget.css" ],
-    "viewScript": [ "file:./quote-widget.js" ],
+    "viewScript": [ "file:./quote-widget.js" ], 
     "category": "layout",
     "icon": "cover-image",
     "acf": {

@@ -11,7 +11,7 @@ $value = $size['value'];
 $label = $size['choices'][ $value ];
 ?>
 
-<div class="quote-widget mk-w-full mk-h-full mk-hidden <?php echo esc_attr($label); ?>" id="quote-widget">
+<div class="quote-widget sm-max:mk-absolute mk-w-full mk-h-full mk-hidden <?php echo esc_attr($label); ?>" id="quote-widget">
   
   <!-- Tabs Row -->
   <div 
@@ -56,7 +56,7 @@ $label = $size['choices'][ $value ];
   </div>
 
   <!-- Panels -->
-  <div class="mk-relative mk-z-0 mk-bg-white mk-rounded-t-none mk-rounded-b-lg mk-shadow-sm mk-pt-[32px] mk-pb-2 sm-max:mk-px-2 mk-px-[50px]">
+  <div class="mk-relative mk-z-0 mk-bg-white mk-rounded-t-none mk-rounded-b-lg mk-shadow-sm mk-pt-[32px] mk-pb-2 sm-max:mk-px-[10px] sm-max:mk-pt-[22px] sm-max:mk-pb-[10px] mk-px-[50px]">
     <?php 
       $i = 0;
       if ( have_rows('tabs') ) : 

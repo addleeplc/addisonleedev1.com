@@ -1237,10 +1237,6 @@ video {
   z-index: revert-layer;
 }
 
-.mk-z-\[-1\] {
-  z-index: -1;
-}
-
 .mk-order-1 {
   order: 1;
 }
@@ -2321,10 +2317,6 @@ video {
   border-top-width: 0px;
 }
 
-.mk-border-solid {
-  border-style: solid;
-}
-
 .\!mk-border-black {
   --tw-border-opacity: 1 !important;
   border-color: rgb(0 0 0 / var(--tw-border-opacity)) !important;
@@ -2724,10 +2716,6 @@ video {
 
 .mk-pl-4 {
   padding-left: 1rem;
-}
-
-.mk-pl-\[10px\] {
-  padding-left: 10px;
 }
 
 .mk-pr-2 {
@@ -4332,10 +4320,6 @@ img.payment-methods {
 }
 
 @media (min-width: 768px) {
-  .md\:mk-absolute {
-    position: absolute;
-  }
-
   .md\:mk-sticky {
     position: sticky;
   }
@@ -4514,10 +4498,6 @@ img.payment-methods {
     height: 150px;
   }
 
-  .md\:mk-h-\[245px\] {
-    height: 245px;
-  }
-
   .md\:mk-h-auto {
     height: auto;
   }
@@ -4586,24 +4566,8 @@ img.payment-methods {
     width: 100%;
   }
 
-  .md\:mk-w-\[390px\] {
-    width: 390px;
-  }
-
-  .md\:mk-w-\[52px\] {
-    width: 52px;
-  }
-
-  .md\:mk-w-\[530px\] {
-    width: 530px;
-  }
-
   .md\:mk-min-w-80 {
     min-width: 20rem;
-  }
-
-  .md\:mk-min-w-\[530px\] {
-    min-width: 530px;
   }
 
   .md\:mk-max-w-2xl {
@@ -4636,10 +4600,6 @@ img.payment-methods {
 
   .md\:mk-max-w-xs {
     max-width: 20rem;
-  }
-
-  .md\:mk-max-w-\[530px\] {
-    max-width: 530px;
   }
 
   .md\:mk-table-fixed {
@@ -4716,10 +4676,6 @@ img.payment-methods {
        object-fit: cover;
   }
 
-  .md\:mk-p-0 {
-    padding: 0px;
-  }
-
   .md\:mk-px-0 {
     padding-left: 0px;
     padding-right: 0px;
@@ -4738,11 +4694,6 @@ img.payment-methods {
   .md\:mk-px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
-  }
-
-  .md\:mk-px-\[158px\] {
-    padding-left: 158px;
-    padding-right: 158px;
   }
 
   .md\:mk-py-10 {
@@ -4785,16 +4736,6 @@ img.payment-methods {
     padding-bottom: 155px;
   }
 
-  .md\:mk-py-\[3px\] {
-    padding-top: 3px;
-    padding-bottom: 3px;
-  }
-
-  .md\:mk-py-\[24px\] {
-    padding-top: 24px;
-    padding-bottom: 24px;
-  }
-
   .md\:mk-pb-0 {
     padding-bottom: 0px;
   }
@@ -4823,10 +4764,6 @@ img.payment-methods {
     padding-bottom: 10rem;
   }
 
-  .md\:mk-pb-\[32px\] {
-    padding-bottom: 32px;
-  }
-
   .md\:mk-pl-0 {
     padding-left: 0px;
   }
@@ -4851,10 +4788,6 @@ img.payment-methods {
     padding-left: 1.5rem;
   }
 
-  .md\:mk-pl-\[50px\] {
-    padding-left: 50px;
-  }
-
   .md\:mk-pr-0 {
     padding-right: 0px;
   }
@@ -4873,10 +4806,6 @@ img.payment-methods {
 
   .md\:mk-pr-8 {
     padding-right: 2rem;
-  }
-
-  .md\:mk-pr-\[50px\] {
-    padding-right: 50px;
   }
 
   .md\:mk-pt-0 {
@@ -4921,10 +4850,6 @@ img.payment-methods {
 
   .md\:mk-pt-6 {
     padding-top: 1.5rem;
-  }
-
-  .md\:mk-pt-\[32px\] {
-    padding-top: 32px;
   }
 
   .md\:mk-text-left {
@@ -5126,26 +5051,8 @@ img.payment-methods {
 }
 
 @media (max-width: 767px) {
-  .sm-max\:mk-relative {
-    position: relative;
-  }
-
-  .sm-max\:mk-float-left {
-    float: left;
-  }
-
-  .sm-max\:mk-mx-2 {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-  }
-
-  .sm-max\:mk-mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .sm-max\:mk-mb-\[40px\] {
-    margin-bottom: 40px;
+  .sm-max\:mk-absolute {
+    position: absolute;
   }
 
   .sm-max\:mk-ml-\[0px\] {
@@ -5160,16 +5067,12 @@ img.payment-methods {
     margin-right: -20px;
   }
 
-  .sm-max\:mk-mt-\[25px\] {
-    margin-top: 25px;
+  .sm-max\:mk-mb-\[0px\] {
+    margin-bottom: 0px;
   }
 
-  .sm-max\:mk-block {
-    display: block;
-  }
-
-  .sm-max\:mk-h-\[32px\] {
-    height: 32px;
+  .sm-max\:mk-w-\[90\%\] {
+    width: 90%;
   }
 
   .sm-max\:mk-w-full {
@@ -5180,12 +5083,12 @@ img.payment-methods {
     grid-template-columns: 1fr;
   }
 
-  .sm-max\:mk-grid-cols-\[90px_1fr\] {
-    grid-template-columns: 90px 1fr;
-  }
-
   .sm-max\:mk-gap-\[30px\] {
     gap: 30px;
+  }
+
+  .sm-max\:mk-gap-\[25px\] {
+    gap: 25px;
   }
 
   .sm-max\:mk-bg-white {
@@ -5193,14 +5096,26 @@ img.payment-methods {
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
   }
 
-  .sm-max\:mk-pb-\[20px\] {
-    padding-bottom: 20px;
+  .sm-max\:mk-px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
-}
 
-.showd{display:block;visibility:visible;}
-.showm{display:none;visibility:hidden;}
-@media (max-width: 768px) {
-  .showm{display:flex;visibility:visible;}
-  .showd{display:none;visibility:hidden;}
+  .sm-max\:mk-px-\[10px\] {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .sm-max\:mk-px-\[12px\] {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .sm-max\:mk-pb-\[10px\] {
+    padding-bottom: 10px;
+  }
+
+  .sm-max\:mk-pt-\[22px\] {
+    padding-top: 22px;
+  }
 }

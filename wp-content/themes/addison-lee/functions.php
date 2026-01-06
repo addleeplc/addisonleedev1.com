@@ -52,3 +52,26 @@ add_filter( 'rest_authentication_errors', function( $result ) {
 
     return $result;
 });
+
+// test passing constant variables
+
+function enqueue_pickup_script() {
+    wp_enqueue_script('pickup-search', get_template_directory_uri() . '/template-parts/blocks/quotewidget/quote-widget.js', [], null, true);
+    wp_localize_script('pickup-search', 'pickupSearchData', [
+        'apiEndpoint' => SHAMROCK_QWKEY,
+        'searchUrl' => SHAMROCK_ADDRESS_SEARCH_URL,
+        'flightSearchUrl' => SHAMROCK_FLIGHT_SEARCH_URL,
+        'productCatalogue' => SHAMROCK_PRODUCT_CATALOGUE_SERVICE,
+        'productCatalogueCouriers' => SHAMROCK_PRODUCT_CATALOGUE_SERVICE_COURIER,
+        'bycycleId' => SHAMROCK_PRODUCT_CATALOGUE_SERVICE_COURIER_BYCYCLE_ID
+        // ⚠️ Do NOT pass the API key unless it's safe to expose
+        // 'apiKey' => MY_API_KEY, // Only if it's a public key
+    ]);
+}
+add_action('wp_enqueue_scripts', 'enqueue_pickup_script');
+
+
+
+
+
+

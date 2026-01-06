@@ -11,7 +11,7 @@ $value = $size['value'];
 $label = $size['choices'][ $value ];
 ?>
 
-<div class="quote-widget sm-max:mk-absolute mk-w-full mk-h-full mk-hidden <?php echo esc_attr($label); ?>" id="quote-widget">
+<div class="quote-widget mk-w-full mk-h-full mk-hidden <?php echo esc_attr($label); ?>" id="quote-widget">
   
   <!-- Tabs Row -->
   <div 
@@ -22,7 +22,7 @@ $label = $size['choices'][ $value ];
       id="tablist" 
       role="tablist" 
       aria-label="Quote widget tabs"
-      class="mk-flex mk-gap-6 mk-items-end mk-bg-transparent"
+      class="mk-flex mk-gap-6 mk-items-end mk-bg-white"
     >
       <?php 
         $i = 0;
@@ -37,9 +37,9 @@ $label = $size['choices'][ $value ];
           aria-controls="panel-<?php echo $i; ?>"
           id="tab-<?php echo $i; ?>"
           tabindex="<?php echo $i === 0 ? '0' : '-1'; ?>"
-          class="tablink mk-flex mk-items-center mk-gap-2 mk-px-14 sm-max:mk-px-2 mk-py-3 mk-font-semibold mk-transition-colors mk-duration-200 sm-max:mk-bg-white
+          class="tablink mk-flex mk-items-center mk-justify-center mk-gap-2 mk-px-14 sm-max:mk-px-2 mk-py-3 mk-font-semibold mk-transition-colors mk-duration-200 sm-max:mk-bg-white
             <?php echo $i === 0 
-              ? 'mk-bg-white mk-text-black mk-border-b-[2px] mk-border-black' 
+              ? 'mk-bg-white mk-text-black mk-border-black' 
               : 'mk-bg-transparent mk-text-gray-400 hover:mk-text-black'; ?>"
         >
           <?php if ($tab_icon): ?>

@@ -12,6 +12,11 @@
     align-items: center;
 }
 
+
+#get-a-quote .btn {
+    border-color: none;
+}
+
 #get-a-quote:hover {
     background-color: #fedb00;
     color: #fff;
@@ -19,6 +24,7 @@
 
 #get-a-quote:hover #price-goes-here {
     color: #fff;
+    padding-left: 7px;
 }
 
 #get-courier-quote:hover {
@@ -36,7 +42,55 @@
 }
 
 .tab-panel { display: none; }
-.tab-panel.active { display: block; }
+.tab-panel.active { display: block;}
+.active span {
+    color: #000;
+}
+
+.tablink img.img-icons::nth-child(1){
+    display: none;
+}
+/* Ensure icons are visible */
+.tablink img.img-icons {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+}
+
+/* Default state: Car active (black), others grey */
+.tablink.car img.img-icons {
+    content: url('./wp-content/uploads/2025/11/tab-icons-book-car-grey.svg'); /* Car starts black */
+}
+.tablink.aircraft img.img-icons {
+    content: url('./wp-content/uploads/2025/05/icon_airport_pickup.svg'); /* Aircraft grey */
+}
+.tablink.courier img.img-icons {
+    content: url('./wp-content/uploads/2025/05/icon_book_a_courier.svg'); /* Courier grey */
+}
+
+/* When active, swap to black */
+.tablink.car.active img.img-icons {
+    content: url('./wp-content/uploads/2025/05/icon_book_a_car.svg');
+}
+
+.tablink.aircraft.active img.img-icons {
+    content: url('./wp-content/uploads/2025/11/travel-1.svg');
+    width: 15px !important;
+    height: 15px !important;
+}
+
+.tablink.courier.active img.img-icons {
+    content: url('./wp-content/uploads/2025/11/tab-icons-book-courier-black.svg');
+}
+
+
+
+/* Styling for alignment */
+.tablink::before {
+    display: inline-block;
+    padding-top: 6px;
+}
+
 
 .Half {
     width: 50%;
@@ -221,7 +275,7 @@ ul#address-search-courier-dropoff__results li button {
 
 }
 ul#address-search__results li button::before {
-    background-image: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/08/Location-Icon.svg') !important;  
+    background-image: url('./wp-content/uploads/2025/08/Location-Icon.svg') !important;  
     background-repeat: no-repeat;
     background-size: cover;
     width: 50px;
@@ -261,7 +315,7 @@ ul#address-search-dropoff__results li button:hover {
 }
 
 .pickup-pin {
-    background-image: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/05/pin-A.svg');
+    background-image: url('./wp-content/uploads/2025/05/pin-A.svg');
     background-repeat: no-repeat;
     background-size: cover; 
     width: 37px;
@@ -269,11 +323,21 @@ ul#address-search-dropoff__results li button:hover {
 }
 
 .dropoff-pin {
-    background-image: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/05/pin-B.svg');
+    background-image: url('./wp-content/uploads/2025/05/pin-B.svg');
     background-repeat: no-repeat;
     background-size: cover; 
     width: 37px;
-    height: 37px;  
+    height: 37px; 
+    display: block; 
+}
+
+
+/* Makes the checkbox checkmark/background tint black when checked */
+#unknownFlightNumber {
+  accent-color: #000; /* black */
+  margin-right: 15px;
+  width: 24px;
+  height: 24px;
 }
 
 
@@ -289,10 +353,25 @@ ul#address-search-dropoff__results li button:hover {
   to { opacity: 1; transform: scale(1); }
 }
 
+a.second-state { 
+    background-color: none;
+}
 
+
+
+
+.flight-arrival-pin {
+    background-image: url('./wp-content/uploads/2025/08/flight_land.svg');
+    background-repeat: no-repeat;
+    background-size: cover; 
+    width: 37px;
+    height: 37px;  
+    display: block;
+    float:left;
+}
 
 .calendar-pin {
-    background-image: url('https://addisonlee1dev.wpenginepowered.com/wp-content/uploads/2025/06/Date.svg');
+    background-image: url('./wp-content/uploads/2025/06/Date.svg');
     background-repeat: no-repeat;
     background-size: cover; 
     width: 37px;
@@ -301,7 +380,7 @@ ul#address-search-dropoff__results li button:hover {
 
 
 .airport-pickup-container {
-    background-image: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/06/flight.svg');
+    background-image: url('./wp-content/uploads/2025/06/flight.svg');
     background-repeat: no-repeat;
     background-size: cover;
     width: 32px;
@@ -385,7 +464,7 @@ ul#address-search-dropoff__results li button:hover {
 }
 
 .tab-content-link.airport-icon-change.active {
-    background-image: url(http://localhost/dev.addisonlee.com/wp-content/uploads/2025/08/travel.svg);
+    background-image: url('./wp-content/uploads/2025/08/travel.svg');
     background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: 37px;
@@ -444,6 +523,19 @@ ul#address-search-dropoff__results li button:hover {
 }
 
 
+.field.is-required input:invalid,
+.field.is-required select:invalid {
+  border-bottom: 2px solid #d32f2f; /* match your theme red */
+}
+
+.required-msg {
+  color: #d32f2f;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+
+
 .animate {
     background-color: #000;
     white-space: nowrap; 
@@ -468,7 +560,7 @@ ul#address-search-dropoff__results li button:hover {
     /*body{font-family:Inter, system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial; background:linear-gradient(180deg,#071426 0%, #051024 100%); color:#e6eef8; padding:32px;}*/
     .qq-calendar-widget{width:340px;background:#fff;border-radius:7px;padding:16px;box-shadow:0 6px 24px rgba(2,6,23,0.7);position:absolute;z-index:1}
     .qq-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-    .month-nav{display:flex;gap:6px;align-items:center;width:100%}
+    .month-nav{display:flex;gap:50px;align-items:center;width:100%}
     .month-nav button { color: #000;}
     .month-nav .btn { background-color: #fff; border: none}
     .qq-btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:6px 8px;border-radius:8px;color:inherit;cursor:pointer}
@@ -486,7 +578,7 @@ ul#address-search-dropoff__results li button:hover {
     .time-area{display:flex;gap:8px;align-items:center;margin-top:12px}
     .time-area input[type=number]{width:64px;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
     .controls{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
-    .primary{background:var(--accent);border:none;padding:8px 12px;border-radius:10px;color:#042040;cursor:pointer;font-weight:600}
+    .primary{background:var(--accent);border:none;padding:8px 12px;border-radius:4px;color:#042040;cursor:pointer;font-weight:600}
     .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;cursor:pointer}
     .info{font-size:13px;color:var(--muted);margin-top:10px;display:none}
     #hour, #minute{color:var(--card)}

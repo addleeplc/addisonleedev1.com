@@ -43,7 +43,7 @@ $label = $size['choices'][ $value ];
               : 'mk-bg-transparent mk-text-gray-400 hover:mk-text-black'; ?>"
         >
           <?php if ($tab_icon): ?>
-            <img class="img-icons mk-w-[18px] mk-h-[18px]" src="<?php echo esc_url($tab_icon); ?>" alt="">
+            <img class="img-icons mk-w-[24px] mk-h-[24px]" src="<?php echo esc_url($tab_icon); ?>" alt="">
           <?php endif; ?>
           <span class="mk-text-center mk-text-[#949494] mk-font-normal mk-uppercase mk-text-[14px]"><?php echo esc_html($tab_label); ?></span>
         </button>

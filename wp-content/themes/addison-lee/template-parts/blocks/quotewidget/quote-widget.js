@@ -1,6 +1,5 @@
 // quote-widget.js
 (function () {
-  
   const widget = document.getElementById("quote-widget");
   const tablist = document.getElementById("tablist");
   const tabs = Array.from(tablist.querySelectorAll("[role='tab']"));
@@ -13,19 +12,19 @@
    * ---------------------------- */
 
   const contentMap = {
-    "tab-0": `<div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[30px] mk-p-[10px] mk-mb-[30px]">
-            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6">
+    "tab-0": `<div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[25px] mk-p-[10px] mk-mb-[30px]">
+            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="pickup-pin sm-max-xs:mk-w-[41px] sm-max-xs:mk-h-[41px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
                   <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>PICK UP</label>
-                    <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInput" type="text" maxlength="100" name="pickup-form" placeholder="Enter Location" onfocus="this.value=''"><span id="sendCodeSpinner" class="spinner"></span>
+                    <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInput" type="text" maxlength="100" name="pickup-form" placeholder="Enter location" onfocus="this.value=''"><span id="sendCodeSpinner" class="spinner"></span>
                     <div id="display_errors"></div>
                     <ul id="address-search__results"></ul>
                   </div>
             </div>
-            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6">
+            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="dropoff-pin sm-max-xs:mk-w-[41px] sm-max-xs:mk-h-[41px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
                 <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>DROP OFF</label>
-                <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputDropOff" type="text" maxlength="100" name="dropoff-form" placeholder="Enter Location" onfocus="this.value=''">
+                <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputDropOff" type="text" maxlength="100" name="dropoff-form" placeholder="Enter location" onfocus="this.value=''">
                 <span id="sendCodeSpinner" class="spinner-2"></span>
                 <div id="display_errors_drop"></div>
                 <ul id="address-search-dropoff__results"></ul>
@@ -33,11 +32,12 @@
             </div>
           </div>
           
-           <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] mk-p-[10px] mk-mb-[30px]"> 
+           <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[25px] mk-p-[10px] mk-mb-[30px]"> 
           <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6">
             <span class="calendar-pin sm-max-xs:mk-w-[41px] sm-max-xs:mk-h-[41px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
               <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>DATE OF JOURNEY</label><br>
-                <button id="open-calendar">ASAP</button>
+                <button id="open-calendar" class="date-widget-btn">ASAP</button>
+                <input type="hidden" id="journeyDateTime" name="journeyDateTime" />
                 <div id="dt-widget" class="widget mk-hidden">
                 <!-- your calendar markup here -->
                 </div>
@@ -50,31 +50,48 @@
           </div>
           </div>
                 `, // unchanged content (omitted for brevity)
-    "tab-1": `<div class="flight-number-checkbox"><input type="checkbox" id="flight-checkbox" class="flight-checkbox"><label> I don't know my flight number</label></div>
-    <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[30px] mk-p-[10px] mk-mb-[30px]">
-                <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6">
-                    <span class="airport-pickup-container mk-w-[90px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
-                    <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>FLIGHT NUMBER</label>
-                      <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%]" id="my-flight-details" onfocus="this.value=''" type="text" maxlength="100" name="flight-form" placeholder="Enter flight number"><span id="sendCodeSpinner" class="spinner"></span>
-                      <div id="display_errors_fl"></div>
-                      <ul id="airport-arr__results"></ul>
-                    </div>
+    "tab-1": `
+<div class="flight-number-checkbox"><label class="checkbox" for="unknownFlightNumber">
+<div class="mk-flex mk-item-center mk-justify-end"><input type="checkbox" id="unknownFlightNumber" class="flight-checkbox " /><span class="mk-text-black">I don't know my flight number</span></label></div>
+        </div>
+    <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[25px] mk-p-[10px] mk-mb-[30px]">
+        <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
+        <div id="flightOriginalRow">
+          <div class="mk-flex">
+            <span class="airport-pickup-container mk-w-[90px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
+            <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>FLIGHT NUMBER</label>
+            <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%]" id="my-flight-details" onfocus="this.value=''" type="text" maxlength="100" name="flight-form" placeholder="Enter flight number"><span id="sendCodeSpinner" class="spinner"></span>
+            <div id="display_errors_fl"></div>
+            <ul id="airport-arr__results"></ul>
+          </div>
+          </div>
+        </div>
+        <!-- End Flight Original Row -->
+        <!-- Replacement Row Hidden input to store the picked date/time -->
+        <div id="flightNumberRow" class="mk-items-center mk-pb-3 sm-max:mk-mb-[0px]" hidden aria-hidden="true">
+            <span class="flight-arrival-pin mk-w-[90px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
+            <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>ARRIVING TO (AIRPORT)</label>
+            <input type="text" id="arrivalAirport" name="arrivalAirport" placeholder="Select airport" />
+            </div>
+        </div>
+        </div>  
+        <!-- End Replacement Row -->  
+            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
+                <span class="dropoff-pin mk-w-[90px] mk-mr-[20px] sm-max:mk-mr-[-20px]"></span>
+                <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>DROP OFF</label>
+                  <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputDropOffArr" type="text" maxlength="100" name="dropoff-airport-form" placeholder="Enter location" onfocus="this.value=''">
+                  <span id="sendCodeSpinner" class="spinner"></span>
+                  <div id="display_errors_airdrop"></div>
+                  <ul id="address-search-airport-dropoff__results"></ul>
                 </div>
-                <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6">
-                    <span class="dropoff-pin mk-w-[90px] mk-mr-[20px] sm-max:mk-mr-[-20px]"></span>
-                    <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>DROP OFF</label>
-                      <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputDropOffArr" type="text" maxlength="100" name="dropoff-airport-form" placeholder="Enter Location" onfocus="this.value=''">
-                      <span id="sendCodeSpinner" class="spinner"></span>
-                      <div id="display_errors_airdrop"></div>
-                      <ul id="address-search-airport-dropoff__results"></ul>
-                    </div>
-                </div>
+            </div>
       </div>
-      <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] mk-p-[10px] mk-mb-[30px]">
-            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6">
+      <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[25px] mk-p-[10px] mk-mb-[30px]">
+            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="calendar-pin sm-max-xs:mk-w-[41px] sm-max-xs:mk-h-[41px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
                 <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>DATE OF FLIGHT ARRIVAL</label><br>
-                <button id="flight-calendar">Select a date</button>
+                <button id="flight-calendar" class="date-widget-btn">Select a date</button>
+                <input type="hidden" id="arrivalDateTime" name="arrivalDateTime" />
                 <div id="dt-widget" class="widget mk-hidden">
                 <!-- your calendar markup here -->
                 </div>
@@ -83,32 +100,34 @@
             <div class="mk-flex mk-w-[100%] col-span-2 mk-flex mk-justify-center"><a href="#" id="get-a-quote" class="get-a-quote btn mk-w-[100%]">GET QUOTE</a></div>
         </div>
       </div>
+
     `,
-    "tab-2": `<div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[30px] mk-p-[10px] mk-mb-[30px]">
-            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-2 mk-mb-6">
+    "tab-2": `<div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[25px] mk-p-[10px] mk-mb-[30px]">
+            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-2 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="pickup-pin mk-w-[90px] mk-mr-[20px] sm-max:mk-mr-[-20px]"></span>
                 <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>PICK UP</label>
-                  <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputCourier" type="text" maxlength="100" name="courier-form" placeholder="Enter Location" onfocus="this.value=''"><span id="sendCodeSpinner" class="spinner"></span>
+                  <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputCourier" type="text" maxlength="100" name="courier-form" placeholder="Enter location" onfocus="this.value=''"><span id="sendCodeSpinner" class="spinner"></span>
                   <div id="display_errors_pick_courier"></div>
                   <ul id="courier-address-search__results"></ul>
                 </div>
             </div>
-            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-2 mk-mb-6">
+            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-2 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="dropoff-pin mk-w-[90px] mk-mr-[20px] sm-max:mk-mr-[-20px]"></span>
                   <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>DROP OFF</label>
-                    <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputDropOffCourier" type="text" maxlength="100" name="courier-form" placeholder="Enter Location" onfocus="this.value=''">
+                    <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputDropOffCourier" type="text" maxlength="100" name="courier-form" placeholder="Enter location" onfocus="this.value=''">
                     <span id="sendCodeSpinner" class="spinner"></span>
                     <div id="display_errors_couriers"></div>
                     <ul id="address-search-courier-dropoff__results"></ul>
                   </div>
             </div>
           </div>
-          <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] mk-p-[10px] mk-mb-[30px]">
-            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6">
+          <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[25px] mk-p-[10px] mk-mb-[30px]">
+            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="calendar-pin sm-max-xs:mk-w-[41px] sm-max-xs:mk-h-[41px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
                 <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]">
                 <label>DATE OF JOURNEY</label><br>
-                <button id="courier-calendar">ASAP</button>
+                <button id="courier-calendar" class="date-widget-btn">Select a date</button>
+                <input type="hidden" id="courierDateTime" name="courierDateTime" />
                 <div id="dt-widget" class="widget mk-hidden">
                 <!-- your calendar markup here -->
                 </div>
@@ -123,11 +142,12 @@
   function showPanel(panel) {
     panel.classList.remove("mk-hidden");
     requestAnimationFrame(() => {
-      panel.classList.add("mk-transition", "mk-duration-300");
-      panel.classList.remove("mk-opacity-0");
-      panel.classList.add("mk-opacity-100");
-      panel.classList.add("active");
+    panel.classList.add("mk-transition", "mk-duration-300");
+    panel.classList.remove("mk-opacity-0");
+    panel.classList.add("mk-opacity-100");
+    panel.classList.add("active");
     });
+    
   }
 
   function hidePanel(panel) {
@@ -151,7 +171,7 @@
     <div id="title">DATE OF JOURNEY</div>
     <div class="header">
       <div class="month-nav">
-        <button class="btn" id="prev-month" aria-label="Previous month">◀</button>
+        <button class="btn mk-none" id="prev-month" aria-label="Previous month">◀</button>
         <div class="month-title" id="month-title">March 2025</div>
         <button class="btn" id="next-month" aria-label="Next month">▶</button>
       </div>
@@ -426,19 +446,19 @@ function initCalendarWidget(root) {
     let iso = (tz === 'utc')
       ? new Date(Date.UTC(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate(), selectedDate.getHours(), selectedDate.getMinutes())).toISOString()
       : selectedDate.toISOString();
-    root.dispatchEvent(new CustomEvent('date-time-selected', {detail: {iso, date: selectedDate}}));
+    root.dispatchEvent(new CustomEvent('date-time-selected', {detail: {iso, date: new Date(selectedDate)}}));
     confirmBtn.textContent = 'Saved ✓';
     setTimeout(() => confirmBtn.textContent='Confirm',900);
     const getDate = selectedDate;
-    const updatedate = document.querySelector('button#open-calendar');
-    const updateFlightCalendar = document.querySelector('button#flight-calendar');
+    const hours = selectedDate.getHours().toString().padStart(2, '0');
+    const mins = selectedDate.getMinutes().toString().padStart(2, '0');
+    const formattedTime = `${hours}:${mins}`;
+    
     if(getDate){
-      updatedate.innerHTML = formatIsoDate(getDate);
+      updatedate.innerHTML = `${formatIsoDate(getDate)} - ${formattedTime}`;
     }
-    console.log('This is the date', getDate);
-    if(getDate){
-      updateFlightCalendar.innerHTML = formatIsoDate(getDate);
-    }
+
+
   }
 
   function onClear() {
@@ -543,7 +563,7 @@ function initCalendarWidget(root) {
         try {
           const response =  getPickUpApi(currentword); // Make sure this returns an array
           if (!Array.isArray(response)) {
-            console.error("API response is not a valid array:", response);
+            console.error("API response is not a valid array:");
             return;
           }
 
@@ -665,134 +685,82 @@ function displayFilteredResults(filtered) {
 
   
 
-    // open calendar modal
-    function openCalendarModal(triggerBtnId, calendarHtml) {
-  
-    const triggerBtn = document.getElementById(triggerBtnId);
-
-    if (!triggerBtn) return;
-
-    triggerBtn.addEventListener("click", () => {
     
-    // Create modal wrapper
-    
+// Open the calendar modal for a given trigger button.
+// hiddenTargetSelector is where we write the ISO (e.g. '#arrivalDateTime').
+function openCalendarModal(triggerBtnId, calendarHtml, hiddenTargetSelector) {
+  const triggerBtn = document.getElementById(triggerBtnId);
+  if (!triggerBtn) return;
+
+  // ✅ Bind-once guard to avoid duplicate listeners
+  if (triggerBtn.dataset.widgetBound === '1') return;
+  triggerBtn.dataset.widgetBound = '1';
+
+  triggerBtn.addEventListener("click", () => {
+    // Modal wrapper
     const modal = document.createElement("div");
     modal.className = "calendar-modal mk-fixed mk-inset-0 mk-bg-black/50 mk-flex mk-justify-center mk-items-center";
 
     // Insert calendar HTML
     modal.innerHTML = `
-      <div class="mk-bg-white mk-rounded-lg mk-p-6 mk-shadow-lg mk-relative">
-        <button id="close-calendar" class="mk-absolute mk-top-2 mk-right-2">✕</button>
+      <div class="mk-max-w-[436px] mk-relative mk-bg-white mk-rounded-lg mk-shadow-lg mk-w-[min(680px,90vw)] mk-p-[50px]">
+        <button id="close-calendar" class="mk-absolute mk-top-2 mk-right-2 mk-text-slate-500" aria-label="Close">✕</button>
         ${calendarHtml}
       </div>
     `;
-
     document.body.appendChild(modal);
 
-    // Initialize widget
+    // Calendar root & init
     const widgetRoot = modal.querySelector("#dt-widget");
-    const calendarApi = initCalendarWidget(widgetRoot);
+    const calendarApi = initCalendarWidget(widgetRoot); // has getSelected(), setDateIso()
+    // Optional: seed with existing value if your hidden field already has something:
+    // const existingIso = triggerBtn.closest('.tab-panel')?.querySelector(hiddenTargetSelector)?.value;
+    // if (existingIso) calendarApi.setDateIso(existingIso);
 
-    // Listen for confirm
-    widgetRoot.addEventListener("date-time-selected", (e) => {
-    console.log("Selected ISO:", calendarApi);
-    });
-
-    // ✅ Wire up calendar controls
+    // Close interactions
     const closeBtn = modal.querySelector("#close-calendar");
-    const prevBtn = modal.querySelector("#prev-month");
-    const nextBtn = modal.querySelector("#next-month");
-    const todayBtn = modal.querySelector("#today-btn");
-    const confirmBtn = modal.querySelector("#confirm");
-    const clearBtn = modal.querySelector("#clear");
-    
-
-    // Close logic
     closeBtn.addEventListener("click", () => modal.remove());
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) modal.remove();
-    });
+    modal.addEventListener("click", (e) => { if (e.target === modal) modal.remove(); });
 
+    // ✅ The single source of truth for updates:
+    // When user confirms inside the widget, it emits 'date-time-selected'.
+    widgetRoot.addEventListener("date-time-selected", (e) => {
+      const { iso, date } = e.detail;
 
-    // Navigation buttons
-    prevBtn.addEventListener("click", () => {
-      console.log("Prev month clicked");
-      // your prev-month logic here
-    });
+      // Scope to the same panel as the trigger button
+      const panel = triggerBtn.closest(".tab-panel");
 
-    nextBtn.addEventListener("click", () => {
-      console.log("Next month clicked");
-      // your next-month logic here
-    });
-
-    todayBtn.addEventListener("click", () => {
-      console.log("Today clicked");
-      // your today logic here
-    });
-
-
-    // Clear button
-    clearBtn.addEventListener("click", () => {
-      console.log("Clear clicked");
-      if (targetInputId) {
-        const targetInput = document.getElementById(targetInputId);
-        if (targetInput) targetInput.value = "";
+      // 1) Write ISO to hidden target (e.g. #arrivalDateTime)
+      if (hiddenTargetSelector && panel) {
+        const hidden = panel.querySelector(hiddenTargetSelector);
+        if (hidden) {
+          hidden.value = iso;
+          hidden.dispatchEvent(new Event('change', { bubbles: true }));
+        }
       }
-    });
 
-    // Confirm button
-    confirmBtn.addEventListener("click", () => {
-        
-      console.log("Confirm clicked");
-      
-      // example: grab selected day + time and write into target input
-      const targetInputId = true;
-      if (targetInputId) {
-        const dateTest = modal.querySelector('#selected-iso'); 
-        const outputDate = dateTest.textContent;
-        const targetInput = document.getElementById(targetInputId);
-        const hour = modal.querySelector("#hour").value;
-        const minute = modal.querySelector("#minute").value;
-        if (targetInput) targetInput.value = `${hour}:${minute}`;
-        localStorage.setItem('Date Time', outputDate);
-      }
+      // 2) Update the trigger button text (human readable date + time)
+      //    (day month year, e.g., "05 March 2025 - 14:30")
+      const opts = { day: '2-digit', month: 'long', year: 'numeric' };
+      const humanDate = new Date(iso).toLocaleDateString('en-GB', opts);
+      const hh = String(date.getHours()).padStart(2, '0');
+      const mm = String(date.getMinutes()).padStart(2, '0');
+      triggerBtn.textContent = `${humanDate} - ${hh}:${mm}`;
+
+      // 3) Persist in localStorage for your price payload
+      localStorage.setItem('Date Time', iso);
+
+      // Done
       modal.remove();
     });
+  });
+}
 
-        // i dont know my flight number logic
-        document.getElementById('flight-number-checkbox').addEventListener('change', (e) => {
-            const test1 = document.querySelector('.item2 span');
-            
-            if(e.target.checked === true) {
-            console.log("Checkbox is checked - boolean value: ", e.target.checked);
-            test1.innerText = 'ARRIVING TO (AIRPORT)';
-            document.getElementsByName('flight-form')[0].placeholder='Select airport';
-            document.getElementsByName('flight-form')[0].name='arrival-form';
-            document.getElementsByName('arrival-form')[0].id='arrival-form';
-            document.getElementsByName('arrival-form')[0].setAttribute('onkeyup', 'getArrToAirport()');
-            const testclick = document.getElementById("arrival-form").value;
-            console.log('test the input fields',testclick);
-            const flightDet = document.querySelector('.flight-details');
-            flightDet.remove();    
+    
+openCalendarModal("open-calendar",    calendarHtml, "#journeyDateTime");  // Tab-0
+openCalendarModal("flight-calendar",  calendarHtml, "#arrivalDateTime");  // Tab-1 ✅
+openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab-2
 
-            }
-          
-            if(e.target.checked === false) {
-                console.log("Checkbox is not checked - boolean value: ", e.target.checked);
-                test1.innerText = 'FLIGHT NUMBER';
-                document.getElementsByName('arrival-form')[0].id='my-flight-details';
-                document.getElementsByName('arrival-form')[0].name='flight-form';
-                document.getElementsByName('flight-form')[0].placeholder='Enter Flight Number';
-            
-            }
-      })
-      // ends 
-
-    });
-  }
-    openCalendarModal("open-calendar", calendarHtml, "choosedate");
-    openCalendarModal("flight-calendar", calendarHtml, "choosedate");
-    openCalendarModal("courier-calendar", calendarHtml, "choosedate");
     
 } // activation closed
 
@@ -818,6 +786,7 @@ function displayFilteredResults(filtered) {
   }
 
   function hideWidget() {
+    document.querySelector('a.quote-cta').innerHTML = 'Get A Quote';
     widget.classList.add("mk-transition", "mk-duration-300");
     widget.classList.remove("mk-opacity-100");
     widget.classList.add("mk-opacity-0");
@@ -838,31 +807,33 @@ function displayFilteredResults(filtered) {
       widget.classList.add("mk-hidden", "mk-opacity-0");
   });
 
-        function getPrice(payload, btn = null){
+        function getPrice(button, btn = null){
            const quoteBtn = btn || document.querySelector(".get-a-quote.animate, .get-a-quote");
            if (!quoteBtn) {
             console.warn("Quote button not found in current tab.");
             return;
           }
-            console.log('the price is returned',payload);
+            console.log('the price is returned', getPayload);
 
             // show initial loading state
           
             quoteBtn.textContent = "Getting your quote...";
 
             console.log(quoteBtn);
-            const url = `${pickupSearchData.productCatalogue}`;
-            fetch(url, {
+
+            const payload = getPayload();
+            console.log('Sending payload:', payload);
+            
+            fetch('/dev.addisonlee.com/wp-json/quote/v1/price', {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
-                    'x-api-key': pickupSearchData.apiEndpoint,
+
                     'Content-Type' : 'application/json',
                 },
-                body: JSON.stringify(JSON.parse(payload)),
-            }).then((res) => {
-                return res.json();
-            }).then((data) => {        
+                body: JSON.stringify(payload),
+            }).then(response => response.json())
+            .then((data) => {        
                 const dataStore = data.products;
                 console.log('datastore is stored here', dataStore);
                 dataStore.map(function(item ){
@@ -880,9 +851,9 @@ function displayFilteredResults(filtered) {
                         quoteBtn.style.display = 'flex';
                         quoteBtn.classList.add("animate");
                         quoteBtn.innerHTML = `
-                          <div class="pricing-element mk-flex mk-items-center mk-justify-center quote-container mk-mx-auto">
+                          <div class="pricing-element mk-flex mk-items-center mk-justify-center quote-container mk-mx-auto mk-text-[16px]">
                             BOOK FROM  
-                            <div id="price-goes-here" class="mk-text-yellow">£${pricingEle}</div>
+                          <div id="price-goes-here" class="mk-text-yellow mk-pl-[7px]">£${pricingEle}</div>
                           </div>
                         `;
                       }, 3000);
@@ -904,21 +875,11 @@ function displayFilteredResults(filtered) {
         function getDropOff(currentword) {
             const apiFetched = currentword;
             console.log('currentword is working', apiFetched);
-            fetch(`${pickupSearchData.searchUrl}?search_string=${apiFetched}`, {
-                method: 'GET',
-                mode: 'cors',
-                headers: {
-                        /* encode key*/           
-                        'x-api-key': pickupSearchData.apiEndpoint,
-                },
-                body: JSON.stringify()
-            }).then(res => {
-                if(res.statusText = "ok"){
-                    console.log("SUCCESS");
-                    const data = res.json();
-                    console.log(data)
-                    return data;
-                }   
+            fetch(`wp-json/quote/v1/address-search?search_string=${apiFetched}`)
+            .then(res => {
+                if(!res.ok){
+                  throw new Error(`HTTP error! Status: ${res.status}`);
+                } 
                 else if(res.status = 403){
                     console.log('<div>Error 403! relook at you domain</div>')
                 }
@@ -928,6 +889,7 @@ function displayFilteredResults(filtered) {
                 else {
                 console.log("FAILED");
                 }
+                return res.json();
                 console.log(res.json());
             }).then((data) => {
                 const buttonSpinner2 = document.getElementsByClassName('spinner-2')[0];
@@ -1002,21 +964,11 @@ function displayFilteredResults(filtered) {
         function getAirportDropOff(currentword) {
             const apiFetched = currentword;
             console.log('currentword is working', apiFetched);
-            fetch(`${pickupSearchData.searchUrl}?search_string=${apiFetched}`, {
-                method: 'GET',
-                mode: 'cors',
-                headers: {
-                        /* encode key*/           
-                        'x-api-key': 'bd16c323-59ea-4ab3-b5ca-692308a1efdd',
-                },
-                body: JSON.stringify()
-            }).then(res => {
-                if(res.statusText = "ok"){
-                    console.log("SUCCESS");
-                    const data = res.json();
-                    console.log(data)
-                    return data;
-                }   
+            fetch(`wp-json/quote/v1/address-search?search_string=${apiFetched}`)
+            .then(res => {
+               if(!res.ok){
+                  throw new Error(`HTTP error! Status: ${res.status}`);
+                }  
                 else if(res.status = 403){
                     console.log('<div>Error 403! relook at you domain</div>')
                 }
@@ -1104,21 +1056,13 @@ function displayFilteredResults(filtered) {
      // get pickup api
     function getPickUpApi( currentword ) {
         const apiFetched = currentword;
-        const url = `${pickupSearchData.searchUrl}?search_string=${encodeURIComponent(apiFetched)}`;
+        const url = `wp-json/quote/v1/address-search?search_string=${apiFetched}`;
           console.log('Request URL:', url);
-         fetch(url, {
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-                'x-api-key': pickupSearchData.apiEndpoint
-            }
-         }).then(res => {
-            if(res.message = "ok" ){
-                console.log("SUCCESS");
-                 const data = res.json();
-                 console.log(data)
-                 return data;
-            }        
+         fetch(`wp-json/quote/v1/address-search?search_string=${apiFetched}`)
+         .then(res => {    
+            if(!res.ok){
+              throw new Error(`HTTP error! Status: ${res.status}`);
+            }     
             else if(res.status = 403){
                 console.log('<div>Error 403! relook at you domain</div>')
             }
@@ -1128,7 +1072,7 @@ function displayFilteredResults(filtered) {
             else {
             console.log("FAILED");
             }
-
+            return res.json();
             console.log(res.json());
             }).then((data) => {
                 const buttonSpinner = document.getElementById('sendCodeSpinner');
@@ -1222,28 +1166,30 @@ function displayFilteredResults(filtered) {
             method: 'GET',
             mode: 'cors',
             headers: {
-                /* encode key*/           
-                'x-api-key': pickupSearchData.apiEndpoint,
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify()
         }
-        const url = `${pickupSearchData.flightSearchUrl}?date=${flightWidgetCalendar}&exact_match=true&flight_no=${apiFetched}`
-        fetch(url, options).then(res => {
-        if(res.message = 'OK'){
-            console.log('SUCCESS we have flight details');
-            const data = res.json();
-            console.log(data);
-            return data;
-            }
-            else if(res.status = 403){
-                console.log('<div>Error 403! relook at you domain</div>')
-            }
-            else if(res.status = 429){
+        fetch(`wp-json/quote/v1/flight?date=${flightWidgetCalendar}&exact_match=true&flight_no=${apiFetched}`, options).then(res => {
+        if(!res.ok){
+              throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        
+        if (res.code === -424) {
+            // Return or throw an error message
+            return { error: true, message: "Something went wrong. Please try again later." };
+        }
+
+        else if(res.status = 403){
+            console.log('<div>Error 403! relook at you domain</div>')
+        }
+        
+        else if(res.status = 429){
                 console.log("Error: Too many requests")
-            }
-            else {
-            console.log("FAILED");
-            }
+        } else {
+        console.log("FAILED");
+        }
+        return res.json();
         }).then((data) => {
         const buttonSpinner = document.getElementById('sendCodeSpinner');
         buttonSpinner.style.display = 'none';
@@ -1279,7 +1225,7 @@ function displayFilteredResults(filtered) {
 
                 if(airport_terminal){
                   
-                  fetch(`${pickupSearchData.searchUrl}?search_string=${encodeURIComponent(get_terminal)}`, options).then( res =>{
+                   fetch(`wp-json/quote/v1/address-search?search_string=${encodeURIComponent(get_terminal)}`, options).then( res =>{
                     if(res.message = "ok" ){
                       console.log("SUCCESS");
                       const data = res.json(); 
@@ -1289,16 +1235,14 @@ function displayFilteredResults(filtered) {
                   }).then( data => {
                     const first = data.addresses[0];
                     console.log(first);
-                      //const postcode = `${first.data.address_components.postcode}`;
                       const address = `${first.data.address_components.address}`;
-
                       const postcodeRegex = /\b[A-Z]{1,2}\d{1,2}[A-Z]?\s?\d[A-Z]{2}\b/i; // UK postcode example
-
                       const postcode = address.match(postcodeRegex)?.[0] || null;
 
                        // Assuming street is everything before the postcode
                       const street_selected = postcode ? address.split(postcode)[0].trim() : null;
 
+                      // set localstorage
                       localStorage.setItem('Postcode', postcode);
                       localStorage.setItem('Street', street_selected);
                       localStorage.setItem('pickup_address', street_selected);
@@ -1318,34 +1262,22 @@ function displayFilteredResults(filtered) {
 function getCourierDropOffApi(currentword) {
     const apiFetched = currentword;
     console.log('currentword is working', apiFetched);
-    
-    const url = `${pickupSearchData.searchUrl}?search_string=${apiFetched}`;
-         fetch(url, {
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-                'x-api-key': pickupSearchData.apiEndpoint,
-            },
-            body: JSON.stringify()
-         }).then(res => {
-            if(res.message = "ok" ){
-                console.log("SUCCESS");
-                 const data = res.json();
-                 console.log(data)
-                 return data;
-            }        
-            else if(res.status = 403){
-                console.log('<div>Error 403! relook at you domain</div>')
-            }
-            else if(res.status = 429){
-                console.log("Error: Too many requests")
-            }
-            else {
-            console.log("FAILED");
-            }
-
-            console.log(res.json());
-        }).then((data) => {
+    fetch(`wp-json/quote/v1/address-search?search_string=${apiFetched}`).then(res => {
+      if(!res.ok){
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }          
+      else if(res.status = 403){
+          console.log('<div>Error 403! relook at you domain</div>')
+      }
+      else if(res.status = 429){
+          console.log("Error: Too many requests")
+      }
+      else {
+      console.log("FAILED");
+      }
+      return res.json();
+      console.log(res.json());
+      }).then((data) => {
             const buttonSpinner = document.getElementById('sendCodeSpinner');
             buttonSpinner.style.display = 'none';
             const dataStore = data.addresses;
@@ -1371,14 +1303,13 @@ function getCourierDropOffApi(currentword) {
 
                 // button on click when data is loaded for pickup
                 function handleClick(e){
-                
                     const myInputForm = document.getElementById('myInputDropOffCourier');
                     const { target: { dataset: {id} } } = e;
-                     const postcodeRegex = /\b[A-Z]{1,2}\d{1,2}[A-Z]?\s?\d[A-Z]{2}\b/i; // UK postcode example
-                      const postcode = id.match(postcodeRegex)?.[0] || null;
+                    const postcodeRegex = /\b[A-Z]{1,2}\d{1,2}[A-Z]?\s?\d[A-Z]{2}\b/i; // UK postcode example
+                    const postcode = id.match(postcodeRegex)?.[0] || null;
 
-                      // Assuming street is everything before the postcode
-                      const street_selected = postcode ? id.split(postcode)[0].trim() : null;
+                    // Assuming street is everything before the postcode
+                    const street_selected = postcode ? id.split(postcode)[0].trim() : null;
                     console.log(id, 'this is what is selected');
                     myInputForm.setAttribute('value',id);
                     myInputForm.value = id;
@@ -1391,7 +1322,7 @@ function getCourierDropOffApi(currentword) {
                 // this function handles address list selected for pickup
            
                 if(document.getElementsByClassName('address-search__item')){
-                console.log('so check it out');
+                  console.log('so check it out');
                 const t = document.querySelector('#address-search-courier-dropoff__results');
                 t.addEventListener('click', handleClick, false);
                 }
@@ -1405,34 +1336,23 @@ function getCourierDropOffApi(currentword) {
   function getCourierPickUpApi(currentword) {
     const apiFetched = currentword;
     console.log('currentword is working', apiFetched);
-    
-    const url = `${pickupSearchData.searchUrl}?search_string=${apiFetched}`;
-         fetch(url, {
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-                'x-api-key': pickupSearchData.apiEndpoint,
-            },
-            body: JSON.stringify()
-         }).then(res => {
-            if(res.message = "ok" ){
-                console.log("SUCCESS");
-                 const data = res.json();
-                 console.log(data)
-                 return data;
-            }        
-            else if(res.status = 403){
-                console.log('<div>Error 403! relook at you domain</div>')
-            }
-            else if(res.status = 429){
-                console.log("Error: Too many requests")
-            }
-            else {
-            console.log("FAILED");
-            }
-
-            console.log(res.json());
-        }).then((data) => {
+    fetch(`wp-json/quote/v1/address-search?search_string=${apiFetched}`)
+    .then(res => {
+        if(!res.ok){
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }         
+        else if(res.status = 403){
+            console.log('<div>Error 403! relook at you domain</div>')
+        }
+        else if(res.status = 429){
+            console.log("Error: Too many requests")
+        }
+        else {
+        console.log("FAILED");
+        }
+        return res.json();
+        console.log(res.json());
+    }).then((data) => {
             const buttonSpinner = document.getElementById('sendCodeSpinner');
             buttonSpinner.style.display = 'none';
             const dataStore = data.addresses;
@@ -1461,11 +1381,11 @@ function getCourierDropOffApi(currentword) {
                 
                     const myInputForm = document.getElementById('myInputCourier');
                     const { target: { dataset: {id} } } = e;
-                     const postcodeRegex = /\b[A-Z]{1,2}\d{1,2}[A-Z]?\s?\d[A-Z]{2}\b/i; // UK postcode example
-                      const postcode = id.match(postcodeRegex)?.[0] || null;
+                    const postcodeRegex = /\b[A-Z]{1,2}\d{1,2}[A-Z]?\s?\d[A-Z]{2}\b/i; // UK postcode example
+                    const postcode = id.match(postcodeRegex)?.[0] || null;
 
-                      // Assuming street is everything before the postcode
-                      const street_selected = postcode ? id.split(postcode)[0].trim() : null;
+                    // Assuming street is everything before the postcode
+                    const street_selected = postcode ? id.split(postcode)[0].trim() : null;
                     console.log(id, 'this is what is selected');
                     myInputForm.setAttribute('value',id);
                     myInputForm.value = id;
@@ -1476,9 +1396,8 @@ function getCourierDropOffApi(currentword) {
                 }
 
                 // this function handles address list selected for pickup
-           
                 if(document.getElementsByClassName('address-search__item')){
-                console.log('so check it out');
+                  console.log('so check it out');
                 const t = document.querySelector('#courier-address-search__results');
                 t.addEventListener('click', handleClick, false);
                 }
@@ -1488,8 +1407,6 @@ function getCourierDropOffApi(currentword) {
              
         }).catch(error => { console.log(error.message)})
     }  
-
- 
 
     function removeChildDataAll(){
         document.querySelector('body').addEventListener("click", function(){
@@ -1507,15 +1424,13 @@ function getCourierDropOffApi(currentword) {
 
     function removeChildDataDropAll(){
         document.querySelector('body').addEventListener("click", function(){
-            removeChildDataDrop();
-            
+            removeChildDataDrop(); 
         });
     }
 
     function removeChildAirportDataDropAll(){
         document.querySelector('body').addEventListener("click", function(){
-            removeChildDataAirportDrop();
-            
+            removeChildDataAirportDrop(); 
         });
     }
 
@@ -1535,11 +1450,18 @@ function getCourierDropOffApi(currentword) {
       }
     }
 
-
+   
   // Toggle widget when CTA is clicked
   document.querySelectorAll(".quote-cta").forEach((cta) => {
+
     cta.addEventListener("click", (e) => {
       e.preventDefault();
+
+      const ctabtn = document.querySelector('a.quote-cta');
+      if(ctabtn){
+        ctabtn.innerHTML = 'Enter Details';
+      } 
+
       if (widget.classList.contains("mk-hidden")) {
         showWidget(cta);
         localStorage.removeItem("Car Dropoff");
@@ -1554,8 +1476,16 @@ function getCourierDropOffApi(currentword) {
         localStorage.removeItem("Price");
         localStorage.removeItem("Terminal");
         localStorage.removeItem("flight_number");
+        ctabtn.classList.add('second-state');
+        document.getElementsByClassName('second-state');
+        ctabtn.innerHTML = `Enter Details 
+<svg class="cta-icon__svg" width="16" height="16" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+        <path d="M12 16l-6-6h12l-6 6z" fill="currentColor"></path>
+      </svg>
+`;
       } else {
         hideWidget();
+        ctabtn.classList.remove('second-state');
       }
     });
   });
@@ -1600,13 +1530,11 @@ let quoteGenerated = false;
 document.addEventListener("click", (e) => {
   const btn = e.target.closest(".get-a-quote"); // match any button with this class
   if (!btn) return; // clicked something else
-
   e.preventDefault();
 
   // Optional: check which tab we’re in
   const activeTab = document.querySelector(".tablink.active");
   const activePanel = document.querySelector(".tab-panel.active");
-
   console.log("GET A QUOTE clicked from:", activeTab?.id || "unknown tab");
 
   // ✅ Now trigger your quote logic
@@ -1614,36 +1542,36 @@ document.addEventListener("click", (e) => {
 });
 
 function getPayload() {
-  const payload = ` {
+  return {
       "booking": {
           "asap": true,
-          "date": "${localStorage.getItem('Date Time')}",
+          "date": localStorage.getItem('Date Time'),
           "payment_type": "credit_card",
           "stops": [
               {
                   "type": "ADDRESS",
-                  "formatted_address": "${localStorage.getItem('pickup_address')}",
+                  "formatted_address": localStorage.getItem('pickup_address'),
                       "location": {
                       "lat": 51.527076721191406,
                       "lon": -0.14019739627838135
                       },
                   "address_components": {
-                  "postal_code": "${localStorage.getItem('Postcode')}",
-                  "street_name": "${localStorage.getItem('Street')}",
+                  "postal_code": localStorage.getItem('Postcode'),
+                  "street_name": localStorage.getItem('Street'),
                   "country": "GB",
                   "city": "London"
                   }
               },
               {
                   "type": "ADDRESS",
-                  "formatted_address": "${localStorage.getItem('Car Dropoff')}",
+                  "formatted_address": localStorage.getItem('Car Dropoff'),
                   "location": {
                   "lat": 51.48252544272139,
                   "lon": -0.2714334497907255
                   },
                   "address_components": {
-                  "postal_code": "${localStorage.getItem('Drop Postcode')}",
-                  "street_name": "${localStorage.getItem('Drop Street')}",
+                  "postal_code": localStorage.getItem('Drop Postcode'),
+                  "street_name": localStorage.getItem('Drop Street'),
                   "country": "GB",
                   "city": "London"
                   }
@@ -1655,10 +1583,92 @@ function getPayload() {
           
           }
       }
-      `;
-  
-  return payload;
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const tab1Btn = document.getElementById('tab-1');
+  const tab1Panel = document.getElementById('panel-1');
+ 
+  let initialized = false;
+
+  function initFlightField() {
+    
+    const checkbox = document.getElementById('flight-checkbox');
+    const container = document.getElementById('flight-number-checkbox');
+    const originalInput = document.getElementById('my-flight-details');
+    console.log(checkbox);
+    
+    if (!checkbox || !container || !originalInput) {
+      console.warn('Flight UI not ready yet; will try again.');
+      // Retry shortly in case the tab's content renders asynchronously
+      //setTimeout(initFlightField, 100000);
+      return;
+    }
+
+    // Cache the original markup so we can restore it later
+    const originalInputHTML = container.innerHTML;
+
+    checkbox.addEventListener('change', async () => {
+      console.log('Checkbox is being changed on click');
+      if (checkbox.checked) {
+        // Build replacement input (you can switch to <select> if needed)
+        const newInput = document.createElement('input');
+        newInput.value = '';
+        newInput.type = 'text';
+        newInput.id = 'arrival-airport';
+        newInput.name = 'arrival-form';
+        newInput.placeholder = 'Arrival Airport';
+        newInput.className = 'sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%]';
+
+        // Swap into container
+        container.innerHTML = '';
+        container.appendChild(newInput);
+
+        // API call
+        const url = `${pickupSearchData.searchUrl}?search_string=UB25JJ`;
+        console.log('API URL:', url);
+
+        try {
+          const res = await fetch(url, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+              'x-api-key': pickupSearchData.apiEndpoint
+            }
+          });
+          const data = await res.json();
+          console.log('API Response:', data);
+
+          // Example: update newInput from API response
+          if (data && data.airportName) {
+            newInput.value = data.airportName;
+          }
+        } catch (err) {
+          console.error('API Error:', err);
+          // Restore on failure
+          container.innerHTML = originalInputHTML;
+          checkbox.checked = false;
+        }
+      } else {
+        // Restore original input
+        container.innerHTML = originalInputHTML;
+      }
+    });
+  }
+
+
+  // When Tab-1 is clicked, show panel and init once
+  tab1Btn.addEventListener('click', () => {
+  
+    tab1Panel.hidden = false;
+    if (!initialized) {
+      initialized = true;
+      initFlightField();
+    }
+  });
+
+});
 
 
 document.addEventListener("click", (e) => {
@@ -1668,9 +1678,15 @@ document.addEventListener("click", (e) => {
 
   // Identify the tab
   const activeId = tab.id || tab.dataset.tab;
-  console.log("Clicked tab:", activeId);
+    console.log("Clicked tab:", activeId);
 
-  if (activeId === "tab-1") {
+    if (activeId === "tab-0") {
+      document.getElementById('tab-0').classList.add('car');
+    }
+
+    if (activeId === "tab-1") {    
+
+    
     // Wait a tick to ensure DOM updates are done
     setTimeout(() => {
       console.log("Clearing dropoff data...");
@@ -1685,10 +1701,28 @@ document.addEventListener("click", (e) => {
       localStorage.removeItem("pickup_address");
 
     }, 50);
+    
+    document.getElementById('tab-1').classList.add('aircraft');
+
   }
 
+  if (activeId === "tab-2") {
+   
+    document.getElementById('tab-2').classList.add('courier'); 
+     
+     
+  }
   activateTab(tab);
 });
+
+function updateCalendarButton() {
+      const courierCalendar = document.getElementById('courier-calendar');
+      if (courierCalendar) {
+        console.log('courier date widget is listening', courierCalendar);
+          courierCalendar.innerHTML = localStorage.getItem('Date Time');
+      }
+  }
+
 
 // on keyup event for drop off courier tab
 document.addEventListener('keyup', (e) => {
@@ -1715,6 +1749,7 @@ document.addEventListener('keyup', (e) => {
 })
 
 
+
 function redirectParams(){
   const pickup = localStorage.getItem('pickup_address');
   const dropoff = localStorage.getItem('Car Dropoff');
@@ -1729,49 +1764,88 @@ function redirectParams(){
 
 }
 
+async function handleQuoteClick( button, tab, panel ) {
 
-function handleQuoteClick( button, tab, panel ) {
+  const payload = {
+      booking: {
+        asap: false,
+        date: localStorage.getItem('Date Time'),
+        payment_type: 'credit_card',
+        stops: [
+          {
+            type: 'ADDRESS',
+            formatted_address: localStorage.getItem('pickup_address'),
+            location: {
+              lat: 51.527076721191406,
+              lon: -0.14019739627838135
+            },
+            address_components: {
+              postal_code: localStorage.getItem('Postcode'),
+              street_name: localStorage.getItem('Street'),
+              country: 'GB',
+              city: 'London'
+            }
+          },
+          {
+            type: 'ADDRESS',
+            formatted_address: localStorage.getItem('Car Dropoff'),
+            location: {
+              lat: 51.48252544272139,
+              lon: -0.2714334497907255
+            },
+            address_components: {
+              postal_code: localStorage.getItem('Drop Postcode'),
+              street_name: localStorage.getItem('Drop Street'),
+              country: 'GB',
+              city: 'London'
+            }
+          }
+        ],
+        as_directed: false,
+        destination_unknown: false,
+        wait_and_return: false
+      }
+  };
+
+
   // Example: collect input values or run API request
   console.log("Button clicked:", button);
   console.log("Current tab:", tab?.id);
   console.log("Panel context:", panel?.id);
-
-  const dateField = document.querySelector('button#open-calendar');
   const errorMessage = document.getElementById('display_errors');
-  const errorMessage2 = document.getElementById('display_errors_drop');
-  
-        
+  const errorMessage2 = document.getElementById('display_errors_drop'); 
+
+
   const searchbar = document.getElementById('myInput').value.trim();
   const searchBarDrpOff = document.getElementById('myInputDropOff').value.trim();
 
-        if(tab?.id === 'tab-0'){
-          const searchbar = document.getElementById('myInput').value.trim();
-          const searchBarDrpOff = document.getElementById('myInputDropOff').value.trim();
-          // your validation logic here
-        if( !searchbar  ){ 
-          errorMessage.textContent = 'Please enter a pick up address';
-        }
-        
-        if( !searchBarDrpOff ){
-          errorMessage2.textContent = 'Please enter a drop off address';
-        } 
-          
+  if(tab?.id === 'tab-0'){
+    const searchbar = document.getElementById('myInput').value.trim();
+    const searchBarDrpOff = document.getElementById('myInputDropOff').value.trim();
+    // your validation logic here
+  if( !searchbar  ){ 
+    errorMessage.textContent = 'Please enter a pick up address';
+  }
+  
+  if( !searchBarDrpOff ){
+    errorMessage2.textContent = 'Please enter a drop off address';
+  } 
+    
+  if(searchbar && searchBarDrpOff){
+    getPrice(getPayload(), button);
+  }
 
-        if(searchbar && searchBarDrpOff){
-          const payload = getPayload();
-          getPrice(payload, button);
-        }
-
-        if(!quoteGenerated){
-          console.log('we have the quote generated for pickup');
-          quoteGenerated = true;
-        } else {
-          redirectParams();
-        }
+  if(!quoteGenerated){
+    console.log('we have the quote generated for pickup');
+    quoteGenerated = true;
+  } else {
+    redirectParams();
+  }
          
-        }
+}
 
         if(tab?.id === 'tab-1'){
+          
           const flightInput = document.getElementById('my-flight-details').value.trim();
           console.log(flightInput);
           const errorMessage3 = document.getElementById('display_errors_fl');
@@ -1790,8 +1864,7 @@ function handleQuoteClick( button, tab, panel ) {
           
           if(dropInputForm && flightInput){
             console.log('on tab-1');
-            const payload = getPayload();
-            getPrice(payload, button);
+             getPrice(getPayload(), button);
           }
           
           if(!quoteGenerated){
@@ -1800,9 +1873,11 @@ function handleQuoteClick( button, tab, panel ) {
           } else {
             redirectParams();
           }
+          
         }
 
         if(tab?.id == 'tab-2'){
+    
           const a = document.getElementById('myInputDropOffCourier').value.trim();
           const b = document.getElementById('myInputCourier').value.trim();
           if(!a){
@@ -1817,82 +1892,23 @@ function handleQuoteClick( button, tab, panel ) {
           }
 
           if(a && b){
-            const payload = `
-              {
-                  "booking": {
-                  "asap": false,
-                  "date": "${localStorage.getItem('Date Time')}",
-                  "payment_type": "credit_card",
-                  "stops": [
-                  {
-                      "type": "ADDRESS",
-                      "formatted_address": "${localStorage.getItem('pickup_address')}",
-                      "location": {
-                      "lat": 51.527076721191406,
-                      "lon": -0.14019739627838135
-                      },
-                      "address_components": {
-                      "postal_code": "${localStorage.getItem('Postcode')}",
-                          "street_name": "${localStorage.getItem('Street')}",
-                      "country": "GB",
-                      "city": "London"
-                      }
-                  },
-                  {
-                      "type": "ADDRESS",
-                      "formatted_address": "${localStorage.getItem('Car Dropoff')}",
-                      "location": {
-                      "lat": 51.48252544272139,
-                      "lon": -0.2714334497907255
-                      },
-                      "address_components": {
-                      "postal_code": "${localStorage.getItem('Drop Postcode')}",
-                      "street_name": "${localStorage.getItem('Drop Street')}",
-                      "country": "GB",
-                      "city": "London"
-                      }
-                  }
-                  ],
-                  "as_directed": false,
-                  "destination_unknown": false,
-                  "wait_and_return": false
-              }
-            }       
-            `;
-
             button.textContent = "Getting your quote...";
-           
-            const url = `${pickupSearchData.productCatalogueCouriers}`;
-            
             try {
-              fetch(url, {
+              const response = await fetch('/wp-json/quote/v1/courier-service', {
                   method: 'POST',
-                  mode: 'cors',
-                  headers: {
-                      /* encode key */         
-                      'x-api-key': pickupSearchData.apiEndpoint,
-                      'Content-Type' : 'application/json'
-                  },
-                  body: JSON.stringify(JSON.parse(payload)),
-                  
-                }).then(res => {
-                if(res.message = 'OK'){
-                  
-                    console.log('SUCCESS! courier data is available');
-                    const data = res.json();
-                    console.log(data);
-                    return data;
-                }
-                else if(res.status = 403){
-                        console.log('<div>Error 403! relook at you domain</div>')
-                }
-                else if(res.status = 429){
-                        console.log("Error: Too many requests")
-                }
-                else {
-                    console.log("FAILED");
-                }
-                }).then(data => {
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(payload)
+                });
+
+                const text = await response.text();
+                console.log('Raw response:', text);
+
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+                const data = JSON.parse(text);
+                console.log('Parsed JSON:', data);
+
+                console.log('getting courier api',data);
                   
                   const dataStore = data.products;
                   console.log('courier data is here', dataStore);
@@ -1916,15 +1932,9 @@ function handleQuoteClick( button, tab, panel ) {
                       return; // ✅ stop here, don’t call getPrice()
                     
                     }
-
-                  })
-
-
-                })
-                
-              
+                  });
             } catch (error) {
-              console.log(error.message);
+              console.error('Fetch error:', error);
             }
             
           }
@@ -1936,8 +1946,166 @@ function handleQuoteClick( button, tab, panel ) {
             redirectParams();
           }
 
-        }
-      
+        } 
 }
+
+
+
+// ---------- utilities ----------
+function show(el, visible) {
+  if (!el) return;
+  el.hidden = !visible;
+  el.setAttribute('aria-hidden', visible ? 'false' : 'true');
+}
+function setRequired(controlEl, required) {
+  if (!controlEl) return;
+  controlEl.required = !!required;
+  controlEl.setAttribute('aria-required', required ? 'true' : 'false');
+  const row = controlEl.closest('.mk-flex') || controlEl.closest('.field');
+  const msg = row?.querySelector?.('.required-msg');
+  if (msg) msg.hidden = !required;
+}
+function clearValue(el) {
+  if (!el) return;
+  el.value = '';
+  el.dispatchEvent(new Event('input', { bubbles: true }));
+  el.dispatchEvent(new Event('change', { bubbles: true }));
+}
+
+
+// --- Core toggle -----------------------------------------------------------
+function applyFlightToggle(unknownChecked) {
+  // Flight number (styled row)
+  const flightNumberRow   = document.getElementById('flightNumberRow');
+  const originalInput = document.getElementById('my-flight-details');
+
+  // Drop off
+  const dropoffRow   = document.getElementById('dropoffRow');
+  const dropoffInput = document.getElementById('myInputDropOffArr');
+
+  
+  // Arrival date (button + hidden field)
+  const arrivalRow    = document.getElementById('arrivalRow');
+  const arrivalHidden = document.getElementById('arrivalDateTime')
+
+
+
+
+  const originalRow = document.getElementById('flightOriginalRow') || originalInput?.closest('.mk-flex');
+
+  const iconSpan = document.getElementById('flightIcon') || originalRow?.querySelector('.airport-pickup-container');
+  const replacementRow = document.getElementById('flightNumberRow');
+  const replacementInput = replacementRow?.querySelector('input');
+
+
+  
+  if (unknownChecked) {
+    // Hide the original (span + input live inside it), show the replacement
+    show(originalRow, false);
+    if (iconSpan) iconSpan.style.display = 'none'; // optional; row hidden already hides it
+    if (originalInput) { setRequired(originalInput, false); clearValue(originalInput); }
+
+    show(replacementRow, true);
+    if (replacementInput) setRequired(replacementInput, true);
+  } else {
+    // Show the original, hide the replacement
+    show(originalRow, true);
+    if (iconSpan) iconSpan.style.display = ''; // reset inline style if we set it
+    if (originalInput) setRequired(originalInput, true);
+
+    show(replacementRow, false);
+    if (replacementInput) { setRequired(replacementInput, false); clearValue(replacementInput); }
+  }
+
+    // Optional: refresh native validity UI
+  [originalInput, replacementInput].filter(Boolean).forEach(el => el.reportValidity?.());
+
+  console.log('[toggle] unknown=', unknownChecked, 'original shown=', !unknownChecked, 'replacement shown=', !!unknownChecked);
+
+  // Refresh native validity UI where possible
+  [originalInput, dropoffInput, arrivalHidden]
+    .filter(Boolean)
+    .forEach(el => el.reportValidity?.());
+
+  console.log('[toggle] applied; unknown =', unknownChecked);
+}
+
+// --- Delegated listener (robust even if tab-1 is injected) ----------------
+document.addEventListener('change', (e) => {
+  const t = e.target;
+  if (t && t.id === 'unknownFlightNumber' && t.type === 'checkbox') {
+    console.log('[toggle] checkbox changed:', t.checked);
+    applyFlightToggle(t.checked);
+
+  }
+});
+
+// ---------- initialize when tab-1 becomes active ----------
+function initTab1FlightToggleOnce() {
+  if (window.__tab1FlightToggleInit__) return;
+  window.__tab1FlightToggleInit__ = true;
+
+  // Apply initial state if checkbox already present
+  const cb = document.getElementById('unknownFlightNumber');
+  if (cb) toggleFlightRows(cb.checked);
+}
+
+function getArrToAirportfunc(arrInp, flightWidgetCalendar){  
+  const currentword = arrInp;
+  console.log('when checkbox is clicked',currentword);
+    try {
+
+       const options = {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                /* encode key*/           
+                'x-api-key': pickupSearchData.apiEndpoint,
+            },
+            body: JSON.stringify()
+        }
+        const url = `${pickupSearchData.flightSearchUrl}?date=${flightWidgetCalendar}&exact_match=true&flight_no=${currentword}`;
+        fetch(url, options).then(res => {
+        if(res.message = 'OK'){
+            console.log('SUCCESS we have flight details. Yay');
+            const data = res.json();
+            console.log(data);
+            return data;
+        }
+        
+        if (res.code === -424) {
+            // Return or throw an error message
+            return { error: true, message: "Something went wrong. Please try again later." };
+        }
+
+        if(res.status = 403){
+            console.log('<div>Error 403! relook at you domain</div>')
+        }
+        if(res.status = 429){
+            console.log("Error: Too many requests");
+        } else {
+        console.log("FAILED");
+        }
+        }).then((data) => {
+        const  dataStore = data.flights;
+        console.log(dataStore);
+        });
+      
+    } catch (error) {
+      console.log('message from catch', error.message);
+    }
+  
+
+}
+
+
+document.addEventListener('keyup', (e) => {
+  const dateFormatted = new Date();
+  const flightWidgetCalendar = dateFormatted.toISOString().split('T')[0];
+  const arrInp = e.target.closest('#arrivalDateTime').value.trim();
+  if(arrInp.length >= 5){
+    getArrToAirportfunc(arrInp, flightWidgetCalendar);
+  }
+});
 
 })();

@@ -1673,6 +1673,10 @@ video {
   height: 100vh;
 }
 
+.mk-h-\[24px\] {
+  height: 24px;
+}
+
 .mk-max-h-10 {
   max-height: 2.5rem;
 }
@@ -1765,8 +1769,8 @@ video {
   width: 174px;
 }
 
-.mk-w-\[18px\] {
-  width: 18px;
+.mk-w-\[22px\] {
+  width: 22px;
 }
 
 .mk-w-\[236px\] {
@@ -1785,6 +1789,10 @@ video {
   width: 90px;
 }
 
+.mk-w-\[min\(680px\,90vw\)\] {
+  width: min(680px,90vw);
+}
+
 .mk-w-auto {
   width: auto;
 }
@@ -1795,6 +1803,10 @@ video {
 
 .mk-w-screen {
   width: 100vw;
+}
+
+.mk-w-\[24px\] {
+  width: 24px;
 }
 
 .mk-min-w-11 {
@@ -1903,6 +1915,10 @@ video {
 
 .mk-max-w-\[430px\] {
   max-width: 430px;
+}
+
+.mk-max-w-\[436px\] {
+  max-width: 436px;
 }
 
 .mk-max-w-\[476px\] {
@@ -2541,6 +2557,10 @@ video {
   padding: 10px;
 }
 
+.mk-p-\[50px\] {
+  padding: 50px;
+}
+
 .mk-px-14 {
   padding-left: 3.5rem;
   padding-right: 3.5rem;
@@ -2718,6 +2738,10 @@ video {
   padding-left: 1rem;
 }
 
+.mk-pl-\[7px\] {
+  padding-left: 7px;
+}
+
 .mk-pr-2 {
   padding-right: 0.5rem;
 }
@@ -2841,6 +2865,10 @@ video {
 
 .mk-text-\[14px\] {
   font-size: 14px;
+}
+
+.mk-text-\[16px\] {
+  font-size: 16px;
 }
 
 .mk-text-base {
@@ -5051,8 +5079,8 @@ img.payment-methods {
 }
 
 @media (max-width: 767px) {
-  .sm-max\:mk-absolute {
-    position: absolute;
+  .sm-max\:mk-mb-\[0px\] {
+    margin-bottom: 0px;
   }
 
   .sm-max\:mk-ml-\[0px\] {

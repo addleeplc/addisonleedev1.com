@@ -1056,8 +1056,6 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
      // get pickup api
     function getPickUpApi( currentword ) {
         const apiFetched = currentword;
-        const url = `wp-json/quote/v1/address-search?search_string=${apiFetched}`;
-          console.log('Request URL:', url);
          fetch(`wp-json/quote/v1/address-search?search_string=${apiFetched}`)
          .then(res => {    
             if(!res.ok){

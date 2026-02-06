@@ -19,7 +19,9 @@
 
 #get-a-quote:hover {
     background-color: #fedb00;
-    color: #fff;
+    color: #000;
+    font-size: 17px;
+	font-weight:bold;
 }
 
 #get-a-quote:hover #price-goes-here {
@@ -53,34 +55,32 @@
 /* Ensure icons are visible */
 .tablink img.img-icons {
     display: inline-block;
-    width: 18px;
-    height: 18px;
 }
 
 /* Default state: Car active (black), others grey */
 .tablink.car img.img-icons {
-    content: url('./wp-content/uploads/2025/11/tab-icons-book-car-grey.svg'); /* Car starts black */
+    content: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/11/tab-icons-book-car-grey.svg'); /* Car starts black */
 }
 .tablink.aircraft img.img-icons {
-    content: url('./wp-content/uploads/2025/05/icon_airport_pickup.svg'); /* Aircraft grey */
+    content: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/05/icon_airport_pickup.svg'); /* Aircraft grey */
 }
 .tablink.courier img.img-icons {
-    content: url('./wp-content/uploads/2025/05/icon_book_a_courier.svg'); /* Courier grey */
+    content: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/05/icon_book_a_courier.svg'); /* Courier grey */
 }
 
 /* When active, swap to black */
 .tablink.car.active img.img-icons {
-    content: url('./wp-content/uploads/2025/05/icon_book_a_car.svg');
+    content: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/05/icon_book_a_car.svg');
 }
 
 .tablink.aircraft.active img.img-icons {
-    content: url('./wp-content/uploads/2025/11/travel-1.svg');
+    content: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/11/travel-1.svg');
     width: 15px !important;
     height: 15px !important;
 }
 
 .tablink.courier.active img.img-icons {
-    content: url('./wp-content/uploads/2025/11/tab-icons-book-courier-black.svg');
+    content: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/11/tab-icons-book-courier-black.svg');
 }
 
 
@@ -192,50 +192,50 @@
 
 ul#address-search__results {
     height: auto;
-    max-height: 173px;
+    max-height: 187px;
     width: 100%;
     overflow-y: scroll;
     border-left: solid 1px #B4B4B4;
-    border-right: solid 1pc #B4B4B4;
     border-top: none;
     border-bottom: none;
     display: none;
     background-color: #fff;
     position: absolute;
     z-index:11;
+    top: 59px;
 }
 
 
 ul#address-search-airport-dropoff__results,
 ul#address-search-courier-dropoff__results {
     height: auto;
-    max-height: 173px;
+    max-height: 187px;
     width: 100%;
     overflow-y: scroll;
     border-left: solid 1px #B4B4B4;
-    border-right: solid 1pc #B4B4B4;
     border-top: none;
     border-bottom: none;
     background-color: #fff;
     position: absolute;
     z-index:1;
+    top: 61px;
 }
 
 
 ul#address-search-dropoff__results
  {
     height: auto;
-    max-height: 173px;
+    max-height: 187px;
     width: 100%;
     overflow-y: scroll;
     border-left: solid 1px #B4B4B4;
-    border-right: solid 1pc #B4B4B4;
     border-top: none;
     border-bottom: none;
     display: none;
     background-color: #fff;
     position: absolute;
     z-index:1;
+    top: 61px;
     
 }
 
@@ -252,6 +252,7 @@ ul#courier-address-search__results {
     background-color: #fff;
     position: absolute;
     z-index:11;
+    top: 59px;
 }
 
 ul#address-search__results li button,
@@ -275,7 +276,7 @@ ul#address-search-courier-dropoff__results li button {
 
 }
 ul#address-search__results li button::before {
-    background-image: url('./wp-content/uploads/2025/08/Location-Icon.svg') !important;  
+    background-image: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/08/Location-Icon.svg') !important;  
     background-repeat: no-repeat;
     background-size: cover;
     width: 50px;
@@ -315,7 +316,7 @@ ul#address-search-dropoff__results li button:hover {
 }
 
 .pickup-pin {
-    background-image: url('./wp-content/uploads/2025/05/pin-A.svg');
+    background-image: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/05/pin-A.svg');
     background-repeat: no-repeat;
     background-size: cover; 
     width: 37px;
@@ -323,7 +324,7 @@ ul#address-search-dropoff__results li button:hover {
 }
 
 .dropoff-pin {
-    background-image: url('./wp-content/uploads/2025/05/pin-B.svg');
+    background-image: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/05/pin-B.svg');
     background-repeat: no-repeat;
     background-size: cover; 
     width: 37px;
@@ -361,7 +362,7 @@ a.second-state {
 
 
 .flight-arrival-pin {
-    background-image: url('./wp-content/uploads/2025/08/flight_land.svg');
+    background-image: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/08/flight_land.svg');
     background-repeat: no-repeat;
     background-size: cover; 
     width: 37px;
@@ -371,7 +372,7 @@ a.second-state {
 }
 
 .calendar-pin {
-    background-image: url('./wp-content/uploads/2025/06/Date.svg');
+    background-image: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/06/Date.svg');
     background-repeat: no-repeat;
     background-size: cover; 
     width: 37px;
@@ -380,7 +381,7 @@ a.second-state {
 
 
 .airport-pickup-container {
-    background-image: url('./wp-content/uploads/2025/06/flight.svg');
+    background-image: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/06/flight.svg');
     background-repeat: no-repeat;
     background-size: cover;
     width: 32px;
@@ -464,7 +465,7 @@ a.second-state {
 }
 
 .tab-content-link.airport-icon-change.active {
-    background-image: url('./wp-content/uploads/2025/08/travel.svg');
+    background-image: url('http://localhost/dev.addisonlee.com/wp-content/uploads/2025/08/travel.svg');
     background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: 37px;
@@ -506,6 +507,8 @@ a.second-state {
 #display_errors_couriers,
 #display_errors_pick_courier {
     color: #ff0000;
+    position: absolute;
+    top: 65px;
 }
 
 .item6 a.get-a-quote .btn {
@@ -534,10 +537,49 @@ a.second-state {
   margin-top: 4px;
 }
 
+.button {
+  border-radius: 3px;
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  display: block;
+  background: linear-gradient(to right, black 50%, #ffd900 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 1s ease-out;
+  padding: 24px 158px;
+
+}
+
+.button.active {
+    border: 1px solid #000;
+}
+
+
+.text {
+  font-size: 16px;
+  line-height: 30px; 
+  color: black;
+  transition: all .6s ease-out;
+  display: block;
+  text-decoration: none;
+  transition: font-size 300ms ease;
+}
+
+#pickup-container, 
+#dropoff-container, 
+#flightnumber-container, 
+#flightdropoff-container, #courierpickup-container, #courierdropoff-container {
+    border-bottom-color: #B4B4B4;
+    border-bottom-width: 1px;
+    
+}
+
 
 
 .animate {
     background-color: #000;
+    border: 1px solid #000;
     white-space: nowrap; 
     color: white;
     font-size: 20px;
@@ -576,10 +618,12 @@ a.second-state {
     .day.selected{background:var(--accent);color:var(--card);}
 
     .time-area{display:flex;gap:8px;align-items:center;margin-top:12px}
-    .time-area input[type=number]{width:64px;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
+    .time-area input[type=number]{width:42px;padding:2px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
+	.time-area #title { margin-right:200px;}
     .controls{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
-    .primary{background:var(--accent);border:none;padding:8px 12px;border-radius:4px;color:#042040;cursor:pointer;font-weight:600}
-    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;cursor:pointer}
+    .primary{background:#000;border:none;padding:8px 12px;border-radius:4px;color:#fff;cursor:pointer;font-weight:300;}
+	.controls .btn{background:rgb(255 217 0 / var(--tw-bg-opacity));border:none;padding:8px 12px;border-radius:4px;color:#000;cursor:pointer;font-weight:300;}
+    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:300;}
     .info{font-size:13px;color:var(--muted);margin-top:10px;display:none}
     #hour, #minute{color:var(--card)}
     /* responsive */
@@ -587,6 +631,7 @@ a.second-state {
 
     /* focus styles for accessibility */
     .btn:focus,.day:focus,.primary:focus,.ghost:focus{outline:2px solid rgba(59,130,246,0.34);outline-offset:2px}
+	.quote-widget input, .quote-widget input:focus{border:0px !important;outline:0px !important;}
 
 @media screen and (max-width: 1300px) {
     .grid-container {

@@ -11,18 +11,18 @@ $value = $size['value'];
 $label = $size['choices'][ $value ];
 ?>
 
-<div class="quote-widget mk-w-full mk-h-full mk-hidden <?php echo esc_attr($label); ?>" id="quote-widget">
+<div class="quote-widget mk-z-40 mk-w-full mk-h-full mk-hidden <?php echo esc_attr($label); ?>" id="quote-widget">
   
   <!-- Tabs Row -->
   <div 
-    class="mk-relative mk-z-[revert-layer] mk-flex mk-justify-start mk-w-1/2 sm-max:mk-w-full mk-bg-[#ffffff] mk-rounded-tl-lg"
+    class="mk-relative mk-z-[revert-layer] mk-flex mk-justify-start mk-w-1/2 sm-max:mk-w-full mk-bg-[#ffffff] mk-rounded-tl-lg mk-rounded-tr-md"
     style="overflow: visible;"
   >
     <div 
       id="tablist" 
       role="tablist" 
       aria-label="Quote widget tabs"
-      class="mk-flex mk-gap-6 mk-items-end mk-bg-white"
+      class="mk-flex mk-gap-6 mk-items-end mk-bg-white mk-rounded-tr-md"
     >
       <?php 
         $i = 0;
@@ -56,7 +56,7 @@ $label = $size['choices'][ $value ];
   </div>
 
   <!-- Panels -->
-  <div class="mk-relative mk-z-0 mk-bg-white mk-rounded-t-none mk-rounded-b-lg mk-shadow-sm mk-pt-[32px] mk-pb-2 sm-max:mk-px-[10px] sm-max:mk-pt-[22px] sm-max:mk-pb-[10px] mk-px-[50px]">
+  <div class="mk-relative mk-bg-white mk-rounded-t-none mk-rounded-b-lg mk-rounded-tr-lg mk-shadow-sm mk-pt-[32px] mk-pb-2 sm-max:mk-px-[10px] sm-max:mk-pt-[22px] sm-max:mk-pb-[10px] mk-px-[50px]">
     <?php 
       $i = 0;
       if ( have_rows('tabs') ) : 

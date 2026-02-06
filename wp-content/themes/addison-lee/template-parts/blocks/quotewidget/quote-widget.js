@@ -13,18 +13,19 @@
 
   const contentMap = {
     "tab-0": `<div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[25px] mk-p-[10px] mk-mb-[30px]">
-            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
+            <div id="pickup-container" class="mk-flex mk-items-center  mk-pb-2 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="pickup-pin sm-max-xs:mk-w-[41px] sm-max-xs:mk-h-[41px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
                   <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>PICK UP</label>
-                    <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInput" type="text" maxlength="100" name="pickup-form" placeholder="Enter location" onfocus="this.value=''"><span id="sendCodeSpinner" class="spinner"></span>
-                    <div id="display_errors"></div>
+                    <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInput" type="text" maxlength="100" name="pickup-form" placeholder="Enter location"><span id="sendCodeSpinner" class="spinner"></span>
                     <ul id="address-search__results"></ul>
+                    <div id="display_errors"></div>
                   </div>
+                  
             </div>
-            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
+            <div id="dropoff-container" class="mk-flex mk-items-center mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="dropoff-pin sm-max-xs:mk-w-[41px] sm-max-xs:mk-h-[41px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
                 <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>DROP OFF</label>
-                <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputDropOff" type="text" maxlength="100" name="dropoff-form" placeholder="Enter location" onfocus="this.value=''">
+                <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputDropOff" type="text" maxlength="100" name="dropoff-form" placeholder="Enter location">
                 <span id="sendCodeSpinner" class="spinner-2"></span>
                 <div id="display_errors_drop"></div>
                 <ul id="address-search-dropoff__results"></ul>
@@ -45,7 +46,7 @@
           </div>
                 <div class="mk-flex mk-w-[100%] col-span-2 mk-flex mk-justify-center mk-relative">
                 <a href="#" id="get-a-quote" class="get-a-quote btn mk-w-[100%]">GET QUOTE</a>
-                <span id="sendCodeSpinner" class="spinner-3"></span>
+                  <span id="sendCodeSpinner" class="spinner-3"></span>
                 </div>
           </div>
           </div>
@@ -54,13 +55,13 @@
 <div class="flight-number-checkbox"><label class="checkbox" for="unknownFlightNumber">
 <div class="mk-flex mk-item-center mk-justify-end"><input type="checkbox" id="unknownFlightNumber" class="flight-checkbox " /><span class="mk-text-black">I don't know my flight number</span></label></div>
         </div>
-    <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[25px] mk-p-[10px] mk-mb-[30px]">
-        <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
+    <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[52px] mk-p-[10px] mk-mb-[30px]">
+        <div id="flightnumber-container" class="mk-flex mk-items-center mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
         <div id="flightOriginalRow">
           <div class="mk-flex">
             <span class="airport-pickup-container mk-w-[90px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
             <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>FLIGHT NUMBER</label>
-            <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%]" id="my-flight-details" onfocus="this.value=''" type="text" maxlength="100" name="flight-form" placeholder="Enter flight number"><span id="sendCodeSpinner" class="spinner"></span>
+            <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%]" id="my-flight-details" type="text" maxlength="100" name="flight-form" placeholder="Enter flight number"><span id="sendCodeSpinner" class="spinner"></span>
             <div id="display_errors_fl"></div>
             <ul id="airport-arr__results"></ul>
           </div>
@@ -72,14 +73,17 @@
             <span class="flight-arrival-pin mk-w-[90px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
             <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>ARRIVING TO (AIRPORT)</label>
             <input type="text" id="arrivalAirport" name="arrivalAirport" placeholder="Select airport" />
+             <span id="sendCodeSpinner" class="spinner"></span>
+                  <div id="display_errors_air_arr"></div>
+                  <ul id="address-search-airport-arrival__results"></ul>
             </div>
         </div>
         </div>  
         <!-- End Replacement Row -->  
-            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
+            <div id="flightdropoff-container" class="mk-flex mk-items-center mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="dropoff-pin mk-w-[90px] mk-mr-[20px] sm-max:mk-mr-[-20px]"></span>
                 <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>DROP OFF</label>
-                  <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputDropOffArr" type="text" maxlength="100" name="dropoff-airport-form" placeholder="Enter location" onfocus="this.value=''">
+                  <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputDropOffArr" type="text" maxlength="100" name="dropoff-airport-form" placeholder="Enter location">
                   <span id="sendCodeSpinner" class="spinner"></span>
                   <div id="display_errors_airdrop"></div>
                   <ul id="address-search-airport-dropoff__results"></ul>
@@ -103,18 +107,18 @@
 
     `,
     "tab-2": `<div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[25px] mk-p-[10px] mk-mb-[30px]">
-            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-2 mk-mb-6 sm-max:mk-mb-[0px]">
+            <div id="courierpickup-container" class="mk-flex mk-items-center mk-pb-2 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="pickup-pin mk-w-[90px] mk-mr-[20px] sm-max:mk-mr-[-20px]"></span>
                 <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>PICK UP</label>
-                  <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputCourier" type="text" maxlength="100" name="courier-form" placeholder="Enter location" onfocus="this.value=''"><span id="sendCodeSpinner" class="spinner"></span>
+                  <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputCourier" type="text" maxlength="100" name="courier-form" placeholder="Enter location"><span id="sendCodeSpinner" class="spinner"></span>
                   <div id="display_errors_pick_courier"></div>
                   <ul id="courier-address-search__results"></ul>
                 </div>
             </div>
-            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-2 mk-mb-6 sm-max:mk-mb-[0px]">
+            <div id="courierdropoff-container" class="mk-flex mk-items-center mk-pb-2 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="dropoff-pin mk-w-[90px] mk-mr-[20px] sm-max:mk-mr-[-20px]"></span>
                   <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>DROP OFF</label>
-                    <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputDropOffCourier" type="text" maxlength="100" name="courier-form" placeholder="Enter location" onfocus="this.value=''">
+                    <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputDropOffCourier" type="text" maxlength="100" name="courier-form" placeholder="Enter location">
                     <span id="sendCodeSpinner" class="spinner"></span>
                     <div id="display_errors_couriers"></div>
                     <ul id="address-search-courier-dropoff__results"></ul>
@@ -126,7 +130,7 @@
                 <span class="calendar-pin sm-max-xs:mk-w-[41px] sm-max-xs:mk-h-[41px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
                 <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]">
                 <label>DATE OF JOURNEY</label><br>
-                <button id="courier-calendar" class="date-widget-btn">Select a date</button>
+                <button id="courier-calendar" class="date-widget-btn">ASAP</button>
                 <input type="hidden" id="courierDateTime" name="courierDateTime" />
                 <div id="dt-widget" class="widget mk-hidden">
                 <!-- your calendar markup here -->
@@ -171,12 +175,9 @@
     <div id="title">DATE OF JOURNEY</div>
     <div class="header">
       <div class="month-nav">
-        <button class="btn mk-none" id="prev-month" aria-label="Previous month">◀</button>
+        <button class="btn mk-none" id="prev-month" aria-label="Previous month"><svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" fill="none"><path d="M23.9805 26.3387L17.0162 19.3744L23.9805 12.4102" stroke="#555" stroke-width="2" stroke-linecap="square"></path></svg></button>
         <div class="month-title" id="month-title">March 2025</div>
-        <button class="btn" id="next-month" aria-label="Next month">▶</button>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <button class="btn" id="today-btn">Today</button>
+        <button class="btn" id="next-month" aria-label="Next month"><svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" fill="none"><path d="M17.0195 26.3387L23.9838 19.3744L17.0195 12.4102" stroke="#555" stroke-width="2" stroke-linecap="square"></path></svg></button>
       </div>
     </div>
 
@@ -186,20 +187,28 @@
 
     <div class="time-area" aria-label="Time selector">
       <div id="title">PICK UP AT</div>
-      <label for="hour" style="display:none">Hour</label>
-      <input type="number" id="hour" min="0" max="23" value="12" aria-label="Hour (0-23)">
-      <label for="minute" style="display:none">Minute</label>
+      <!-- <label for="hour" style="display:none">Hour</label> //-->
+      <input type="number" id="hour" min="0" max="23" value="12" aria-label="Hour (0-23)">:
+      <!-- <label for="minute" style="display:none">Minute</label> //-->
       <input type="number" id="minute" min="0" max="59" value="00" aria-label="Minute (0-59)">
+    </div>
+
+	<div class="time-area" aria-label="Time selector" style="visibility:hidden;">
       <select id="tz-select" aria-label="Timezone short name" title="Timezone (local or UTC)">
         <option value="local">Local</option>
         <option value="utc">UTC</option>
       </select>
-      <div style="margin-left:auto;color:var(--muted);font-size:13px" id="selected-iso">—</div>
+      <div style="/*margin-left:auto;*/color:var(--muted);font-size:13px" id="selected-iso">—</div>
     </div>
 
     <div class="controls">
-      <button class="ghost" id="clear">Clear</button>
-      <button class="primary" id="confirm">Confirm</button>
+     <div style="display:flex;gap:8px;align-items:center;visibility:hidden;">
+        <button class="btn" id="today-btn">Today</button>
+      </div>
+      <button class="ghost" id="clear" style="visibility:hidden;">Clear</button>
+	  
+	  <button class="btn" id="asap-btn">ASAP</button>
+      <button class="primary" id="confirm">Save</button>
     </div>
 
     <div class="info">Selected will be dispatched as <code>CustomEvent('date-time-selected', {detail: {iso: '...', date: Date}})</code></div>
@@ -220,6 +229,7 @@ function initCalendarWidget(root) {
   const minuteInput = root.querySelector('#minute');
   const tzSelect = root.querySelector('#tz-select');
   const confirmBtn = root.querySelector('#confirm');
+  const asapBtn = root.querySelector('#asap-btn');
   const clearBtn = root.querySelector('#clear');
   const selectedIso = root.querySelector('#selected-iso');
 
@@ -246,6 +256,7 @@ function initCalendarWidget(root) {
     });
 
     confirmBtn.addEventListener('click', onConfirm);
+	asapBtn.addEventListener('click', onASAP);
     clearBtn.addEventListener('click', onClear);
     hourInput.addEventListener('change', onTimeChange);
     minuteInput.addEventListener('change', onTimeChange);
@@ -449,6 +460,7 @@ function initCalendarWidget(root) {
     root.dispatchEvent(new CustomEvent('date-time-selected', {detail: {iso, date: new Date(selectedDate)}}));
     confirmBtn.textContent = 'Saved ✓';
     setTimeout(() => confirmBtn.textContent='Confirm',900);
+   
     const getDate = selectedDate;
     const hours = selectedDate.getHours().toString().padStart(2, '0');
     const mins = selectedDate.getMinutes().toString().padStart(2, '0');
@@ -457,8 +469,17 @@ function initCalendarWidget(root) {
     if(getDate){
       updatedate.innerHTML = `${formatIsoDate(getDate)} - ${formattedTime}`;
     }
-
-
+  }
+  
+  function onASAP() {
+	  thebutton = document.getElementById('open-calendar');
+	  thebutton.textContent = "ASAP";
+	  theinput = document.getElementById('journeyDateTime');
+	  theinput.value = "";
+	  thebutton1 = document.getElementById('courier-calendar');
+	  thebutton1.textContent = "ASAP";
+	  theinput1 = document.getElementById('courierDateTime');
+	  theinput1.value = "";	  
   }
 
   function onClear() {
@@ -556,6 +577,10 @@ function initCalendarWidget(root) {
       e.preventDefault();
       const currentword = getMyInput.value.trim().toLowerCase();
       const buttonSpinner = document.getElementById("sendCodeSpinner");
+	  if (currentword.length >= 0) {
+		const errorMessage = document.getElementById('display_errors');
+		errorMessage.textContent = '';
+	  }
       if (currentword.length >= 4) {
         console.log(buttonSpinner);
         buttonSpinner.style.display = 'block';
@@ -623,6 +648,8 @@ function displayFilteredResults(filtered) {
     const getDropoffInput = document.getElementById("myInputDropOff");
     const buttonSpinnerDrop = document.getElementById("sendCodeSpinner");
     const flightForm = document.getElementsByName('flight-form')[0];
+    const arrivalAirportForm = document.getElementsByName('arrivalAirport')[0];
+
 
     // logic for airport drop off
     const getDropoffAirportInput = document.getElementById("myInputDropOffArr");
@@ -634,6 +661,10 @@ function displayFilteredResults(filtered) {
         const flightnumber = document.getElementById('my-flight-details').value;
        
         console.log("We have the flight input",flightnumber);
+			if (flightnumber.length >= 0) {
+				const errorMessage = document.getElementById('display_errors_fl');
+				errorMessage.textContent = '';
+			  }
           
             if (flightnumber.length >= 5 ) {                  
               getFlightDetails(flightnumber, flightWidgetCalendar);
@@ -645,6 +676,27 @@ function displayFilteredResults(filtered) {
 
     } 
 
+    // Arriving to Airport
+    if(arrivalAirportForm){
+      arrivalAirportForm.addEventListener('keyup', (e) =>{
+         e.preventDefault();
+        const dateFormatted = new Date();
+        const flightWidgetCalendar = dateFormatted.toISOString().split('T')[0];
+        const airportArrSearch = document.getElementById('arrivalAirport').value;
+
+         if(airportArrSearch.length >= 5) {
+          const buttonSpinner = document.getElementsByClassName('spinner')[0];
+          console.log(buttonSpinner);
+          buttonSpinner.style.display = 'block';
+          getArrToAirport(airportArrSearch, flightWidgetCalendar);
+         } else {
+          const d = document.querySelector('ul#address-search-airport-arrival__results');
+          d.innerHTML = '';
+         }
+      })
+     
+    }
+
 
 
 
@@ -653,6 +705,10 @@ function displayFilteredResults(filtered) {
         e.preventDefault();
         const currentword = document.getElementById("myInputDropOff").value;
         console.log(currentword);
+			if (currentword.length >= 0) {
+				const errorMessage = document.getElementById('display_errors_drop');
+				errorMessage.textContent = '';
+			  }
             if(currentword.length){
                 const buttonSpinner2 = document.getElementsByClassName('spinner-2')[0];
                 console.log(buttonSpinner2);
@@ -671,6 +727,10 @@ function displayFilteredResults(filtered) {
         e.preventDefault();
         const currentword = document.getElementById("myInputDropOffArr").value;
         console.log(currentword);
+			if (currentword.length >= 0) {
+				const errorMessage = document.getElementById('display_errors_airdrop');
+				errorMessage.textContent = '';
+			  }
             if(currentword.length){
                 buttonSpinnerDrop.style.display = 'block';
                 getAirportDropOff(currentword);
@@ -703,7 +763,7 @@ function openCalendarModal(triggerBtnId, calendarHtml, hiddenTargetSelector) {
 
     // Insert calendar HTML
     modal.innerHTML = `
-      <div class="mk-max-w-[436px] mk-relative mk-bg-white mk-rounded-lg mk-shadow-lg mk-w-[min(680px,90vw)] mk-p-[50px]">
+      <div class="mk-max-w-[436px] mk-relative mk-bg-white mk-rounded-lg mk-shadow-lg mk-w-[min(680px,90vw)] mk-p-[20px]">
         <button id="close-calendar" class="mk-absolute mk-top-2 mk-right-2 mk-text-slate-500" aria-label="Close">✕</button>
         ${calendarHtml}
       </div>
@@ -721,6 +781,10 @@ function openCalendarModal(triggerBtnId, calendarHtml, hiddenTargetSelector) {
     const closeBtn = modal.querySelector("#close-calendar");
     closeBtn.addEventListener("click", () => modal.remove());
     modal.addEventListener("click", (e) => { if (e.target === modal) modal.remove(); });
+	const asapBtn = modal.querySelector("#asap-btn");
+    asapBtn.addEventListener("click", () => {modal.remove();});
+	if(triggerBtnId == 'flight-calendar'){asapBtn.style.visibility = 'hidden';}
+	else{asapBtn.style.visibility = 'visible';}
 
     // ✅ The single source of truth for updates:
     // When user confirms inside the widget, it emits 'date-time-selected'.
@@ -776,7 +840,7 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
 
     widget.classList.remove("mk-hidden");
     requestAnimationFrame(() => {
-      widget.classList.add("mk-transition", "mk-duration-300");
+      widget.classList.add("mk-transition", "mk-duration-700");
       widget.classList.remove("mk-opacity-0");
       widget.classList.add("mk-opacity-100");
     });
@@ -786,7 +850,7 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
   }
 
   function hideWidget() {
-    document.querySelector('a.quote-cta').innerHTML = 'Get A Quote';
+    document.querySelector('a.quote-cta').innerHTML = 'Get Quote';
     widget.classList.add("mk-transition", "mk-duration-300");
     widget.classList.remove("mk-opacity-100");
     widget.classList.add("mk-opacity-0");
@@ -824,9 +888,9 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
             const payload = getPayload();
             console.log('Sending payload:', payload);
             
-            fetch('/dev.addisonlee.com/wp-json/quote/v1/price', {
+            fetch('wp-json/quote/v1/price', {
                 method: 'POST',
-                mode: 'cors',
+
                 headers: {
 
                     'Content-Type' : 'application/json',
@@ -978,6 +1042,7 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
                 else {
                 console.log("FAILED");
                 }
+                return res.json();
                 console.log(res.json());
             }).then((data) => {
                 const buttonSpinner2 = document.getElementsByClassName('spinner-2')[0];
@@ -1129,26 +1194,53 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
     }  
 
  
-    function getArrToAirport() {
-      const currentword = document.getElementById("arrival-form").value;
-      const apiFetched = currentword;
-      const url = `${pickupSearchData.flightSearchUrl}?date=2025-09-11&exact_match=true&=${apiFetched}`;
-      console.log('arrival form input is working', apiFetched);
-      var options = {
-          method: 'GET',
-          mode: 'cors',
-          headers: {
-              'x-api-key' : pickupSearchData.apiEndpoint,
-          }
-      }
+    function getArrToAirport(airportArrSearch) {
+      const currentword = airportArrSearch;
 
-      fetch(url, {
-          options
-      }).then((response) => {
-          return response.json(); 
+      console.log('API is hit', currentword);
+      fetch(`wp-json/quote/v1/address-search?search_string=${currentword}`).then(res => {
+        if(!res.ok){
+              throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        if (res.code === -424) {
+            // Return or throw an error message
+            return { error: true, message: "Something went wrong. Please try again later." };
+        }
+
+        else if(res.status = 403){
+            console.log('<div>Error 403! relook at you domain</div>')
+        }
+        
+        else if(res.status = 429){
+                console.log("Error: Too many requests")
+        } else {
+        console.log("FAILED");
+        }
+        return res.json();
       }).then((data) => {
-          const dataStore = data.flights;
+          const buttonSpinner = document.getElementById('sendCodeSpinner');
+          buttonSpinner.style.display = 'none';
+          const dataStore = data.addresses;
           console.log('getting ready for arrival data ',dataStore);
+          dataStore.map(function(item){
+
+            
+            // confirm type is airport
+            const type = `${item.details.type}`; 
+            
+            if( type ){
+              const q = document.getElementById('arrivalAirport');
+              q.setAttribute('data-id', `${item.data.address_components.address}`);
+              const d = document.querySelector('ul#address-search-airport-arrival__results');
+              console.log('getting arrival information', q);
+              d.innerHTML = `${item.data.address_components.address}`;
+            } else {
+              const b = document.getElementById('display_errors_air_arr');
+              b.innerHTML = 'Arrival Airport not found';
+            }
+            
+          })
+
       }).catch( (err) => {
           console.log(err.message);
       });   
@@ -1159,7 +1251,6 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
     if (flightnumber != null && flightWidgetCalendar != null) {
         const apiFetched = flightnumber;
         console.log('flight function is working', flightnumber, flightWidgetCalendar);
-
         const options = {
             method: 'GET',
             mode: 'cors',
@@ -1208,7 +1299,7 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
                 const terminal = `${item.arrival.terminal}`;
                 document.querySelector('ul#airport-arr__results').style.display = 'block';
                 console.log('coming from these sides',arrCity);
-                const getFieldDetails = `<span class="mk-text-black mk-font-500 mk-pt-[10px] mk-pb-[20px] mk-text-[12px] mk-leading-[1.3]">
+                const getFieldDetails = `<span class="mk-text-black mk-font-500 mk-pt-[10px] mk-pb-[20px] mk-text-[12px] mk-leading-[1.3] mk-absolute mk-top-[60px]">
                 Arrival at ${air_code},${terminal}, ${date}
                 </span>`;
                 document.querySelector('ul#airport-arr__results').innerHTML = getFieldDetails;
@@ -1216,12 +1307,14 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
                 const airport_terminal = localStorage.getItem('Terminal');
                 const get_terminal = `Terminal, ${airport_terminal}`;
                 const flightNumber = document.getElementById('my-flight-details').value;
+                
                 if(!airport_terminal){
                    console.warn("No terminal found for", flightNumber);
                   return;
                 }
 
                 if(airport_terminal){
+                  console.log('second query is made here');
                   
                    fetch(`wp-json/quote/v1/address-search?search_string=${encodeURIComponent(get_terminal)}`, options).then( res =>{
                     if(res.message = "ok" ){
@@ -1728,6 +1821,10 @@ document.addEventListener('keyup', (e) => {
   if(!currentword) return;
 
   console.log(currentword);
+  if (currentword.length >= 0) {
+	const errorMessage = document.getElementById('display_errors_couriers');
+	errorMessage.textContent = '';
+  }
   if(currentword.length >= 5 ){
     getCourierDropOffApi(currentword);
   }
@@ -1740,6 +1837,12 @@ document.addEventListener('keyup', (e) => {
   if(!currentword) return;
 
   console.log(currentword);
+  if (currentword.length >= 0) {
+	const errorMessage = document.getElementById('display_errors_pick_courier');
+	errorMessage.textContent = '';
+  }
+            
+            
   if(currentword.length >= 5 ){
     getCourierPickUpApi(currentword);
   }
@@ -1755,7 +1858,7 @@ function redirectParams(){
   const price = localStorage.getItem('Price');
 
   if(pickup && dropoff && date && price ){
-    const redirectUrl = `https://webportal2.addlee-sandbox.net/al/booking-v6/new/car?pickup=${encodeURIComponent(pickup)}&dropoff=${encodeURIComponent(dropoff)}&date=${encodeURIComponent(date)}&price=${price}`;
+    const redirectUrl = `https://webportal3.addlee-sandbox.net/al/booking-v6/new/car?pickup=${encodeURIComponent(pickup)}&dropoff=${encodeURIComponent(dropoff)}&date=${encodeURIComponent(date)}&price=${price}`;
     window.location.href = redirectUrl;
   }
   
@@ -1817,38 +1920,53 @@ async function handleQuoteClick( button, tab, panel ) {
   const searchbar = document.getElementById('myInput').value.trim();
   const searchBarDrpOff = document.getElementById('myInputDropOff').value.trim();
 
-  if(tab?.id === 'tab-0'){
-    const searchbar = document.getElementById('myInput').value.trim();
-    const searchBarDrpOff = document.getElementById('myInputDropOff').value.trim();
-    // your validation logic here
-  if( !searchbar  ){ 
-    errorMessage.textContent = 'Please enter a pick up address';
-  }
-  
-  if( !searchBarDrpOff ){
-    errorMessage2.textContent = 'Please enter a drop off address';
-  } 
-    
-  if(searchbar && searchBarDrpOff){
-    getPrice(getPayload(), button);
-  }
+        if(tab?.id === 'tab-0'){
+          const searchbar = document.getElementById('myInput').value.trim();
+          const searchBarDrpOff = document.getElementById('myInputDropOff').value.trim();
+          const pickupAddCont = document.getElementById('pickup-container');
+          const dropoffCont = document.getElementById('dropoff-container');
+          // your validation logic here
+        if( !searchbar  ){ 
+          errorMessage.textContent = 'Please enter a pick up address';
+          pickupAddCont.style.borderBottomColor = 'red';
 
-  if(!quoteGenerated){
-    console.log('we have the quote generated for pickup');
-    quoteGenerated = true;
-  } else {
-    redirectParams();
-  }
+        }
+        
+        if( !searchBarDrpOff ){
+          errorMessage2.textContent = 'Please enter a drop off address';
+          dropoffCont.style.borderBottomColor = 'red';
+        } 
+          
+        if(searchbar && searchBarDrpOff){
+          getPrice(getPayload(), button);
+        }
+
+        if(!quoteGenerated){
+          console.log('we have the quote generated for pickup');
+          quoteGenerated = true;
+        } else {
+          redirectParams();
+        }
+
+        // put the logic for animation of button quote here
+
+        const btn = document.querySelector('.button');
+       
+        setTimeout(() => {
+            btn.classList.toggle('active');
+        }, 1800);
          
 }
 
         if(tab?.id === 'tab-1'){
-          
+          const flightDropoffContainer = document.getElementById('flightdropoff-container');
+          const flightNumberContainer = document.getElementById('flightnumber-container');
           const flightInput = document.getElementById('my-flight-details').value.trim();
           console.log(flightInput);
           const errorMessage3 = document.getElementById('display_errors_fl');
           if(!flightInput){
             errorMessage3.textContent = 'Flight Number is required';
+            flightNumberContainer.style.borderBottomColor = 'red';
           } else {
             errorMessage3.textContent = '';
           }
@@ -1856,8 +1974,10 @@ async function handleQuoteClick( button, tab, panel ) {
           if(!dropInputForm){
             const errorMessage = document.getElementById('display_errors_airdrop');
             errorMessage.textContent = 'Please enter a drop off address';
+            flightDropoffContainer.style.borderBottomColor = 'red';
           } else {
             errorMessage.textContent = '';
+            flightDropoffContainer.style.borderBottomColor = '#B4B4B4';
           }
           
           if(dropInputForm && flightInput){
@@ -1878,71 +1998,100 @@ async function handleQuoteClick( button, tab, panel ) {
     
           const a = document.getElementById('myInputDropOffCourier').value.trim();
           const b = document.getElementById('myInputCourier').value.trim();
+          const c = document.getElementById('courierpickup-container');
+          const d = document.getElementById('courierdropoff-container');
           if(!a){
             const errorMessage = document.getElementById('display_errors_couriers');
             console.log('on tab-2', errorMessage);
             errorMessage.innerText = 'Please enter a drop off address';
+            d.style.borderBottomColor = 'red';
           }
 
           if(!b){
             const errorMessage = document.getElementById('display_errors_pick_courier');
             errorMessage.innerText = 'Please enter a pick up address';
+            c.style.borderBottomColor = 'red';
           }
 
           if(a && b){
-            button.textContent = "Getting your quote...";
+            button.textContent = "GETTING YOUR QUOTE...";
             try {
-              const response = await fetch('/wp-json/quote/v1/courier-service', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify(payload)
-                });
+              const response = await fetch('/dev.addisonlee.com/wp-json/quote/v1/courier-service', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+              });
 
-                const text = await response.text();
-                console.log('Raw response:', text);
+              const text = await response.text();
+              console.log('Raw response:', text);
 
-                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}\n${text.slice(0, 300)}`);
+              }
 
-                const data = JSON.parse(text);
-                console.log('Parsed JSON:', data);
+              let data;
+              try {
+                data = JSON.parse(text);
+              } catch (e) {
+                throw new Error(`Non-JSON response from courier-service:\n${text.slice(0, 300)}`);
+              }
 
-                console.log('getting courier api',data);
-                  
-                  const dataStore = data.products;
-                  console.log('courier data is here', dataStore);
-                  dataStore.map(function(index){
-                    const id = `${index.product.id}`;
-                    const code = `${index.product.code}`;
-                    const desc = `${index.product.description}`;
-                    const totalcharged = `${index.price.total_charged}`;
-                    const img = `${index.product.image_registry}web/std.png`;
-                    localStorage.setItem('Price', totalcharged);
-                    
-                    if(code === 'bicycle_courier' && id === pickupSearchData.bycycleId ){
-                     
-                      button.classList.add("animate");
-                      button.innerHTML = `
-                          <div class="mk-flex mk-justify-center quote-container mk-mx-auto mk-items-center">
+              console.log('Parsed JSON:', data);
+              console.log('getting courier api', data);
+
+              const dataStore = Array.isArray(data?.products) ? data.products : [];
+              console.log('courier data is here', dataStore);
+
+              // Normalize target ID for safe comparison
+              const targetBicycleId = String(pickupSearchData?.bycycleId ?? '');
+
+              // Loop through products and stop on the match
+              for (const item of dataStore) {
+                const id = String(item?.product?.id ?? '');
+                const code = String(item?.product?.code ?? '');
+                const desc = String(item?.product?.description ?? '');
+                const totalcharged = String(item?.price?.total_charged ?? '');
+                const img =
+                  item?.product?.image_registry
+                    ? `${item.product.image_registry}web/std.png`
+                    : '';
+
+                if (totalcharged) {
+                  localStorage.setItem('Price', totalcharged);
+                }
+
+                if (code === 'bicycle_courier' && id === targetBicycleId) {
+                  // Prevent duplicate animation/state
+                  if (!button.classList.contains('animate')) {
+                    button.classList.add('animate');
+                  }
+
+                  button.innerHTML = `
+                     <div class="pricing-element mk-flex mk-items-center mk-justify-center quote-container mk-mx-auto mk-text-[16px]">
                             BOOK FROM  
-                            <div id="price-goes-here" class="mk-text-yellow">£${totalcharged}</div>
-                          </div>
-                        `;
-                      return; // ✅ stop here, don’t call getPrice()
-                    
-                    }
-                  });
+                      <div id="price-goes-here" class="mk-text-yellow mk-pl-[7px]">£${totalcharged}</div>
+                      </div>
+                  `;
+
+                  // ✅ stop here, don’t process further items
+                  break;
+                }
+              }
             } catch (error) {
               console.error('Fetch error:', error);
             }
+
+            if(!quoteGenerated){
+            console.log('we have the quote generated for courier flow');
+            quoteGenerated = true;
+            } else {
+              redirectParams();
+            }
+
             
           }
 
-          if(!quoteGenerated){
-            console.log('we have the quote generated for courier flow');
-            quoteGenerated = true;
-          } else {
-            redirectParams();
-          }
+          
 
         } 
 }
@@ -2053,16 +2202,16 @@ function getArrToAirportfunc(arrInp, flightWidgetCalendar){
   console.log('when checkbox is clicked',currentword);
     try {
 
-       const options = {
+       /*const options = {
             method: 'GET',
             mode: 'cors',
             headers: {
                 /* encode key*/           
-                'x-api-key': pickupSearchData.apiEndpoint,
+            /*    'x-api-key': pickupSearchData.apiEndpoint,
             },
             body: JSON.stringify()
-        }
-        const url = `${pickupSearchData.flightSearchUrl}?date=${flightWidgetCalendar}&exact_match=true&flight_no=${currentword}`;
+        /*}*/
+        const url = `wp-json/quote/v1/flight?date=${flightWidgetCalendar}&exact_match=true&flight_no=${currentword}`;
         fetch(url, options).then(res => {
         if(res.message = 'OK'){
             console.log('SUCCESS we have flight details. Yay');
@@ -2096,14 +2245,5 @@ function getArrToAirportfunc(arrInp, flightWidgetCalendar){
 
 }
 
-
-document.addEventListener('keyup', (e) => {
-  const dateFormatted = new Date();
-  const flightWidgetCalendar = dateFormatted.toISOString().split('T')[0];
-  const arrInp = e.target.closest('#arrivalDateTime').value.trim();
-  if(arrInp.length >= 5){
-    getArrToAirportfunc(arrInp, flightWidgetCalendar);
-  }
-});
 
 })();

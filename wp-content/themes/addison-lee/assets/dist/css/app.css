@@ -1209,20 +1209,12 @@ video {
   top: 1.5rem;
 }
 
-.mk-top-full {
-  top: 100%;
-}
-
 .mk-top-\[60px\] {
   top: 60px;
 }
 
-.mk-left-\[0px\] {
-  left: 0px;
-}
-
-.mk-top-\[0px\] {
-  top: 0px;
+.mk-top-full {
+  top: 100%;
 }
 
 .mk-z-0 {
@@ -1241,20 +1233,16 @@ video {
   z-index: 30;
 }
 
+.mk-z-40 {
+  z-index: 40;
+}
+
 .mk-z-\[10000\] {
   z-index: 10000;
 }
 
 .mk-z-\[revert-layer\] {
   z-index: revert-layer;
-}
-
-.mk-z-40 {
-  z-index: 40;
-}
-
-.mk-z-\[999\] {
-  z-index: 999;
 }
 
 .mk-order-1 {
@@ -1605,10 +1593,6 @@ video {
   height: 100px;
 }
 
-.mk-h-\[18px\] {
-  height: 18px;
-}
-
 .mk-h-\[22px\] {
   height: 22px;
 }
@@ -1695,10 +1679,6 @@ video {
 
 .mk-h-screen {
   height: 100vh;
-}
-
-.mk-h-\[24px\] {
-  height: 24px;
 }
 
 .mk-max-h-10 {
@@ -1793,10 +1773,6 @@ video {
   width: 174px;
 }
 
-.mk-w-\[22px\] {
-  width: 22px;
-}
-
 .mk-w-\[236px\] {
   width: 236px;
 }
@@ -1831,10 +1807,6 @@ video {
 
 .mk-w-screen {
   width: 100vw;
-}
-
-.mk-w-\[24px\] {
-  width: 24px;
 }
 
 .mk-min-w-11 {
@@ -2337,14 +2309,6 @@ video {
   border-bottom-width: 4px;
 }
 
-.mk-border-b-\[1px\] {
-  border-bottom-width: 1px;
-}
-
-.mk-border-b-\[2px\] {
-  border-bottom-width: 2px;
-}
-
 .mk-border-l {
   border-left-width: 1px;
 }
@@ -2381,11 +2345,6 @@ video {
 
 .\!mk-border-transparent {
   border-color: transparent !important;
-}
-
-.mk-border-\[\#B4B4B4\] {
-  --tw-border-opacity: 1;
-  border-color: rgb(180 180 180 / var(--tw-border-opacity));
 }
 
 .mk-border-\[rgba\(0\,0\,0\,0\.32\)\] {
@@ -2591,14 +2550,6 @@ video {
 
 .mk-p-\[10px\] {
   padding: 10px;
-}
-
-.mk-p-\[20px\] {
-  padding: 20px;
-}
-
-.mk-p-\[50px\] {
-  padding: 50px;
 }
 
 .mk-p-\[20px\] {
@@ -5139,10 +5090,6 @@ img.payment-methods {
     margin-right: -20px;
   }
 
-  .sm-max\:mk-mb-\[0px\] {
-    margin-bottom: 0px;
-  }
-
   .sm-max\:mk-w-\[90\%\] {
     width: 90%;
   }
@@ -5155,16 +5102,16 @@ img.payment-methods {
     grid-template-columns: 1fr;
   }
 
-  .sm-max\:mk-gap-\[30px\] {
-    gap: 30px;
-  }
-
   .sm-max\:mk-gap-\[25px\] {
     gap: 25px;
   }
 
-  .sm-max\:mk-gap-\[52px\] {
-    gap: 52px;
+  .sm-max\:mk-gap-\[63px\] {
+    gap: 63px;
+  }
+
+  .sm-max\:mk-rounded-tr-none {
+    border-top-right-radius: 0px;
   }
 
   .sm-max\:mk-bg-white {
@@ -5180,11 +5127,6 @@ img.payment-methods {
   .sm-max\:mk-px-\[10px\] {
     padding-left: 10px;
     padding-right: 10px;
-  }
-
-  .sm-max\:mk-px-\[12px\] {
-    padding-left: 12px;
-    padding-right: 12px;
   }
 
   .sm-max\:mk-pb-\[10px\] {

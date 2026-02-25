@@ -12,7 +12,7 @@
    * ---------------------------- */
 
   const contentMap = {
-    "tab-0": `<div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[25px] mk-p-[10px] mk-mb-[30px]">
+    "tab-0": `<div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[63px] mk-p-[10px] mk-mb-[30px]">
             <div id="pickup-container" class="mk-flex mk-items-center  mk-pb-2 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="pickup-pin sm-max-xs:mk-w-[41px] sm-max-xs:mk-h-[41px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
                   <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>PICK UP</label>
@@ -34,15 +34,18 @@
           </div>
           
            <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[25px] mk-p-[10px] mk-mb-[30px]"> 
-          <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6">
+          <div id="date-container" class="mk-flex mk-items-center mk-pb-3 mk-mb-6">
             <span class="calendar-pin sm-max-xs:mk-w-[41px] sm-max-xs:mk-h-[41px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
               <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>DATE OF JOURNEY</label><br>
                 <button id="open-calendar" class="date-widget-btn">ASAP</button>
                 <input type="hidden" id="journeyDateTime" name="journeyDateTime" />
+                <div id="display_errors_date_widget"></div>
                 <div id="dt-widget" class="widget mk-hidden">
                 <!-- your calendar markup here -->
                 </div>
+                
               </div>
+              
           </div>
                 <div class="mk-flex mk-w-[100%] col-span-2 mk-flex mk-justify-center mk-relative">
                 <a href="#" id="get-a-quote" class="get-a-quote btn mk-w-[100%]">GET QUOTE</a>
@@ -55,7 +58,7 @@
 <div class="flight-number-checkbox"><label class="checkbox" for="unknownFlightNumber">
 <div class="mk-flex mk-item-center mk-justify-end"><input type="checkbox" id="unknownFlightNumber" class="flight-checkbox " /><span class="mk-text-black">I don't know my flight number</span></label></div>
         </div>
-    <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[52px] mk-p-[10px] mk-mb-[30px]">
+    <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[63px] mk-p-[10px] mk-mb-[30px]">
         <div id="flightnumber-container" class="mk-flex mk-items-center mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
         <div id="flightOriginalRow">
           <div class="mk-flex">
@@ -91,11 +94,12 @@
             </div>
       </div>
       <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[25px] mk-p-[10px] mk-mb-[30px]">
-            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
+            <div id="date-container" class="mk-flex mk-items-center mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="calendar-pin sm-max-xs:mk-w-[41px] sm-max-xs:mk-h-[41px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
                 <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>DATE OF FLIGHT ARRIVAL</label><br>
                 <button id="flight-calendar" class="date-widget-btn">Select a date</button>
                 <input type="hidden" id="arrivalDateTime" name="arrivalDateTime" />
+                <div id="display_errors_date_widget"></div>
                 <div id="dt-widget" class="widget mk-hidden">
                 <!-- your calendar markup here -->
                 </div>
@@ -106,7 +110,7 @@
       </div>
 
     `,
-    "tab-2": `<div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[25px] mk-p-[10px] mk-mb-[30px]">
+    "tab-2": `<div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[63px] mk-p-[10px] mk-mb-[30px]">
             <div id="courierpickup-container" class="mk-flex mk-items-center mk-pb-2 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="pickup-pin mk-w-[90px] mk-mr-[20px] sm-max:mk-mr-[-20px]"></span>
                 <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>PICK UP</label>
@@ -126,12 +130,13 @@
             </div>
           </div>
           <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[25px] mk-p-[10px] mk-mb-[30px]">
-            <div class="mk-flex mk-items-center mk-border-b-[1px] mk-border-[#B4B4B4] mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
+            <div id="date-container" class="mk-flex mk-items-center mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="calendar-pin sm-max-xs:mk-w-[41px] sm-max-xs:mk-h-[41px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
                 <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]">
                 <label>DATE OF JOURNEY</label><br>
                 <button id="courier-calendar" class="date-widget-btn">ASAP</button>
                 <input type="hidden" id="courierDateTime" name="courierDateTime" />
+                <div id="display_errors_date_widget"></div>
                 <div id="dt-widget" class="widget mk-hidden">
                 <!-- your calendar markup here -->
                 </div>
@@ -571,7 +576,9 @@ function initCalendarWidget(root) {
     // logic for pick up input
     const getMyInput = document.getElementById("myInput");
     const resultsList = document.getElementById("results");
+	fetchAddressRenderResults();
 
+  function fetchAddressRenderResults(){	
     if (getMyInput) {
     getMyInput.addEventListener("keyup",  (e) => {
       e.preventDefault();
@@ -625,8 +632,8 @@ function initCalendarWidget(root) {
         removeChildDataAll();
       }
     });
+	  }	
   }
-
   
 function displayFilteredResults(filtered) {
     resultsList.innerHTML = "";
@@ -649,29 +656,61 @@ function displayFilteredResults(filtered) {
     const buttonSpinnerDrop = document.getElementById("sendCodeSpinner");
     const flightForm = document.getElementsByName('flight-form')[0];
     const arrivalAirportForm = document.getElementsByName('arrivalAirport')[0];
-
+	const arrivalDateTime = document.getElementById('arrivalDateTime');
 
     // logic for airport drop off
     const getDropoffAirportInput = document.getElementById("myInputDropOffArr");
         
     if(flightForm){
         flightForm.addEventListener('keyup', function(){
-        const dateFormatted = new Date();
-        const flightWidgetCalendar = dateFormatted.toISOString().split('T')[0];
+		document.querySelector('ul#airport-arr__results').innerHTML = '';
+        const errorMessage = document.getElementById('display_errors_fl');
+			
+        const dateFormatted = document.getElementById('arrivalDateTime').value;
         const flightnumber = document.getElementById('my-flight-details').value;
        
-        console.log("We have the flight input",flightnumber);
-			if (flightnumber.length >= 0) {
-				const errorMessage = document.getElementById('display_errors_fl');
-				errorMessage.textContent = '';
+		if (flightnumber.length < 5) {
+			errorMessage.textContent = 'Enter both Flight number and Arrival date';
 			  }
           
             if (flightnumber.length >= 5 ) {                  
+			if (dateFormatted == "") {
+				errorMessage.textContent = 'Enter both Flight number and Arrival date';
+			  }
+			  else{
+			errorMessage.textContent  = '';			  
+			const flightWidgetCalendar = dateFormatted.split('T')[0];
               getFlightDetails(flightnumber, flightWidgetCalendar);
               console.log("Passed the flight date", flightnumber, flightWidgetCalendar);   
             }
-             
+		}
           
+      }) 
+
+    } 
+
+	if(arrivalDateTime){
+        arrivalDateTime.addEventListener('change', function(){
+		document.querySelector('ul#airport-arr__results').innerHTML = '';
+		const errorMessage = document.getElementById('display_errors_fl');
+			
+        const dateFormatted = document.getElementById('arrivalDateTime').value;
+		const flightnumber = document.getElementById('my-flight-details').value;
+		
+		if (flightnumber.length < 5) {
+			errorMessage.textContent = 'Enter both Flight number and Arrival date';
+		  }		  
+		if (flightnumber.length >= 5 ) {
+			if (dateFormatted == "") {
+				errorMessage.textContent = 'Enter both Flight number and Arrival date';
+			  }
+			else{
+			errorMessage.textContent = '';
+			const flightWidgetCalendar = dateFormatted.split('T')[0];
+			getFlightDetails(flightnumber, flightWidgetCalendar);
+			console.log("Passed the flight date", flightnumber, flightWidgetCalendar);   
+			}
+		}
       }) 
 
     } 
@@ -692,6 +731,7 @@ function displayFilteredResults(filtered) {
          } else {
           const d = document.querySelector('ul#address-search-airport-arrival__results');
           d.innerHTML = '';
+          removeChildAirportArrivalData();
          }
       })
      
@@ -830,6 +870,7 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
 
   /** Widget Show/Hide */
   function showWidget(trigger) {
+	document.querySelector('a.quote-cta').innerHTML = 'Enter Details &darr;';
     // Position relative to clicked CTA
     trigger.insertAdjacentElement('afterend', widget);
      
@@ -850,7 +891,7 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
   }
 
   function hideWidget() {
-    document.querySelector('a.quote-cta').innerHTML = 'Get Quote';
+    document.querySelector('a.quote-cta').innerHTML = 'Get Quote &rarr;';
     widget.classList.add("mk-transition", "mk-duration-300");
     widget.classList.remove("mk-opacity-100");
     widget.classList.add("mk-opacity-0");
@@ -909,18 +950,23 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
                       console.log('item data is here',pricingEle);
                       localStorage.setItem('Price', pricingEle);
                       // ✅ Animate + show price in button
+                        
 
                     if(pricingEle){
                       setTimeout(() => {
                         quoteBtn.style.display = 'flex';
-                        quoteBtn.classList.add("animate");
+                        //quoteBtn.classList.add("animate");
+						quoteBtn.classList.add("clicked");
+						  setTimeout(() => {
                         quoteBtn.innerHTML = `
                           <div class="pricing-element mk-flex mk-items-center mk-justify-center quote-container mk-mx-auto mk-text-[16px]">
                             BOOK FROM  
                           <div id="price-goes-here" class="mk-text-yellow mk-pl-[7px]">£${pricingEle}</div>
                           </div>
                         `;
-                      }, 3000);
+						  }, 1000);
+                        
+                      }, 2000);
                       
                     }
                     
@@ -1142,7 +1188,7 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
                 buttonSpinner.style.display = 'none';
                 const dataStore = data.addresses;
                 console.log('data sits in object',dataStore);
-            dataStore.map(function(item){
+                dataStore.map(function(item){
                 const q = document.getElementById('address-search__results'); 
                 const l = document.createElement('li'); 
                 const b = document.createElement('button'); 
@@ -1155,28 +1201,36 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
                 const id = `${item.id}`; 
                 const pcode = `${item.data.address_components.postcode}`;
                 const street = `${item.data.address_components.street}`;
-                
+                const latitude = `${item.data.location.lat}`;
+                b.setAttribute('zone-lat', latitude );
+                console.log('we have latitude data', latitude);
+
+
                 b.setAttribute('data-id', `${item.data.formatted_address}`);
                 d.innerHTML = p;
                 document.querySelector('ul#address-search__results').style.display = 'block';
                 console.log('coming from these sides',p, 'postcode:',pcode,'street:', street);
 
-                // button on click when data is loaded for pickup
-                function handleClick(e){
                 
+
+                // button on click when data is loaded for pickup
+                function handleClick(e, latitude){
+                    
                     const myInputForm = document.getElementById('myInput');
                     const { target: { dataset: {id} } } = e;
-                     const postcodeRegex = /\b[A-Z]{1,2}\d{1,2}[A-Z]?\s?\d[A-Z]{2}\b/i; // UK postcode example
-                      const postcode = id.match(postcodeRegex)?.[0] || null;
+                    const postcodeRegex = /\b[A-Z]{1,2}\d{1,2}[A-Z]?\s?\d[A-Z]{2}\b/i; // UK postcode example
+                    const postcode = id.match(postcodeRegex)?.[0] || null;
 
-                      // Assuming street is everything before the postcode
-                      const street_selected = postcode ? id.split(postcode)[0].trim() : null;
+                    // Assuming street is everything before the postcode
+                    const street_selected = postcode ? id.split(postcode)[0].trim() : null;
                     console.log(id, 'this is what is selected');
                     myInputForm.setAttribute('value',id);
                     myInputForm.value = id;
                     pickup_address = localStorage.setItem("pickup_address", document.getElementById('myInput').value);
                     localStorage.setItem('Postcode', postcode);
                     localStorage.setItem('Street', street_selected);
+                    localStorage.setItem('Latitude', latitude);
+                    
                 }
 
                 // this function handles address list selected for pickup
@@ -1184,7 +1238,7 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
                 if(document.getElementsByClassName('address-search__item')){
                 console.log('so check it out');
                 const t = document.querySelector('#address-search__results');
-                t.addEventListener('click', handleClick, false);
+                t.addEventListener('click', handleClick(latitude), false);
                 }
     
                 
@@ -1224,20 +1278,59 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
           console.log('getting ready for arrival data ',dataStore);
           dataStore.map(function(item){
 
-            
+
             // confirm type is airport
-            const type = `${item.details.type}`; 
+            const type = `${item.details.type}`;
+
+            let condition = false;
             
-            if( type ){
+            if( type === 'airport'){
+              condition = true;
               const q = document.getElementById('arrivalAirport');
               q.setAttribute('data-id', `${item.data.address_components.address}`);
               const d = document.querySelector('ul#address-search-airport-arrival__results');
-              console.log('getting arrival information', q);
-              d.innerHTML = `${item.data.address_components.address}`;
-            } else {
-              const b = document.getElementById('display_errors_air_arr');
-              b.innerHTML = 'Arrival Airport not found';
+              const l = document.createElement('li'); 
+              const b = document.createElement('button'); 
+              d.appendChild(l);
+              l.appendChild(b);
+              l.setAttribute("class", "address-search__item");
+              b.setAttribute("id", "address-search__result-btn");
+              const id = `${item.id}`;
+              const pcode = `${item.data.address_components.postcode}`;
+              const street = `${item.data.address_components.street}`;
+              b.innerHTML = `${item.data.address_components.address}`;
+              document.querySelector('ul#address-search-airport-arrival__results').style.display = 'block';
+              b.setAttribute('data-id', `${item.data.formatted_address}`);
+              const coordlat = `${item.data.location.lat}`;
+              const coordlon = `${item.data.location.lon}`;
+            } 
+
+            function handleClick(e){               
+                console.log('this is what is selected');
+                    const arrForm = document.getElementById('arrivalAirport');
+                    const { target: { dataset: {id} } } = e;
+                    const postcodeRegex = /\b[A-Z]{1,2}\d{1,2}[A-Z]?\s?\d[A-Z]{2}\b/i; // UK postcode example
+                    const postcode = id.match(postcodeRegex)?.[0] || null;
+
+                    // Assuming street is everything before the postcode
+                    const street_selected = postcode ? id.split(postcode)[0].trim() : null;
+                    
+                    arrForm.setAttribute('value',id);
+                    arrForm.value = id;
+                    pickup_address = localStorage.setItem("pickup_address", document.getElementById('arrivalAirport').value);
+                    localStorage.setItem('Postcode', postcode);
+                    localStorage.setItem('Street', street_selected);
+                    localStorage.setItem('Latitude', coordlat);
+                    localStorage.setItem('Longitude', coordlon);
             }
+
+            // this function handles address list selected for pickup
+           
+                if(document.getElementsByClassName('address-search__item')){
+                console.log('so check it out');
+                const t = document.querySelector('#address-search-airport-arrival__results');
+                t.addEventListener('click', handleClick, false);
+                }
             
           })
 
@@ -1288,35 +1381,35 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
             const q = document.getElementById('my-flight-details');
             console.log('getting my flight details', q);
             
-                q.setAttribute('data-id', `${item.arrival.city}`);
-                const arrCity = `${item.arrival.city}`;
-                const air_code = `${item.arrival.airport_code}`; 
-                const ex_arr_time = `${item.arrival.time}`;
-                const date = new Date(ex_arr_time);
-                const carrier = `${item.carrier.icao}`;
-                const flightNum = `${item.flight_no}`;
-                const depCity = `${item.departure.city}`;
-                const terminal = `${item.arrival.terminal}`;
-                document.querySelector('ul#airport-arr__results').style.display = 'block';
-                console.log('coming from these sides',arrCity);
-                const getFieldDetails = `<span class="mk-text-black mk-font-500 mk-pt-[10px] mk-pb-[20px] mk-text-[12px] mk-leading-[1.3] mk-absolute mk-top-[60px]">
-                Arrival at ${air_code},${terminal}, ${date}
-                </span>`;
-                document.querySelector('ul#airport-arr__results').innerHTML = getFieldDetails;
-                localStorage.setItem('Terminal', terminal);
-                const airport_terminal = localStorage.getItem('Terminal');
-                const get_terminal = `Terminal, ${airport_terminal}`;
-                const flightNumber = document.getElementById('my-flight-details').value;
-                
-                if(!airport_terminal){
-                   console.warn("No terminal found for", flightNumber);
-                  return;
-                }
+            q.setAttribute('data-id', `${item.arrival.city}`);
+            const arrCity = `${item.arrival.city}`;
+            const air_code = `${item.arrival.airport_code}`; 
+            const ex_arr_time = `${item.arrival.time}`;
+            const date = new Date(ex_arr_time);
+            const carrier = `${item.carrier.icao}`;
+            const flightNum = `${item.flight_no}`;
+            const depCity = `${item.departure.city}`;
+            const terminal = `${item.arrival.terminal}`;
+            document.querySelector('ul#airport-arr__results').style.display = 'block';
+            console.log('coming from these sides',arrCity);
+            const getFieldDetails = `<span class="mk-text-black mk-font-500 mk-pt-[10px] mk-pb-[20px] mk-text-[12px] mk-leading-[1.3] mk-absolute mk-top-[60px]">
+            Arrival at ${air_code},${terminal}, ${date}
+            </span>`;
+            document.querySelector('ul#airport-arr__results').innerHTML = getFieldDetails;
+            localStorage.setItem('Terminal', terminal);
+            const airport_terminal = localStorage.getItem('Terminal');
+            const get_terminal = `Terminal, ${airport_terminal}`;
+            const flightNumber = document.getElementById('my-flight-details').value;
+            
+            if(!airport_terminal){
+                console.warn("No terminal found for", flightNumber);
+              return;
+            }
 
                 if(airport_terminal){
                   console.log('second query is made here');
                   
-                   fetch(`wp-json/quote/v1/address-search?search_string=${encodeURIComponent(get_terminal)}`, options).then( res =>{
+                  fetch(`wp-json/quote/v1/address-search?search_string=${encodeURIComponent(get_terminal)}`, options).then( res =>{
                     if(res.message = "ok" ){
                       console.log("SUCCESS");
                       const data = res.json(); 
@@ -1525,6 +1618,23 @@ function getCourierDropOffApi(currentword) {
         });
     }
 
+
+    function removeChildAirportArrivalData(){
+        document.querySelector('body').addEventListener("click", function(){
+            removeChildAirportArrivalDropDown(); 
+        });
+    }
+
+    function removeChildAirportArrivalDropDown(){
+      const listItems = document.querySelector('ul#address-search-airport-arrival__results');
+        while(listItems.hasChildNodes()){
+            listItems.removeChild(listItems.firstChild);
+            document.querySelector('ul#address-search-airport-arrival__results').style.display = 'none';
+        }   
+
+    }
+    
+
     function removeChildDataDrop() {
     const listings = document.getElementById('address-search-dropoff__results');
     while(listings.hasChildNodes()){
@@ -1541,6 +1651,22 @@ function getCourierDropOffApi(currentword) {
       }
     }
 
+    function clearLocalStorage(){
+       localStorage.removeItem("Car Dropoff");
+        localStorage.removeItem("Drop Postcode");
+        localStorage.removeItem("Drop Street");
+        localStorage.removeItem("Date Time");
+        localStorage.removeItem("dropoff_address");
+        localStorage.removeItem("Street");
+        localStorage.removeItem("Postcode");
+        localStorage.removeItem("Airport Dropoff");
+        localStorage.removeItem("pickup_address");
+        localStorage.removeItem("Price");
+        localStorage.removeItem("Terminal");
+        localStorage.removeItem("flight_number");
+    }
+
+
    
   // Toggle widget when CTA is clicked
   document.querySelectorAll(".quote-cta").forEach((cta) => {
@@ -1555,18 +1681,7 @@ function getCourierDropOffApi(currentword) {
 
       if (widget.classList.contains("mk-hidden")) {
         showWidget(cta);
-        localStorage.removeItem("Car Dropoff");
-        localStorage.removeItem("Drop Postcode");
-        localStorage.removeItem("Drop Street");
-        localStorage.removeItem("Date Time");
-        localStorage.removeItem("dropoff_address");
-        localStorage.removeItem("Street");
-        localStorage.removeItem("Postcode");
-        localStorage.removeItem("Airport Dropoff");
-        localStorage.removeItem("pickup_address");
-        localStorage.removeItem("Price");
-        localStorage.removeItem("Terminal");
-        localStorage.removeItem("flight_number");
+        clearLocalStorage();
         ctabtn.classList.add('second-state');
         document.getElementsByClassName('second-state');
         ctabtn.innerHTML = `Enter Details 
@@ -1790,6 +1905,8 @@ document.addEventListener("click", (e) => {
       localStorage.removeItem("Postcode");
       localStorage.removeItem("Airport Dropoff");
       localStorage.removeItem("pickup_address");
+      localStorage.removeItem("Arrival Airport Postcode");
+      localStorage.removeItem("Arrival Airport Street");
 
     }, 50);
     
@@ -1915,6 +2032,7 @@ async function handleQuoteClick( button, tab, panel ) {
   console.log("Panel context:", panel?.id);
   const errorMessage = document.getElementById('display_errors');
   const errorMessage2 = document.getElementById('display_errors_drop'); 
+  const errorMessageDateField = document.getElementById('display_errors_date_widget');
 
 
   const searchbar = document.getElementById('myInput').value.trim();
@@ -1924,7 +2042,9 @@ async function handleQuoteClick( button, tab, panel ) {
           const searchbar = document.getElementById('myInput').value.trim();
           const searchBarDrpOff = document.getElementById('myInputDropOff').value.trim();
           const pickupAddCont = document.getElementById('pickup-container');
+          const dateContainer = document.getElementById('date-container');
           const dropoffCont = document.getElementById('dropoff-container');
+          const dateForm = document.getElementById('open-calendar').value;
           // your validation logic here
         if( !searchbar  ){ 
           errorMessage.textContent = 'Please enter a pick up address';
@@ -1936,6 +2056,11 @@ async function handleQuoteClick( button, tab, panel ) {
           errorMessage2.textContent = 'Please enter a drop off address';
           dropoffCont.style.borderBottomColor = 'red';
         } 
+
+        if ( !dateForm ){
+          errorMessageDateField.textContent = 'Date is required';
+          dateContainer.style.borderBottomColor = 'red';
+        }
           
         if(searchbar && searchBarDrpOff){
           getPrice(getPayload(), button);
@@ -1962,6 +2087,9 @@ async function handleQuoteClick( button, tab, panel ) {
           const flightDropoffContainer = document.getElementById('flightdropoff-container');
           const flightNumberContainer = document.getElementById('flightnumber-container');
           const flightInput = document.getElementById('my-flight-details').value.trim();
+          const arrivalAirportForm = document.getElementById("arrivalAirport").value.trim();
+          const dateContainer = document.getElementById('date-container');
+          const dateForm = document.getElementById('open-calendar').value;
           console.log(flightInput);
           const errorMessage3 = document.getElementById('display_errors_fl');
           if(!flightInput){
@@ -1979,8 +2107,13 @@ async function handleQuoteClick( button, tab, panel ) {
             errorMessage.textContent = '';
             flightDropoffContainer.style.borderBottomColor = '#B4B4B4';
           }
+
+          if ( !dateForm ){
+            errorMessageDateField.textContent = 'Date is required';
+            dateContainer.style.borderBottomColor = 'red';
+          }
           
-          if(dropInputForm && flightInput){
+          if(dropInputForm && flightInput || arrivalAirportForm){
             console.log('on tab-1');
              getPrice(getPayload(), button);
           }
@@ -1995,7 +2128,8 @@ async function handleQuoteClick( button, tab, panel ) {
         }
 
         if(tab?.id == 'tab-2'){
-    
+          const dateContainer = document.getElementById('date-container');
+          const dateForm = document.getElementById('open-calendar').value;
           const a = document.getElementById('myInputDropOffCourier').value.trim();
           const b = document.getElementById('myInputCourier').value.trim();
           const c = document.getElementById('courierpickup-container');
@@ -2013,10 +2147,15 @@ async function handleQuoteClick( button, tab, panel ) {
             c.style.borderBottomColor = 'red';
           }
 
+          if ( !dateForm ){
+            errorMessageDateField.textContent = 'Date is required';
+            dateContainer.style.borderBottomColor = 'red';
+          }
+
           if(a && b){
             button.textContent = "GETTING YOUR QUOTE...";
             try {
-              const response = await fetch('/dev.addisonlee.com/wp-json/quote/v1/courier-service', {
+              const response = await fetch('wp-json/quote/v1/courier-service', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
@@ -2085,7 +2224,7 @@ async function handleQuoteClick( button, tab, panel ) {
             console.log('we have the quote generated for courier flow');
             quoteGenerated = true;
             } else {
-              redirectParams();
+              //redirectParams();
             }
 
             
@@ -2133,7 +2272,7 @@ function applyFlightToggle(unknownChecked) {
   
   // Arrival date (button + hidden field)
   const arrivalRow    = document.getElementById('arrivalRow');
-  const arrivalHidden = document.getElementById('arrivalDateTime')
+  const arrivalHidden = document.getElementById('arrivalDateTime');
 
 
 

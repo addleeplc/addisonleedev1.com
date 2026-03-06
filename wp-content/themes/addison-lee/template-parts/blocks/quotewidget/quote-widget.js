@@ -48,7 +48,7 @@
               
           </div>
                 <div class="qqw-wrapper mk-flex mk-w-[100%]">
-                  <a href="#" class="get-a-quote mk-w-[100%]">GET QUOTE</a>
+                  <a href="#" class="get-a-quote mk-w-[100%] mk-h-[100%] sm-max:mk-h-auto">GET QUOTE</a>
                   <span id="sendCodeSpinner" class="spinner-3"></span>
                 </div>
           </div>
@@ -107,7 +107,7 @@
                 </div>
             </div>
             <div class="qqw-wrapper mk-flex mk-w-[100%]">
-                  <a href="#" class="get-a-quote mk-w-[100%]">GET QUOTE</a>
+                  <a href="#" class="get-a-quote mk-w-[100%] mk-h-[100%] sm-max:mk-h-auto">GET QUOTE</a>
                   <span id="sendCodeSpinner" class="spinner-3"></span>
             </div>
         </div>
@@ -148,7 +148,7 @@
                 </div>
                 </div>
                 <div class="qqw-wrapper mk-flex mk-w-[100%]">
-                  <a href="#" class="get-a-quote mk-w-[100%]">GET QUOTE</a>
+                  <a href="#" class="get-a-quote mk-w-[100%] mk-h-[100%] sm-max:mk-h-auto">GET QUOTE</a>
                   <span id="sendCodeSpinner" class="spinner-3"></span>
                 </div>
             </div>
@@ -234,7 +234,7 @@
       </div>
       <button class="ghost" id="clear" style="visibility:hidden;">Clear</button>
 	  
-	  <button class="btn" id="asap-btn">ASAP</button>
+	  <button class="mk-px-[16px] mk-pl-[12px] mk-pr-[16px] mk-bg-transparent mk-border-[1px] mk-border-solid mk-border-[#1A1A1A]" id="asap-btn">ASAP</button>
       <button class="primary" id="confirm">Save</button>
     </div>
 
@@ -919,7 +919,7 @@ function openCalendarModal(triggerBtnId, calendarHtml, hiddenTargetSelector) {
 
     // Insert calendar HTML
     modal.innerHTML = `
-      <div class="mk-max-w-[436px] mk-relative mk-bg-white mk-rounded-lg mk-shadow-lg mk-w-[min(680px,90vw)] mk-p-[20px]">
+      <div class="mk-max-w-[436px] mk-relative mk-bg-white mk-rounded-lg mk-shadow-lg mk-w-[min(680px,90vw)] mk-p-[50px]">
         <button id="close-calendar" class="mk-absolute mk-top-2 mk-right-2 mk-text-slate-500" aria-label="Close">✕</button>
         ${calendarHtml}
       </div>

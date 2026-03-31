@@ -867,7 +867,6 @@ function getPickUpApi( currentword,inp,rlist,spnnr ) {
       return;
     }
 
-  
 
     const payload = {
       id: pafid,
@@ -878,7 +877,7 @@ function getPickUpApi( currentword,inp,rlist,spnnr ) {
     console.log('refined payload', payload);
 
     try {
-      const res = await fetch('/dev.addisonlee.com/wp-json/quote/v1/refine', {
+      const res = await fetch('wp-json/quote/v1/refine', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -928,16 +927,16 @@ function getPickUpApi( currentword,inp,rlist,spnnr ) {
         refined: true
     };
 
-    console.log("DROP-OFF REFINE PAYLOAD:", payload);
+    //console.log("DROP-OFF REFINE PAYLOAD:", payload);
 
-    const res = await fetch('/dev.addisonlee.com/wp-json/quote/v1/refine', {
+    const res = await fetch('wp-json/quote/v1/refine', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     });
 
     const refined = await res.json();
-    console.log("Dropoff refined result:", refined);
+    //console.log("Dropoff refined result:", refined);
 
     // ✅ Save Google ID + Lat/Lng after refine
     localStorage.setItem("dropoff_google_id", refined.id);
@@ -945,7 +944,7 @@ function getPickUpApi( currentword,inp,rlist,spnnr ) {
     localStorage.setItem("dropoff_lng_refined", refined?.address?.data?.location?.lon);
 
     return refined;
-}
+  }
 
  
 
@@ -969,35 +968,35 @@ function getPickUpApi( currentword,inp,rlist,spnnr ) {
        
     if (flightnumber.length < 5) {
       errorMessage.textContent = 'Enter both Flight number and Arrival date';
-        }
-          
-            if (flightnumber.length >= 5 ) {                  
-      if (dateFormatted == "") {
-        errorMessage.textContent = 'Enter both Flight number and Arrival date';
-        }
-        else{
-      errorMessage.textContent  = '';       
-      const flightWidgetCalendar = dateFormatted.split('T')[0];
-              getFlightDetails(flightnumber, flightWidgetCalendar);
-              console.log("Passed the flight date", flightnumber, flightWidgetCalendar);   
-            }
     }
           
-      }) 
+    if (flightnumber.length >= 5 ) {                  
+      if (dateFormatted == "") {
+        errorMessage.textContent = 'Enter both Flight number and Arrival date';
+      }
+      else{
+      errorMessage.textContent  = '';       
+      const flightWidgetCalendar = dateFormatted.split('T')[0];
+      getFlightDetails(flightnumber, flightWidgetCalendar);
+      console.log("Passed the flight date", flightnumber, flightWidgetCalendar);   
+      }
+    }
+          
+    }) 
 
     } 
 
-  if(arrivalDateTime){
-        arrivalDateTime.addEventListener('change', function(){
-    document.querySelector('ul#airport-arr__results').innerHTML = '';
-    const errorMessage = document.getElementById('display_errors_fl');
+    if(arrivalDateTime){
+      arrivalDateTime.addEventListener('change', function(){
+      document.querySelector('ul#airport-arr__results').innerHTML = '';
+      const errorMessage = document.getElementById('display_errors_fl');
       
-        const dateFormatted = document.getElementById('arrivalDateTime').value;
-    const flightnumber = document.getElementById('my-flight-details').value;
+      const dateFormatted = document.getElementById('arrivalDateTime').value;
+      const flightnumber = document.getElementById('my-flight-details').value;
     
     if (flightnumber.length < 5) {
       errorMessage.textContent = 'Enter both Flight number and Arrival date';
-      }     
+    }     
     if (flightnumber.length >= 5 ) {
       if (dateFormatted == "") {
         errorMessage.textContent = 'Enter both Flight number and Arrival date';
@@ -1012,9 +1011,6 @@ function getPickUpApi( currentword,inp,rlist,spnnr ) {
       }) 
 
     } 
-
-  
-
 
     showPanel(panel);
     newTab.focus();
@@ -1148,6 +1144,12 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
       clearLocalStorage();
   });
 
+
+  
+
+
+
+
         function getPrice(button, btn = null) {
 
           const quoteBtn = btn || document.querySelector(".get-a-quote.animate, .get-a-quote");
@@ -1174,7 +1176,7 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
           })
           .then(response => response.json())
           .then((data) => {
-
+              console.log('Sending payload:', data);
               const dataStore = data.products;
               console.log('datastore is stored here', dataStore);
 
@@ -1449,81 +1451,6 @@ document.addEventListener("click", (e) => {
   handleQuoteClick(btn, activeTab, activePanel);
 });
 
-function getPayload() {
-  const get_location_lat = localStorage.getItem('Refined Lat');
-  const get_location_loc = localStorage.getItem('Refined Loc');
-
-  const get_drop_location_lat = localStorage.getItem('dropoff_lat_refined');
-  const get_drop_location_lon = localStorage.getItem('dropoff_lng_refined');
-
-  const raw = localStorage.getItem('Date Time');
-  
-// Split date + time
-const [dateStr, timeStr] = raw.split(" - "); 
-// dateStr = "27 March 2026"
-// timeStr = "14:26"
-
-// Build a real Date object
-const date = new Date(`${dateStr} ${timeStr}`);
-
-// Format YYYY-MM-DD
-const yyyy = date.getFullYear();
-const mm = String(date.getMonth() + 1).padStart(2, "0");
-const dd = String(date.getDate()).padStart(2, "0");
-
-// Format HH:MM
-const [hh, min] = timeStr.split(":");
-
-// Final ISO style output
-const formatted = `${yyyy}-${mm}-${dd}T${hh}:${min}:00`;
-
-  
-
-  console.log('date converted from localstorage', formatted);
-  
-
-  return {
-      "booking": {
-          "asap": localStorage.getItem('ASAP'),
-          "date": formatted,
-          "payment_type": "credit_card",
-          "stops": [
-              {
-                  "type": "ADDRESS",
-                  "formatted_address": localStorage.getItem('pickup_address'),
-                      "location": {
-                      "lat": get_location_lat,
-                      "lon": get_location_loc
-                      },
-                  "address_components": {
-                  "postal_code": localStorage.getItem('Postcode'),
-                  "street_name": localStorage.getItem('Street'),
-                  "country": "GB",
-                  "city": "London"
-                  }
-              },
-              {
-                  "type": "ADDRESS",
-                  "formatted_address": localStorage.getItem('Car Dropoff'),
-                  "location": {
-                  "lat": get_drop_location_lat,
-                  "lon": get_drop_location_lon
-                  },
-                  "address_components": {
-                  "postal_code": localStorage.getItem('Drop Postcode'),
-                  "street_name": localStorage.getItem('Drop Street'),
-                  "country": "GB",
-                  "city": "London"
-                  }
-              }
-          ],
-          "as_directed": false,
-          "destination_unknown": false,
-          "wait_and_return": false
-          
-          }
-      }
-}
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -1784,7 +1711,7 @@ async function handleQuoteClick( button, tab, panel ) {
 
           
         if(searchbar && searchBarDrpOff){
-          getPrice(getPayload(), button);
+          getPrice(getPayload(payload), button);
         }
 
         if(!quoteGenerated){
@@ -2062,6 +1989,89 @@ function initTab1FlightToggleOnce() {
   // Apply initial state if checkbox already present
   const cb = document.getElementById('unknownFlightNumber');
   if (cb) toggleFlightRows(cb.checked);
+}
+
+
+function getPayload() {
+  const get_location_lat = localStorage.getItem('Refined Lat');
+  const get_location_loc = localStorage.getItem('Refined Loc');
+  const get_pick_lon = localStorage.getItem('Pick Longitude');
+  const get_lick_lat = localStorage.getItem('Pick Latitude');
+
+
+  const get_drop_location_lat = localStorage.getItem('dropoff_lat_refined');
+  const get_drop_location_lon = localStorage.getItem('dropoff_lng_refined');
+  const get_drop_lon = localStorage.getItem('Drop Longitude');
+  const get_drop_lat = localStorage.getItem('Drop Latitude');
+
+
+
+  const raw = localStorage.getItem('Date Time');
+  
+  // Split date + time
+  const [dateStr, timeStr] = raw.split(" - "); 
+  // dateStr = "27 March 2026"
+  // timeStr = "14:26"
+
+  // Build a real Date object
+  const date = new Date(`${dateStr} ${timeStr}`);
+
+  // Format YYYY-MM-DD
+  const yyyy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2, "0");
+  const dd = String(date.getDate()).padStart(2, "0");
+
+  // Format HH:MM
+  const [hh, min] = timeStr.split(":");
+
+  // Final ISO style output
+  const formatted = `${yyyy}-${mm}-${dd}T${hh}:${min}:00`;
+
+  console.log('date converted from localstorage', formatted);
+    
+    return {
+      booking: 
+      {
+            asap: localStorage.getItem('ASAP'),
+            date: formatted,
+            payment_type: "credit_card",
+            stops: [
+                {
+                    type: "ADDRESS",
+                    formatted_address: localStorage.getItem('pickup_address'),
+                      location: {
+                      lat: get_location_lat ? get_location_lat : get_lick_lat,
+                      lon: get_location_loc ? get_location_loc : get_pick_lon
+                      },
+                    address_components: {
+                    postal_code: localStorage.getItem('Postcode'),
+                    street_name: localStorage.getItem('Street'),
+                    country: "GB",
+                    city: "London"
+                    }
+                },
+                {
+                    type: "ADDRESS",
+                    formatted_address: localStorage.getItem('Car Dropoff'),
+                    location: {
+                      lat: get_drop_location_lat ? get_drop_location_lat : get_drop_lat,
+                      lon: get_drop_location_lon ? get_drop_location_lon : get_drop_lon
+                    },
+                    address_components: {
+                    postal_code: localStorage.getItem('Drop Postcode'),
+                    street_name: localStorage.getItem('Drop Street'),
+                    country: "GB",
+                    city: "London"
+                    }
+                }
+            ],
+            as_directed: false,
+            destination_unknown: false,
+            wait_and_return: false
+      }
+
+    }
+  
 }
 
 

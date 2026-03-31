@@ -1,4 +1,3 @@
-// quote-widget.js
 (function () {
   const widget = document.getElementById("quote-widget");
   const tablist = document.getElementById("tablist");
@@ -12,7 +11,7 @@
    * ---------------------------- */
 
   const contentMap = {
-    "tab-0": `<div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[63px] mk-p-[10px] mk-mb-[1px]">
+    "tab-0": `<div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[29px] mk-p-[10px] mk-mb-[1px]">
             <div id="pickup-container" class="mk-flex mk-items-center  mk-pb-2 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="pickup-pin sm-max-xs:mk-w-[41px] sm-max-xs:mk-h-[41px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
                   <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>PICK UP</label>
@@ -58,14 +57,14 @@
 <div class="flight-number-checkbox"><label class="checkbox" for="unknownFlightNumber">
 <div class="mk-flex mk-item-center mk-justify-end"><input type="checkbox" id="unknownFlightNumber" class="flight-checkbox " /><span class="mk-text-black">I don't know my flight number</span></label></div>
         </div>
-    <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[63px] mk-p-[10px] mk-mb-[1px]">
+    <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[29px] mk-p-[10px] mk-mb-[1px]">
         <div id="flightnumber-container" class="mk-flex mk-items-center mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
         <div id="flightOriginalRow">
           <div class="mk-flex">
             <span class="airport-pickup-container mk-w-[90px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
             <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>FLIGHT NUMBER</label>
             <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%]" id="my-flight-details" type="text" maxlength="100" name="flight-form" placeholder="Enter flight number">
-			<span id="sendCodeSpinner1" class="spinner"></span>
+      <span id="sendCodeSpinner1" class="spinner"></span>
             <div id="display_errors_fl"></div>
             <ul id="airport-arr__results"></ul>
           </div>
@@ -114,12 +113,12 @@
       </div>
 
     `,
-    "tab-2": `<div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[63px] mk-p-[10px] mk-mb-[1px]">
+    "tab-2": `<div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[29px] mk-p-[10px] mk-mb-[1px]">
             <div id="courierpickup-container" class="mk-flex mk-items-center mk-pb-2 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="pickup-pin mk-w-[90px] mk-mr-[20px] sm-max:mk-mr-[-20px]"></span>
                 <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>PICK UP</label>
                   <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputCourier" type="text" maxlength="100" name="courier-form" placeholder="Enter location">
-				  <span id="sendCodeSpinner4" class="spinner"></span>
+          <span id="sendCodeSpinner4" class="spinner"></span>
                   <div id="display_errors_pick_courier"></div>
                   <ul id="courier-address-search__results"></ul>
                 </div>
@@ -171,26 +170,29 @@
 
   /** Panels */
   function showPanel(panel) {
-    panel.classList.remove("mk-hidden");
+    //panel.classList.remove("mk-hidden");
+    panel.classList.add("active-panel");
     requestAnimationFrame(() => {
-    panel.classList.add("mk-transition", "mk-duration-300");
-    panel.classList.remove("mk-opacity-0");
-    panel.classList.add("mk-opacity-100");
+    //panel.classList.add("mk-transition", "mk-duration-300");
+    //panel.classList.remove("mk-opacity-0");
+    //panel.classList.add("mk-opacity-100");
     panel.classList.add("active");
     });
     
   }
 
   function hidePanel(panel) {
-    panel.classList.add("mk-transition", "mk-duration-300");
-    panel.classList.remove("mk-opacity-100");
+    //panel.classList.add("mk-transition", "mk-duration-300");
+    //panel.classList.remove("mk-opacity-100");
     panel.classList.remove("active");
-    panel.classList.add("mk-opacity-0");
+    panel.classList.remove("active-panel");
+    //panel.classList.add("mk-opacity-0");
     panel.addEventListener(
       "transitionend",
       () => {
         if (panel.classList.contains("mk-opacity-0")) {
-          panel.classList.add("mk-hidden");
+          //panel.classList.add("mk-hidden");
+          
         }
       },
       { once: true }
@@ -220,7 +222,7 @@
       <input type="number" id="minute" min="0" max="59" value="00" aria-label="Minute (0-59)">
     </div>
 
-	<div class="time-area" aria-label="Time selector" style="visibility:hidden;">
+  <div class="time-area" aria-label="Time selector" style="visibility:hidden;">
       <select id="tz-select" aria-label="Timezone short name" title="Timezone (local or UTC)">
         <option value="local">Local</option>
         <option value="utc">UTC</option>
@@ -233,8 +235,8 @@
         <button class="btn" id="today-btn">Today</button>
       </div>
       <button class="ghost" id="clear" style="visibility:hidden;">Clear</button>
-	  
-	  <button class="mk-px-[16px] mk-pl-[12px] mk-pr-[16px] mk-bg-transparent mk-border-[1px] mk-border-solid mk-border-[#1A1A1A]" id="asap-btn">ASAP</button>
+    
+    <button class="mk-px-[16px] mk-pl-[12px] mk-pr-[16px] mk-bg-transparent mk-border-[1px] mk-border-solid mk-border-[#1A1A1A]" id="asap-btn">ASAP</button>
       <button class="primary" id="confirm">Save</button>
     </div>
 
@@ -266,8 +268,11 @@ function initCalendarWidget(root) {
 
   function init() {
     const now = new Date();
+  now.setMinutes(now.getMinutes() + 15);
     viewYear = now.getFullYear();
     viewMonth = now.getMonth();
+  root.querySelector('#hour').value = now.getHours();
+  root.querySelector('#minute').value = now.getMinutes();
     buildWeekdays();
     renderCalendar();
 
@@ -283,7 +288,7 @@ function initCalendarWidget(root) {
     });
 
     confirmBtn.addEventListener('click', onConfirm);
-	asapBtn.addEventListener('click', onASAP);
+  asapBtn.addEventListener('click', onASAP);
     clearBtn.addEventListener('click', onClear);
     hourInput.addEventListener('change', onTimeChange);
     minuteInput.addEventListener('change', onTimeChange);
@@ -494,19 +499,24 @@ function initCalendarWidget(root) {
     const formattedTime = `${hours}:${mins}`;
     
     if(getDate){
-      updatedate.innerHTML = `${formatIsoDate(getDate)} - ${formattedTime}`;
+      //updatedate.innerHTML = `${formatIsoDate(getDate)} - ${formattedTime}`;
+        
+    localStorage.setItem('Date Time', `${formatIsoDate(getDate)} - ${formattedTime}`);
+    localStorage.setItem('ASAP', "FALSE");
     }
   }
   
   function onASAP() {
-	  thebutton = document.getElementById('open-calendar');
-	  thebutton.textContent = "ASAP";
-	  theinput = document.getElementById('journeyDateTime');
-	  theinput.value = "";
-	  thebutton1 = document.getElementById('courier-calendar');
-	  thebutton1.textContent = "ASAP";
-	  theinput1 = document.getElementById('courierDateTime');
-	  theinput1.value = "";	  
+    thebutton = document.getElementById('open-calendar');
+    thebutton.textContent = "ASAP";
+    theinput = document.getElementById('journeyDateTime');
+    theinput.value = "";
+    thebutton1 = document.getElementById('courier-calendar');
+    thebutton1.textContent = "ASAP";
+    theinput1 = document.getElementById('courierDateTime');
+    theinput1.value = "";   
+    localStorage.setItem('Date Time', "");
+    localStorage.setItem('ASAP', "TRUE");
   }
 
   function onClear() {
@@ -578,39 +588,43 @@ function initCalendarWidget(root) {
 
     // logic for pick up input
     fetchAddressRenderResults("myInput","address-search__results","sendCodeSpinner","display_errors","ul#address-search__results");
-	// logic for dropoff input
+  // logic for dropoff input
     fetchAddressRenderResults("myInputDropOff","address-search-dropoff__results","sendCodeSpinner0","display_errors_drop","ul#address-search-dropoff__results");
-	// logic for Pickup Airport input
+  // logic for Pickup Airport input
     fetchAddressRenderResults("arrivalAirport","address-search-airport-arrival__results","sendCodeSpinner2","display_errors_air_arr","ul#address-search-airport-arrival__results");
-	// logic for Dropoff Airport input
+  // logic for Dropoff Airport input
     fetchAddressRenderResults("myInputDropOffArr","address-search-airport-dropoff__results","sendCodeSpinner3","display_errors_airdrop","ul#address-search-airport-dropoff__results");
-	// logic for Pickup Courier input
+  // logic for Pickup Courier input
     fetchAddressRenderResults("myInputCourier","courier-address-search__results","sendCodeSpinner4","display_errors_pick_courier","ul#courier-address-search__results");
-	// logic for Dropoff Courier input
+  // logic for Dropoff Courier input
     fetchAddressRenderResults("myInputDropOffCourier","address-search-courier-dropoff__results","sendCodeSpinner5","display_errors_couriers","ul#address-search-courier-dropoff__results");
 
-function fetchAddressRenderResults(inp,rlist,spnnr,derr,ulsreslt){	
-	const getMyInput = document.getElementById(inp);
+function fetchAddressRenderResults(inp,rlist,spnnr,derr,ulsreslt){  
+  const getMyInput = document.getElementById(inp);
+  
     if (getMyInput) {
-		getMyInput.addEventListener("keyup",  debounce((e) => {
+    // Switch Autocomplete off
+    getMyInput.setAttribute("autocomplete","off");
+  
+    getMyInput.addEventListener("keyup",  debounce((e) => {
       e.preventDefault();
       const currentword = getMyInput.value.trim().toLowerCase();
-			const buttonSpinner = document.getElementById(spnnr);
-	  if (currentword.length >= 0) {
-				const errorMessage = document.getElementById(derr);
-		errorMessage.textContent = '';
-	  }
+      const buttonSpinner = document.getElementById(spnnr);
+    if (currentword.length >= 0) {
+        const errorMessage = document.getElementById(derr);
+    errorMessage.textContent = '';
+    }
       if (currentword.length >= 4) {
         buttonSpinner.style.display = 'block';
 
         try {
-					const response =  getPickUpApi(currentword,inp,rlist,spnnr); // Make sure this returns an array
-					//console.log(response);
+          const response =  getPickUpApi(currentword,inp,rlist,spnnr); // Make sure this returns an array
+          //console.log(response);
           if (!Array.isArray(response)) {
             console.error("API response is not a valid array:");
             return;
           }
-					removeChildDataAll(ulsreslt);
+          removeChildDataAll(ulsreslt);
 
           const filtered = response
             .filter(item => {
@@ -635,15 +649,15 @@ function fetchAddressRenderResults(inp,rlist,spnnr,derr,ulsreslt){
               return isBExact - isAExact; // exact matches first
             });
 
-					displayFilteredResults(filtered,rlist);
+          displayFilteredResults(filtered,rlist);
         } catch (error) {
           console.error("Error fetching or filtering addresses:", error);
         } 
       } else {
-				removeChildDataAll(ulsreslt);
+        removeChildDataAll(ulsreslt);
       }
-		},300));
-	  }	
+    },300));
+    } 
   }
   
 function debounce(func, delay = 300) {
@@ -684,21 +698,21 @@ function filterAndSort(response, currentword) {
 }
 
 function removeChildDataAll(qs){
-	document.querySelector('body').addEventListener("click", function(){
-		const listItems = document.querySelector(qs);
+  document.querySelector('body').addEventListener("click", function(){
+    const listItems = document.querySelector(qs);
         while(listItems.hasChildNodes()){
             listItems.removeChild(listItems.firstChild);
             document.querySelector(qs).style.display = 'none';
         } 
-	})
+  })
 }
-	
+  
 function displayFilteredResults(filtered,rlist) {
-	const resultsList = document.getElementById(rlist);
+  const resultsList = document.getElementById(rlist);
     resultsList.innerHTML = "";
-	console.log(" resultsList >> ");
-	resultsList.querySelectorAll("li").forEach(li => li.remove());
-	console.log(filtered.length);
+  console.log(" resultsList >> ");
+  resultsList.querySelectorAll("li").forEach(li => li.remove());
+  console.log(filtered.length);
 
     if (filtered.length === 0) {
       resultsList.innerHTML = "<li>No matching addresses found.</li>";
@@ -714,181 +728,287 @@ function displayFilteredResults(filtered,rlist) {
 
 // get pickup api
 function getPickUpApi( currentword,inp,rlist,spnnr ) {
-	const apiFetched = currentword;
-	const sr = document.getElementById(rlist); 
-	sr.querySelectorAll("li").forEach(li => li.remove());
-	
-	fetch(`wp-json/quote/v1/address-search?search_string=${apiFetched}`)
-	.then(res => {    
-		if(!res.ok){
-			throw new Error(`HTTP error! Status: ${res.status}`);
-		}     
-		else if(res.status = 403){
-			console.log('<div>Error 403! relook at you domain</div>')
-		}
-		else if(res.status = 429){
-			console.log("Error: Too many requests")
-		}
-		else {
-			console.log("FAILED");
-		}
-		return res.json();
-		//console.log(res.json());
-	}).then((data) => {
-		const buttonSpinner = document.getElementById(spnnr);
-		buttonSpinner.style.display = 'none';
-		const dataStore = data.addresses;
-		console.log('data sits in object',dataStore);
-		dataStore.map(function(item){
-			if(inp == "arrivalAirport"){
-				const type = `${item.details.type}`;
-			
-				if(type == "airport"){
-					const q = document.getElementById(rlist);
-					const l = document.createElement('li'); 
-					const b = document.createElement('button'); 
-					const e = q.appendChild(l);
-					const d = l.appendChild(b);
-					l.setAttribute("class", "address-search__item");
-					b.setAttribute("id", "address-search__result-btn");
-					b.setAttribute("class", "address-search__result-btn__class");
-					const p = `${item.data.formatted_address}`;
-					const id = `${item.id}`; 
-					const pcode = `${item.data.address_components.postcode}`;
-					const street = `${item.data.address_components.street}`;
-					 coordlat = `${item.data.location.lat}`;
-					 coordlong = `${item.data.location.lon}`;
+  const apiFetched = currentword;
+  const sr = document.getElementById(rlist); 
+  sr.querySelectorAll("li").forEach(li => li.remove());
+  
+  fetch(`wp-json/quote/v1/address-search?search_string=${apiFetched}`)
+  .then(res => {    
+    if(!res.ok){
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }     
+    else if(res.status = 403){
+      console.log('<div>Error 403! relook at you domain</div>')
+    }
+    else if(res.status = 429){
+      console.log("Error: Too many requests")
+    }
+    else {
+      console.log("FAILED");
+    }
+    return res.json();
+    //console.log(res.json());
+  }).then((data) => {
+    const buttonSpinner = document.getElementById(spnnr);
+    buttonSpinner.style.display = 'none';
+    const dataStore = data.addresses;
+    console.log('data sits in object',dataStore);
+    dataStore.map(function(item){
+      if(inp == "arrivalAirport"){
+        const type = `${item.details.type}`;
+      
+        if(type == "airport"){
+          const q = document.getElementById(rlist);
+          const l = document.createElement('li'); 
+          const b = document.createElement('button'); 
+          const e = q.appendChild(l);
+          const d = l.appendChild(b);
+          l.setAttribute("class", "address-search__item");
+          b.setAttribute("id", "address-search__result-btn");
+          b.setAttribute("class", "address-search__result-btn__class");
+          const p = `${item.data.formatted_address}`;
+          const id = `${item.id}`; 
+          const pcode = `${item.data.address_components.postcode}`;
+          const street = `${item.data.address_components.street}`;
+          coordlat  = item?.data?.location?.lat ? `${item.data.location.lat}` : "-";
+          coordlong = item?.data?.location?.lon ? `${item.data.location.lon}` : "-";          
+          pafid = item?.id ? `${item.id}` : "null";
+          b.setAttribute('data-paf', pafid);
+          b.setAttribute('data-id', `${item.data.formatted_address}`);
+          d.innerHTML = p;
+          document.querySelector('ul#'+rlist).style.display = 'block';          
+          //console.log('coming from these sides',p, 'postcode:',pcode,'street:', street);
+          
+          if(document.getElementsByClassName('address-search__item')){
+            const t = document.querySelector('#'+rlist);
+            t.addEventListener('click', handleClick, false);
+          }
+        }
+      } else {
+        const q = document.getElementById(rlist);
+        const l = document.createElement('li'); 
+        const b = document.createElement('button'); 
+        const e = q.appendChild(l);
+        const d = l.appendChild(b);
+        l.setAttribute("class", "address-search__item");
+        b.setAttribute("id", "address-search__result-btn");
+        b.setAttribute("class", "address-search__result-btn__class");
+        const p = `${item.data.formatted_address}`;
+        const pcode = `${item.data.address_components.postcode}`;
+        const street = `${item.data.address_components.street}`;
+        pafid = item?.id ? `${item.id}` : "null";
+        b.setAttribute('data-paf', pafid);
+        coordlat  = item?.data?.location?.lat ? `${item.data.location.lat}` : "-";
+        coordlong = item?.data?.location?.lon ? `${item.data.location.lon}` : "-";
 
-					b.setAttribute('data-id', `${item.data.formatted_address}`);
-					d.innerHTML = p;
-					document.querySelector('ul#'+rlist).style.display = 'block';
-					//console.log('coming from these sides',p, 'postcode:',pcode,'street:', street);
-					
-					if(document.getElementsByClassName('address-search__item')){
-						//console.log('so check it out');
-						const t = document.querySelector('#'+rlist);
-						t.addEventListener('click', handleClick, false);
-					}
-				}
-			}else{
-				const q = document.getElementById(rlist);
-				const l = document.createElement('li'); 
-				const b = document.createElement('button'); 
-				const e = q.appendChild(l);
-				const d = l.appendChild(b);
-				l.setAttribute("class", "address-search__item");
-				b.setAttribute("id", "address-search__result-btn");
-				b.setAttribute("class", "address-search__result-btn__class");
-				const p = `${item.data.formatted_address}`;
-				const id = `${item.id}`; 
-				const pcode = `${item.data.address_components.postcode}`;
-				const street = `${item.data.address_components.street}`;
-				 coordlat = `${item.data.location.lat}`;
-				 coordlong = `${item.data.location.lon}`;
+        b.setAttribute('data-id', `${item.data.formatted_address}`);
+        d.innerHTML = p;
+        document.querySelector('ul#'+rlist).style.display = 'block';
+        
+        
+        
+        if(document.getElementsByClassName('address-search__item')){
+          const t = document.querySelector('#'+rlist);
+          t.addEventListener('click', handleClick, false);
+        }
+      }
+      // button on click when data is loaded for pickup
+      function handleClick(e){
+        const myInputForm = document.getElementById(inp);
+        const { target: { dataset: {id} } } = e;
+        const pafId = e.target.dataset.paf;
+        const postcodeRegex = /\b[A-Z]{1,2}\d{1,2}[A-Z]?\s?\d[A-Z]{2}\b/i; // UK postcode example
+        const postcode = id.match(postcodeRegex)?.[0] || null;
 
-				b.setAttribute('data-id', `${item.data.formatted_address}`);
-				d.innerHTML = p;
-				document.querySelector('ul#'+rlist).style.display = 'block';
-				//console.log('coming from these sides',p, 'postcode:',pcode,'street:', street);
-				
-				if(document.getElementsByClassName('address-search__item')){
-					//console.log('so check it out');
-					const t = document.querySelector('#'+rlist);
-					t.addEventListener('click', handleClick, false);
-				}
-			}
-			// button on click when data is loaded for pickup
-			function handleClick(e){
-				const myInputForm = document.getElementById(inp);
-				const { target: { dataset: {id} } } = e;
-				const postcodeRegex = /\b[A-Z]{1,2}\d{1,2}[A-Z]?\s?\d[A-Z]{2}\b/i; // UK postcode example
-				const postcode = id.match(postcodeRegex)?.[0] || null;
-
-				// Assuming street is everything before the postcode
-				const street_selected = postcode ? id.split(postcode)[0].trim() : null;
-				//console.log(id, 'this is what is selected');
-				myInputForm.setAttribute('value',id);
-				myInputForm.value = id;
-				if(inp == "myInput" || inp == "arrivalAirport" || inp == "myInputCourier"){
-					pickup_address = localStorage.setItem("pickup_address", document.getElementById(inp).value);
-					localStorage.setItem('Postcode', postcode);
-					localStorage.setItem('Street', street_selected);					
+        // Assuming street is everything before the postcode
+        const street_selected = postcode ? id.split(postcode)[0].trim() : null;
+        myInputForm.setAttribute('value',id);
+        myInputForm.value = id;
+        document.querySelector('ul#'+rlist).style.display = 'none';
+        if(inp == "myInput" || inp == "arrivalAirport" || inp == "myInputCourier"){
+          pickup_address = localStorage.setItem("pickup_address", document.getElementById(inp).value);
+          localStorage.setItem('Postcode', postcode);
+          localStorage.setItem('Street', street_selected);          
                     localStorage.setItem('Pick Latitude', coordlat);
                     localStorage.setItem('Pick Longitude', coordlong);
-				}else if(inp == "myInputDropOff" || inp == "myInputDropOffArr" || inp == "myInputDropOffCourier"){
-					drop_address = localStorage.setItem("Car Dropoff", document.getElementById('myInputDropOff').value);        
-					localStorage.setItem('Drop Postcode', postcode);
-					localStorage.setItem('Drop Street', street_selected);					
+                    localStorage.setItem('pafid', pafId );
+
+                    // refine 
+                    refineFromStoredAddress();
+        } else if(inp == "myInputDropOff" || inp == "myInputDropOffArr" || inp == "myInputDropOffCourier"){
+          drop_address = localStorage.setItem("Car Dropoff", document.getElementById('myInputDropOff').value);        
+          localStorage.setItem('Drop Postcode', postcode);
+          localStorage.setItem('Drop Street', street_selected);         
                     localStorage.setItem('Drop Latitude', coordlat);
                     localStorage.setItem('Drop Longitude', coordlong);
-				}
-			}
-		});
+                    localStorage.setItem('dropoff_pafid', pafId );
 
-	}).catch(error => { console.log(error.message)})
+                    // refine 
+                    refineDropoffAddress();
+        }
+
+        
+      }
+
+      
+    });
+
+  }).catch(error => { console.log(error.message)})
 }
 
+  // refines location data on pickup
+
+  async function refineFromStoredAddress() {
+    const formatted = localStorage.getItem('pickup_address');
+    const pafid = localStorage.getItem('pafid');
+
+    if (!formatted) {
+      console.error('No pickup_address found in localStorage');
+      return;
+    }
+
+  
+
+    const payload = {
+      id: pafid,
+      data: { formatted_address: formatted },
+      refined: true
+    };
+
+    console.log('refined payload', payload);
+
+    try {
+      const res = await fetch('/dev.addisonlee.com/wp-json/quote/v1/refine', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then( res => {
+
+        if (!res.ok) {
+          return;
+        }
+
+      return res.json();
+      
+      }).then((data) => {
+        const loc = data?.address?.data?.location?.lon;
+        const lat = data?.address?.data?.location?.lat;
+
+        localStorage.setItem('Refined Loc', loc);
+        localStorage.setItem('Refined Lat', lat);
+
+
+      }).catch(err => {
+        console.log(err.message);
+      })  
+      
+
+    } catch (err) {
+      console.error("Refine error:", err);
+    }
+  }
+
+
+  // ends refine location data
+
+
+  // refine location data on drop off
+  async function refineDropoffAddress() {
+    const formatted = localStorage.getItem("Car Dropoff");
+    const pafId = localStorage.getItem("dropoff_pafid");
+
+    if (!formatted || !pafId) {
+        console.error("Missing dropoff address or PAF ID");
+        return;
+    }
+
+    const payload = {
+        id: pafId,
+        data: { formatted_address: formatted },
+        refined: true
+    };
+
+    console.log("DROP-OFF REFINE PAYLOAD:", payload);
+
+    const res = await fetch('/dev.addisonlee.com/wp-json/quote/v1/refine', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    });
+
+    const refined = await res.json();
+    console.log("Dropoff refined result:", refined);
+
+    // ✅ Save Google ID + Lat/Lng after refine
+    localStorage.setItem("dropoff_google_id", refined.id);
+    localStorage.setItem("dropoff_lat_refined", refined?.address?.data?.location?.lat);
+    localStorage.setItem("dropoff_lng_refined", refined?.address?.data?.location?.lon);
+
+    return refined;
+}
+
+ 
 
     // logic for drop off input
     const getDropoffInput = document.getElementById("myInputDropOff");
     const buttonSpinnerDrop = document.getElementById("sendCodeSpinner");
     const flightForm = document.getElementsByName('flight-form')[0];
     const arrivalAirportForm = document.getElementsByName('arrivalAirport')[0];
-	const arrivalDateTime = document.getElementById('arrivalDateTime');
+    const arrivalDateTime = document.getElementById('arrivalDateTime');
 
     // logic for airport drop off
     const getDropoffAirportInput = document.getElementById("myInputDropOffArr");
         
     if(flightForm){
         flightForm.addEventListener('keyup', function(){
-		document.querySelector('ul#airport-arr__results').innerHTML = '';
+    document.querySelector('ul#airport-arr__results').innerHTML = '';
         const errorMessage = document.getElementById('display_errors_fl');
-			
+      
         const dateFormatted = document.getElementById('arrivalDateTime').value;
         const flightnumber = document.getElementById('my-flight-details').value;
        
-		if (flightnumber.length < 5) {
-			errorMessage.textContent = 'Enter both Flight number and Arrival date';
-			  }
+    if (flightnumber.length < 5) {
+      errorMessage.textContent = 'Enter both Flight number and Arrival date';
+        }
           
             if (flightnumber.length >= 5 ) {                  
-			if (dateFormatted == "") {
-				errorMessage.textContent = 'Enter both Flight number and Arrival date';
-			  }
-			  else{
-			errorMessage.textContent  = '';			  
-			const flightWidgetCalendar = dateFormatted.split('T')[0];
+      if (dateFormatted == "") {
+        errorMessage.textContent = 'Enter both Flight number and Arrival date';
+        }
+        else{
+      errorMessage.textContent  = '';       
+      const flightWidgetCalendar = dateFormatted.split('T')[0];
               getFlightDetails(flightnumber, flightWidgetCalendar);
               console.log("Passed the flight date", flightnumber, flightWidgetCalendar);   
             }
-		}
+    }
           
       }) 
 
     } 
 
-	if(arrivalDateTime){
+  if(arrivalDateTime){
         arrivalDateTime.addEventListener('change', function(){
-		document.querySelector('ul#airport-arr__results').innerHTML = '';
-		const errorMessage = document.getElementById('display_errors_fl');
-			
+    document.querySelector('ul#airport-arr__results').innerHTML = '';
+    const errorMessage = document.getElementById('display_errors_fl');
+      
         const dateFormatted = document.getElementById('arrivalDateTime').value;
-		const flightnumber = document.getElementById('my-flight-details').value;
-		
-		if (flightnumber.length < 5) {
-			errorMessage.textContent = 'Enter both Flight number and Arrival date';
-		  }		  
-		if (flightnumber.length >= 5 ) {
-			if (dateFormatted == "") {
-				errorMessage.textContent = 'Enter both Flight number and Arrival date';
-			  }
-			else{
-			errorMessage.textContent = '';
-			const flightWidgetCalendar = dateFormatted.split('T')[0];
-			getFlightDetails(flightnumber, flightWidgetCalendar);
-			console.log("Passed the flight date", flightnumber, flightWidgetCalendar);   
-			}
-		}
+    const flightnumber = document.getElementById('my-flight-details').value;
+    
+    if (flightnumber.length < 5) {
+      errorMessage.textContent = 'Enter both Flight number and Arrival date';
+      }     
+    if (flightnumber.length >= 5 ) {
+      if (dateFormatted == "") {
+        errorMessage.textContent = 'Enter both Flight number and Arrival date';
+        }
+      else{
+      errorMessage.textContent = '';
+      const flightWidgetCalendar = dateFormatted.split('T')[0];
+      getFlightDetails(flightnumber, flightWidgetCalendar);
+      console.log("Passed the flight date", flightnumber, flightWidgetCalendar);   
+      }
+    }
       }) 
 
     } 
@@ -915,11 +1035,11 @@ function openCalendarModal(triggerBtnId, calendarHtml, hiddenTargetSelector) {
   triggerBtn.addEventListener("click", () => {
     // Modal wrapper
     const modal = document.createElement("div");
-    modal.className = "calendar-modal mk-fixed mk-inset-0 mk-bg-black/50 mk-flex mk-justify-center mk-items-center";
+    modal.className = "calendar-modal mk-fixed mk-inset-0 mk-bg-black/50 mk-flex mk-justify-center mk-items-center mk-z-[1]";
 
     // Insert calendar HTML
     modal.innerHTML = `
-      <div class="mk-max-w-[436px] mk-relative mk-bg-white mk-rounded-lg mk-shadow-lg mk-w-[min(680px,90vw)] mk-p-[50px]">
+      <div class="calendar-widget-wrap mk-max-w-[436px] mk-relative mk-bg-white mk-rounded-lg mk-pt-[50px] mk-shadow-lg mk-w-[min(680px,90vw)]">
         <button id="close-calendar" class="mk-absolute mk-top-2 mk-right-2 mk-text-slate-500" aria-label="Close">✕</button>
         ${calendarHtml}
       </div>
@@ -937,10 +1057,10 @@ function openCalendarModal(triggerBtnId, calendarHtml, hiddenTargetSelector) {
     const closeBtn = modal.querySelector("#close-calendar");
     closeBtn.addEventListener("click", () => modal.remove());
     modal.addEventListener("click", (e) => { if (e.target === modal) modal.remove(); });
-	const asapBtn = modal.querySelector("#asap-btn");
+  const asapBtn = modal.querySelector("#asap-btn");
     asapBtn.addEventListener("click", () => {modal.remove();});
-	if(triggerBtnId == 'flight-calendar'){asapBtn.style.visibility = 'hidden';}
-	else{asapBtn.style.visibility = 'visible';}
+  if(triggerBtnId == 'flight-calendar'){asapBtn.style.visibility = 'hidden';}
+  else{asapBtn.style.visibility = 'visible';}
 
     // ✅ The single source of truth for updates:
     // When user confirms inside the widget, it emits 'date-time-selected'.
@@ -979,6 +1099,7 @@ function openCalendarModal(triggerBtnId, calendarHtml, hiddenTargetSelector) {
     
 openCalendarModal("open-calendar",    calendarHtml, "#journeyDateTime");  // Tab-0
 openCalendarModal("flight-calendar",  calendarHtml, "#arrivalDateTime");  // Tab-1 ✅
+//openCalendarModal("date-container", calendarHtml, "#date-container");
 openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab-2
 
     
@@ -986,7 +1107,6 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
 
   /** Widget Show/Hide */
   function showWidget(trigger) {
-	document.querySelector('a.quote-cta').innerHTML = 'Enter Details &darr;';
     // Position relative to clicked CTA
     trigger.insertAdjacentElement('afterend', widget);
      
@@ -1007,7 +1127,6 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
   }
 
   function hideWidget() {
-    document.querySelector('a.quote-cta').innerHTML = 'Get Quote &rarr;';
     widget.classList.add("mk-transition", "mk-duration-300");
     widget.classList.remove("mk-opacity-100");
     widget.classList.add("mk-opacity-0");
@@ -1026,6 +1145,7 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
   window.addEventListener("load", () => {
       // Hide widget on load
       widget.classList.add("mk-hidden", "mk-opacity-0");
+      clearLocalStorage();
   });
 
         function getPrice(button, btn = null) {
@@ -1073,10 +1193,10 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
 
                               quoteBtn.style.display = 'flex';
 
-                              // ⭐ CALL THE ANIMATION FUNCTION HERE
+                              // CALL THE ANIMATION FUNCTION HERE
                               animateGetQuoteBtn(quoteBtn);
 
-                              // ⭐ Update text AFTER animation finishes (1 second timing kept)
+                              // Update text AFTER animation finishes (1 second timing kept)
                               setTimeout(() => {
                                   quoteBtn.innerHTML = `
                                       <div class="pricing-element mk-z-[11] mk-color-white mk-flex mk-items-center mk-justify-center quote-container mk-mx-auto mk-text-[16px]">
@@ -1206,26 +1326,52 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
 
 
     function clearLocalStorage(){
+    localStorage.removeItem('ASAP');
       localStorage.removeItem("pickup_address");
       localStorage.removeItem("Street");
       localStorage.removeItem("Postcode");
       localStorage.removeItem("Pick Latitude");
       localStorage.removeItem("Pick Longitude");
       localStorage.removeItem("dropoff_address");
-        localStorage.removeItem("Drop Postcode");
-        localStorage.removeItem("Drop Street");
+      localStorage.removeItem("Drop Postcode");
+      localStorage.removeItem("Drop Street");
       localStorage.removeItem("Drop Latitude");
       localStorage.removeItem("Drop Longitude");
-	  
+      localStorage.removeItem("Refined Loc");
+      localStorage.removeItem("Refined Lat");
+      localStorage.removeItem("pafid");
       localStorage.removeItem("Car Dropoff");
-        localStorage.removeItem("Date Time");
-        localStorage.removeItem("Airport Dropoff");
-        localStorage.removeItem("Price");
-        localStorage.removeItem("Terminal");
-        localStorage.removeItem("flight_number");
+      localStorage.removeItem("Date Time");
+      localStorage.removeItem("Airport Dropoff");
+      localStorage.removeItem("Price");
+      localStorage.removeItem("Terminal");
+      localStorage.removeItem("flight_number");
+      localStorage.removeItem('dropoff_lng_refined');
+      localStorage.removeItem('dropoff_google_id');
+      localStorage.removeItem('dropoff_lat_refined');
+      localStorage.removeItem('dropoff_pafid');
+      
     }
 
+    
+  // 1) Reusable SVG markup as a string
+  const ARROW_SVG = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" fill="none" aria-hidden="true" focusable="false">
+      <path d="M10.5 0L9.45 1.05L13.65 5.25H0.5V6.75H13.65L9.45 10.95L10.5 12L16.5 6L10.5 0Z" fill="currentColor"></path>
+    </svg>
+  `;
 
+  
+// Reusable SVG for a down chevron, inherits text color
+const DOWN_SVG = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 20 14" aria-hidden="true" focusable="false">
+    <path d="M2.3 2.3a1 1 0 011.4 0L10 8.6l6.3-6.3a1 1 0 111.4 1.4l-7 7a1 1 0 01-1.4 0l-7-7a1 1 0 010-1.4z" fill="currentColor" />
+  </svg>
+`;
+
+
+
+  let widgetOpen = false; // tracks open/close state
    
   // Toggle widget when CTA is clicked
   document.querySelectorAll(".quote-cta").forEach((cta) => {
@@ -1233,24 +1379,21 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
     cta.addEventListener("click", (e) => {
       e.preventDefault();
 
-      const ctabtn = document.querySelector('a.quote-cta');
-      if(ctabtn){
-        ctabtn.innerHTML = 'Enter Details';
-      } 
+    widgetOpen = !widgetOpen; // toggle state
+    cta.setAttribute('aria-expanded', String(widgetOpen));
+
+    cta.innerHTML = widgetOpen
+      ? `Enter Details ${DOWN_SVG}`
+      : `Get A Quote ${ARROW_SVG}`;
+
+
 
       if (widget.classList.contains("mk-hidden")) {
         showWidget(cta);
         clearLocalStorage();
-        ctabtn.classList.add('second-state');
-        document.getElementsByClassName('second-state');
-        ctabtn.innerHTML = `Enter Details 
-<svg class="cta-icon__svg" width="16" height="16" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-        <path d="M12 16l-6-6h12l-6 6z" fill="currentColor"></path>
-      </svg>
-`;
+    localStorage.setItem('ASAP', "TRUE");
       } else {
         hideWidget();
-        ctabtn.classList.remove('second-state');
       }
     });
   });
@@ -1307,18 +1450,50 @@ document.addEventListener("click", (e) => {
 });
 
 function getPayload() {
+  const get_location_lat = localStorage.getItem('Refined Lat');
+  const get_location_loc = localStorage.getItem('Refined Loc');
+
+  const get_drop_location_lat = localStorage.getItem('dropoff_lat_refined');
+  const get_drop_location_lon = localStorage.getItem('dropoff_lng_refined');
+
+  const raw = localStorage.getItem('Date Time');
+  
+// Split date + time
+const [dateStr, timeStr] = raw.split(" - "); 
+// dateStr = "27 March 2026"
+// timeStr = "14:26"
+
+// Build a real Date object
+const date = new Date(`${dateStr} ${timeStr}`);
+
+// Format YYYY-MM-DD
+const yyyy = date.getFullYear();
+const mm = String(date.getMonth() + 1).padStart(2, "0");
+const dd = String(date.getDate()).padStart(2, "0");
+
+// Format HH:MM
+const [hh, min] = timeStr.split(":");
+
+// Final ISO style output
+const formatted = `${yyyy}-${mm}-${dd}T${hh}:${min}:00`;
+
+  
+
+  console.log('date converted from localstorage', formatted);
+  
+
   return {
       "booking": {
-          "asap": true,
-          "date": localStorage.getItem('Date Time'),
+          "asap": localStorage.getItem('ASAP'),
+          "date": formatted,
           "payment_type": "credit_card",
           "stops": [
               {
                   "type": "ADDRESS",
                   "formatted_address": localStorage.getItem('pickup_address'),
                       "location": {
-                      "lat": 51.527076721191406,
-                      "lon": -0.14019739627838135
+                      "lat": get_location_lat,
+                      "lon": get_location_loc
                       },
                   "address_components": {
                   "postal_code": localStorage.getItem('Postcode'),
@@ -1331,8 +1506,8 @@ function getPayload() {
                   "type": "ADDRESS",
                   "formatted_address": localStorage.getItem('Car Dropoff'),
                   "location": {
-                  "lat": 51.48252544272139,
-                  "lon": -0.2714334497907255
+                  "lat": get_drop_location_lat,
+                  "lon": get_drop_location_lon
                   },
                   "address_components": {
                   "postal_code": localStorage.getItem('Drop Postcode'),
@@ -1465,12 +1640,14 @@ document.addEventListener("click", (e) => {
       localStorage.removeItem("Drop Street");
       localStorage.removeItem("Drop Latitude");
       localStorage.removeItem("Drop Longitude");
-	  
+    
       localStorage.removeItem("Car Dropoff");
       localStorage.removeItem("Date Time");
       localStorage.removeItem("Airport Dropoff");
       localStorage.removeItem("Arrival Airport Postcode");
       localStorage.removeItem("Arrival Airport Street");
+
+      openCalendarModal('date-container', calendarHtml, '#arrivalDateTime');
 
     }, 50);
     
@@ -1529,6 +1706,9 @@ function redirectParams(){
 
 async function handleQuoteClick( button, tab, panel ) {
 
+  const location_cord_lat_pu = localStorage.getItem('Refined Lat');
+  const location_cord_loc_pu = localStorage.getItem('Refined Loc');
+
   const payload = {
       booking: {
         asap: false,
@@ -1539,8 +1719,8 @@ async function handleQuoteClick( button, tab, panel ) {
             type: 'ADDRESS',
             formatted_address: localStorage.getItem('pickup_address'),
             location: {
-              lat: 51.527076721191406,
-              lon: -0.14019739627838135
+              lat: location_cord_lat_pu,
+              lon: location_cord_loc_pu
             },
             address_components: {
               postal_code: localStorage.getItem('Postcode'),
@@ -1602,10 +1782,6 @@ async function handleQuoteClick( button, tab, panel ) {
           dropoffCont.style.borderBottomColor = 'red';
         } 
 
-        if ( !dateForm ){
-          errorMessageDateField.textContent = 'Date is required';
-          dateContainer.style.borderBottomColor = 'red';
-        }
           
         if(searchbar && searchBarDrpOff){
           getPrice(getPayload(), button);
@@ -1642,7 +1818,19 @@ async function handleQuoteClick( button, tab, panel ) {
             flightNumberContainer.style.borderBottomColor = 'red';
           } else {
             errorMessage3.textContent = '';
+            flightNumberContainer.style.borderBottomColor = '#B4B4B4';
+            
           }
+
+          if(!flightDropoffContainer){
+            const errorMessage = document.getElementById('display_errors_airdrop');
+            errorMessage.textContent = 'Please enter a drop off address';
+            flightDropoffContainer.style.borderBottomColor = 'red';
+          } else {
+            errorMessage.textContent = '';
+            flightDropoffContainer.style.borderBottomColor = '#B4B4B4';
+          }
+
           const dropInputForm = document.getElementById('myInputDropOffArr').value.trim();
           if(!dropInputForm){
             const errorMessage = document.getElementById('display_errors_airdrop');
@@ -1690,11 +1878,6 @@ async function handleQuoteClick( button, tab, panel ) {
             const errorMessage = document.getElementById('display_errors_pick_courier');
             errorMessage.innerText = 'Please enter a pick up address';
             c.style.borderBottomColor = 'red';
-          }
-
-          if ( !dateForm ){
-            errorMessageDateField.textContent = 'Date is required';
-            dateContainer.style.borderBottomColor = 'red';
           }
 
           if(a && b){
@@ -1777,7 +1960,7 @@ async function handleQuoteClick( button, tab, panel ) {
 
           
 
-        } 
+      } 
 }
 
 

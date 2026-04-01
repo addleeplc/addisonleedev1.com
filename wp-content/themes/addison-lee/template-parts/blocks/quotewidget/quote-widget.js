@@ -1328,7 +1328,6 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
 
 
     function clearLocalStorage(){
-    localStorage.removeItem('ASAP');
       localStorage.removeItem("pickup_address");
       localStorage.removeItem("Street");
       localStorage.removeItem("Postcode");
@@ -1393,7 +1392,7 @@ const DOWN_SVG = `
       if (widget.classList.contains("mk-hidden")) {
         showWidget(cta);
         clearLocalStorage();
-    localStorage.setItem('ASAP', "TRUE");
+        localStorage.setItem('ASAP', "TRUE");
       } else {
         hideWidget();
       }
@@ -1548,6 +1547,7 @@ document.addEventListener("click", (e) => {
     console.log("Clicked tab:", activeId);
 
     if (activeId === "tab-0") {
+      clearLocalStorage();
       document.getElementById('tab-0').classList.add('car');
     }
 
@@ -1557,23 +1557,8 @@ document.addEventListener("click", (e) => {
     // Wait a tick to ensure DOM updates are done
     setTimeout(() => {
       console.log("Clearing dropoff data...");
-      localStorage.removeItem("pickup_address");
-      localStorage.removeItem("Street");
-      localStorage.removeItem("Postcode");
-      localStorage.removeItem("Pick Latitude");
-      localStorage.removeItem("Pick Longitude");
-      localStorage.removeItem("dropoff_address");
-      localStorage.removeItem("Drop Postcode");
-      localStorage.removeItem("Drop Street");
-      localStorage.removeItem("Drop Latitude");
-      localStorage.removeItem("Drop Longitude");
-    
-      localStorage.removeItem("Car Dropoff");
-      localStorage.removeItem("Date Time");
-      localStorage.removeItem("Airport Dropoff");
-      localStorage.removeItem("Arrival Airport Postcode");
-      localStorage.removeItem("Arrival Airport Street");
-
+      clearLocalStorage();
+      localStorage.removeItem('ASAP');
       openCalendarModal('date-container', calendarHtml, '#arrivalDateTime');
 
     }, 50);
@@ -1583,9 +1568,8 @@ document.addEventListener("click", (e) => {
   }
 
   if (activeId === "tab-2") {
-   
-    document.getElementById('tab-2').classList.add('courier'); 
-     
+    clearLocalStorage();
+    document.getElementById('tab-2').classList.add('courier');  
      
   }
   activateTab(tab);
@@ -1636,10 +1620,11 @@ async function handleQuoteClick( button, tab, panel ) {
   const location_cord_lat_pu = localStorage.getItem('Refined Lat');
   const location_cord_loc_pu = localStorage.getItem('Refined Loc');
 
+  const formattedData = convertDateFormat();
   const payload = {
       booking: {
         asap: false,
-        date: localStorage.getItem('Date Time'),
+        date: formattedData,
         payment_type: 'credit_card',
         stops: [
           {
@@ -1775,7 +1760,7 @@ async function handleQuoteClick( button, tab, panel ) {
           
           if(dropInputForm && flightInput || arrivalAirportForm){
             console.log('on tab-1');
-             getPrice(getPayload(), button);
+             getPrice(getPayload(payload), button);
           }
           
           if(!quoteGenerated){
@@ -1810,6 +1795,7 @@ async function handleQuoteClick( button, tab, panel ) {
           if(a && b){
             button.textContent = "GETTING YOUR QUOTE...";
             try {
+              console.log(payload);
               const response = await fetch('wp-json/quote/v1/courier-service', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -1991,6 +1977,29 @@ function initTab1FlightToggleOnce() {
   if (cb) toggleFlightRows(cb.checked);
 }
 
+function convertDateFormat(){
+  const raw = localStorage.getItem('Date Time');
+  
+  // Split date + time
+  const [dateStr, timeStr] = raw.split(" - "); 
+  // dateStr = "27 March 2026"
+  // timeStr = "14:26"
+
+  // Build a real Date object
+  const date = new Date(`${dateStr} ${timeStr}`);
+
+  // Format YYYY-MM-DD
+  const yyyy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2, "0");
+  const dd = String(date.getDate()).padStart(2, "0");
+
+  // Format HH:MM
+  const [hh, min] = timeStr.split(":");
+
+  // Final ISO style output
+  return `${yyyy}-${mm}-${dd}T${hh}:${min}:00`;
+
+}
 
 function getPayload() {
   const get_location_lat = localStorage.getItem('Refined Lat');

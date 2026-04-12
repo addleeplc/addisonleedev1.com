@@ -12,7 +12,7 @@
 
   const contentMap = {
     "tab-0": `<div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[29px] mk-p-[10px] mk-mb-[1px]">
-            <div id="pickup-container" class="mk-flex mk-items-center  mk-pb-2 mk-mb-6 sm-max:mk-mb-[0px]">
+            <div id="pickup-container" class="pointer mk-flex mk-items-center  mk-pb-2 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="pickup-pin sm-max-xs:mk-w-[41px] sm-max-xs:mk-h-[41px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
                   <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>PICK UP</label>
                     <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInput" type="text" maxlength="100" name="pickup-form" placeholder="Enter location"><span id="sendCodeSpinner" class="spinner"></span>
@@ -21,7 +21,7 @@
                   </div>
                   
             </div>
-            <div id="dropoff-container" class="mk-flex mk-items-center mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
+            <div id="dropoff-container" class="pointer mk-flex mk-items-center mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="dropoff-pin sm-max-xs:mk-w-[41px] sm-max-xs:mk-h-[41px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
                 <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>DROP OFF</label>
                 <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputDropOff" type="text" maxlength="100" name="dropoff-form" placeholder="Enter location">
@@ -33,7 +33,7 @@
           </div>
           
            <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[25px] mk-p-[10px] mk-mb-[30px]"> 
-          <div id="date-container" class="mk-flex mk-items-center mk-pb-3 mk-mb-1">
+          <div id="date-container" class="pointer mk-flex mk-items-center mk-pb-3 mk-mb-1">
             <span class="calendar-pin sm-max-xs:mk-w-[41px] sm-max-xs:mk-h-[41px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
               <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>DATE OF JOURNEY</label><br>
                 <button id="open-calendar" class="date-widget-btn">ASAP</button>
@@ -58,11 +58,11 @@
 <div class="mk-flex mk-item-center mk-justify-end"><input type="checkbox" id="unknownFlightNumber" class="flight-checkbox " /><span class="mk-text-black">I don't know my flight number</span></label></div>
         </div>
     <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[29px] mk-p-[10px] mk-mb-[1px]">
-        <div id="flightnumber-container" class="mk-flex mk-items-center mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
-        <div id="flightOriginalRow">
-          <div class="mk-flex">
+        <div id="flightnumber-container" class="pointer mk-flex mk-items-center mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px] mk-w-full flightnumber-row">
+        <div id="flightOriginalRow" class="mk-w-full">
+          <div class="mk-flex mk-w-full">
             <span class="airport-pickup-container mk-w-[90px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
-            <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>FLIGHT NUMBER</label>
+            <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-flex-1"><label>FLIGHT NUMBER</label>
             <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%]" id="my-flight-details" type="text" maxlength="100" name="flight-form" placeholder="Enter flight number">
       <span id="sendCodeSpinner1" class="spinner"></span>
             <div id="display_errors_fl"></div>
@@ -83,7 +83,7 @@
         </div>
         </div>  
         <!-- End Replacement Row -->  
-            <div id="flightdropoff-container" class="mk-flex mk-items-center mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
+            <div id="flightdropoff-container" class="pointer mk-flex mk-items-center mk-pb-3 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="dropoff-pin mk-w-[90px] mk-mr-[20px] sm-max:mk-mr-[-20px]"></span>
                 <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>DROP OFF</label>
                   <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputDropOffArr" type="text" maxlength="100" name="dropoff-airport-form" placeholder="Enter location">
@@ -94,7 +94,7 @@
             </div>
       </div>
       <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[25px] mk-p-[10px] mk-mb-[30px]">
-            <div id="date-container" class="mk-flex mk-items-center mk-pb-3 mk-mb-1 sm-max:mk-mb-[0px]">
+            <div id="date-container" class="pointer mk-flex mk-items-center mk-pb-3 mk-mb-1 sm-max:mk-mb-[0px]">
                 <span class="calendar-pin sm-max-xs:mk-w-[41px] sm-max-xs:mk-h-[41px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
                 <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>DATE OF FLIGHT ARRIVAL</label><br>
                 <button id="flight-calendar" class="date-widget-btn">Select a date</button>
@@ -114,7 +114,7 @@
 
     `,
     "tab-2": `<div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[29px] mk-p-[10px] mk-mb-[1px]">
-            <div id="courierpickup-container" class="mk-flex mk-items-center mk-pb-2 mk-mb-6 sm-max:mk-mb-[0px]">
+            <div id="courierpickup-container" class="pointer mk-flex mk-items-center mk-pb-2 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="pickup-pin mk-w-[90px] mk-mr-[20px] sm-max:mk-mr-[-20px]"></span>
                 <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>PICK UP</label>
                   <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputCourier" type="text" maxlength="100" name="courier-form" placeholder="Enter location">
@@ -123,7 +123,7 @@
                   <ul id="courier-address-search__results"></ul>
                 </div>
             </div>
-            <div id="courierdropoff-container" class="mk-flex mk-items-center mk-pb-2 mk-mb-6 sm-max:mk-mb-[0px]">
+            <div id="courierdropoff-container" class="pointer mk-flex mk-items-center mk-pb-2 mk-mb-6 sm-max:mk-mb-[0px]">
                 <span class="dropoff-pin mk-w-[90px] mk-mr-[20px] sm-max:mk-mr-[-20px]"></span>
                   <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]"><label>DROP OFF</label>
                     <input class="sm-max:mk-ml-[0px] sm-max:mk-w-[90%] md:mk-w-[100%] mk-h-[22px]" id="myInputDropOffCourier" type="text" maxlength="100" name="courier-form" placeholder="Enter location">
@@ -134,7 +134,7 @@
             </div>
           </div>
           <div class="mk-grid mk-grid-cols-[1fr_1fr] sm-max:mk-grid-cols-[1fr] mk-gap-[96px] sm-max:mk-gap-[25px] mk-p-[10px] mk-mb-[30px]">
-            <div id="date-container" class="mk-flex mk-items-center mk-pb-3 mk-mb-1 sm-max:mk-mb-[0px]">
+            <div id="date-container" class="pointer mk-flex mk-items-center mk-pb-3 mk-mb-1 sm-max:mk-mb-[0px]">
                 <span class="calendar-pin sm-max-xs:mk-w-[41px] sm-max-xs:mk-h-[41px] sm-max:mk-mr-[-20px] mk-mr-[20px]"></span>
                 <div class="form-control sm-max:mk-ml-[51px] sm-max:mk-w-[90%] md:mk-w-[100%]">
                 <label>DATE OF JOURNEY</label><br>
@@ -170,15 +170,10 @@
 
   /** Panels */
   function showPanel(panel) {
-    //panel.classList.remove("mk-hidden");
+    panel.style.removeProperty("display");
+    panel.style.removeProperty("opacity");
     panel.classList.add("active-panel");
-    requestAnimationFrame(() => {
-    //panel.classList.add("mk-transition", "mk-duration-300");
-    //panel.classList.remove("mk-opacity-0");
-    //panel.classList.add("mk-opacity-100");
     panel.classList.add("active");
-    });
-    
   }
 
   function hidePanel(panel) {
@@ -312,7 +307,20 @@ function initCalendarWidget(root) {
     }
   }
 
+  function animateCalendarResize(fromHeight, toHeight) {
+    if (fromHeight <= 0 || fromHeight === toHeight) return;
+    calendarEl.style.height = `${fromHeight}px`;
+    calendarEl.style.transition = 'height 220ms ease';
+    void calendarEl.offsetHeight; // force reflow
+    calendarEl.style.height = `${toHeight}px`;
+    calendarEl.addEventListener('transitionend', () => {
+      calendarEl.style.height = '';
+      calendarEl.style.transition = '';
+    }, { once: true });
+  }
+
   function renderCalendar() {
+    const beforeHeight = calendarEl.offsetHeight;
     while (calendarEl.children.length > 7) calendarEl.removeChild(calendarEl.lastChild);
     const monthName = new Date(viewYear, viewMonth, 1).toLocaleString(undefined, {month:'long'});
     monthTitle.textContent = `${monthName} ${viewYear}`;
@@ -342,6 +350,8 @@ function initCalendarWidget(root) {
       const node = createDayNode(i, true);
       calendarEl.appendChild(node);
     }
+
+    animateCalendarResize(beforeHeight, calendarEl.offsetHeight);
   }
 
   function createDayNode(dayNumber, outside) {
@@ -578,10 +588,36 @@ function initCalendarWidget(root) {
   
     });
 
+    const panel = document.getElementById(newTab.getAttribute("aria-controls"));
+    const previousActive = widget.querySelector(".tab-panel.active");
+    const $jq = typeof jQuery !== "undefined" ? jQuery : null;
+
+    if (
+      panel &&
+      previousActive &&
+      previousActive === panel &&
+      previousActive.classList.contains("active")
+    ) {
+      return;
+    }
+
+    const panelsWrapEl =
+      widget.querySelector("#quote-widget-panels") ||
+      (panel && panel.parentElement ? panel.parentElement : null) ||
+      (widget.querySelector(".tab-panel") ? widget.querySelector(".tab-panel").parentElement : null);
+    const $panelsWrap = $jq && panelsWrapEl ? $jq(panelsWrapEl) : null;
+    let panelsWrapStartH = 0;
+    if ($panelsWrap && $panelsWrap.length) {
+      $panelsWrap.stop(true, true).css({ height: "", overflow: "" });
+      panelsWrapStartH = $panelsWrap.outerHeight();
+      if (panelsWrapStartH > 0.5) {
+        $panelsWrap.css({ overflow: "hidden", height: panelsWrapStartH });
+      }
+    }
+
+    function runContentSwap() {
     panels.forEach((p) => hidePanel(p));
 
-    
-    const panel = document.getElementById(newTab.getAttribute("aria-controls"));
     const contentId = "content-" + newTab.id.split("-")[1];
     document.getElementById(contentId).innerHTML = contentMap[newTab.id] || "";
     
@@ -775,14 +811,13 @@ function getPickUpApi( currentword,inp,rlist,spnnr ) {
           pafid = item?.id ? `${item.id}` : "null";
           b.setAttribute('data-paf', pafid);
           b.setAttribute('data-id', `${item.data.formatted_address}`);
+          b.setAttribute('data-lat', coordlat);
+          b.setAttribute('data-lng', coordlong);
           d.innerHTML = p;
           document.querySelector('ul#'+rlist).style.display = 'block';          
           //console.log('coming from these sides',p, 'postcode:',pcode,'street:', street);
           
-          if(document.getElementsByClassName('address-search__item')){
-            const t = document.querySelector('#'+rlist);
-            t.addEventListener('click', handleClick, false);
-          }
+          b.addEventListener('click', handleClick, false);
         }
       } else {
         const q = document.getElementById(rlist);
@@ -802,21 +837,25 @@ function getPickUpApi( currentword,inp,rlist,spnnr ) {
         coordlong = item?.data?.location?.lon ? `${item.data.location.lon}` : "-";
 
         b.setAttribute('data-id', `${item.data.formatted_address}`);
+        b.setAttribute('data-lat', coordlat);
+        b.setAttribute('data-lng', coordlong);
         d.innerHTML = p;
         document.querySelector('ul#'+rlist).style.display = 'block';
         
         
-        
-        if(document.getElementsByClassName('address-search__item')){
+        b.addEventListener('click', handleClick, false);
+        /*if(document.getElementsByClassName('address-search__item')){
           const t = document.querySelector('#'+rlist);
           t.addEventListener('click', handleClick, false);
         }
+          */
       }
       // button on click when data is loaded for pickup
       function handleClick(e){
+        const btn = e.currentTarget;
         const myInputForm = document.getElementById(inp);
-        const { target: { dataset: {id} } } = e;
-        const pafId = e.target.dataset.paf;
+        const id = btn.dataset.id;
+        const pafId = btn.dataset.paf;
         const postcodeRegex = /\b[A-Z]{1,2}\d{1,2}[A-Z]?\s?\d[A-Z]{2}\b/i; // UK postcode example
         const postcode = id.match(postcodeRegex)?.[0] || null;
 
@@ -825,7 +864,7 @@ function getPickUpApi( currentword,inp,rlist,spnnr ) {
         myInputForm.setAttribute('value',id);
         myInputForm.value = id;
         document.querySelector('ul#'+rlist).style.display = 'none';
-        if(inp == "myInput" || inp == "arrivalAirport" || inp == "myInputCourier"){
+        if(inp == "myInput" || inp == "arrivalAirport" || inp == "myInputCourier" || inp == "my-flight-details"){
           pickup_address = localStorage.setItem("pickup_address", document.getElementById(inp).value);
           localStorage.setItem('Postcode', postcode);
           localStorage.setItem('Street', street_selected);          
@@ -836,7 +875,13 @@ function getPickUpApi( currentword,inp,rlist,spnnr ) {
                     // refine 
                     refineFromStoredAddress();
         } else if(inp == "myInputDropOff" || inp == "myInputDropOffArr" || inp == "myInputDropOffCourier"){
-          drop_address = localStorage.setItem("Car Dropoff", document.getElementById('myInputDropOff').value);        
+          
+const value =
+  document.getElementById('myInputDropOff')?.value ||
+  document.getElementById('myInputDropOffArr')?.value ||
+  document.getElementById('myInputDropOffCourier')?.value;
+
+          drop_address = localStorage.setItem("Car Dropoff", value);      
           localStorage.setItem('Drop Postcode', postcode);
           localStorage.setItem('Drop Street', street_selected);         
                     localStorage.setItem('Drop Latitude', coordlat);
@@ -1013,6 +1058,30 @@ function getPickUpApi( currentword,inp,rlist,spnnr ) {
     } 
 
     showPanel(panel);
+
+    // slide animate ?
+    if (panel) {
+      const $panel = $jq ? $jq(panel) : null;
+      if ($panelsWrap && $panelsWrap.length && panelsWrapStartH > 0.5) {
+        const endH = Math.max(
+          $panelsWrap.css("height", "auto").outerHeight(),
+          $panel && $panel.length ? $panel.outerHeight() : panel.getBoundingClientRect().height
+        );
+        $panelsWrap.height(panelsWrapStartH);
+        if (Math.abs(endH - panelsWrapStartH) < 1) {
+          $panelsWrap.css({ height: "", overflow: "" });
+        } else {
+          $panelsWrap.stop(true, false).animate({ height: endH }, 280, () => {
+            $panelsWrap.css({ height: "", overflow: "" });
+          });
+        }
+      }
+
+      if ($panel && $panel.length) {
+        $panel.stop(true, true).css("opacity", 0).animate({ opacity: 1 }, 220);
+      }
+    }
+
     newTab.focus();
 
   
@@ -1029,6 +1098,8 @@ function openCalendarModal(triggerBtnId, calendarHtml, hiddenTargetSelector) {
   triggerBtn.dataset.widgetBound = '1';
 
   triggerBtn.addEventListener("click", () => {
+    if (document.querySelector(".calendar-modal")) return;
+
     // Modal wrapper
     const modal = document.createElement("div");
     modal.className = "calendar-modal mk-fixed mk-inset-0 mk-bg-black/50 mk-flex mk-justify-center mk-items-center mk-z-[1]";
@@ -1098,7 +1169,9 @@ openCalendarModal("flight-calendar",  calendarHtml, "#arrivalDateTime");  // Tab
 //openCalendarModal("date-container", calendarHtml, "#date-container");
 openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab-2
 
+    }
     
+    runContentSwap();
 } // activation closed
 
   /** Widget Show/Hide */
@@ -1150,77 +1223,77 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
 
 
 
-        function getPrice(button, btn = null) {
+    function getPrice(button, btn = null) {
 
-          const quoteBtn = btn || document.querySelector(".get-a-quote.animate, .get-a-quote");
+      const quoteBtn = btn || document.querySelector(".get-a-quote.animate, .get-a-quote");
 
-          if (!quoteBtn) {
-              console.warn("Quote button not found in current tab.");
-              return;
-          }
+      if (!quoteBtn) {
+          console.warn("Quote button not found in current tab.");
+          return;
+      }
 
-          console.log('the price is returned', getPayload);
+      console.log('the price is returned', getPayload);
 
-          // show initial loading state
-          quoteBtn.textContent = "GETTING YOUR QUOTE...";
+      // show initial loading state
+      quoteBtn.textContent = "GETTING YOUR QUOTE...";
 
-          const payload = getPayload();
-          console.log('Sending payload:', payload);
+      const payload = getPayload();
+      console.log('Sending payload:', payload);
 
-          fetch('wp-json/quote/v1/price', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(payload),
-          })
-          .then(response => response.json())
-          .then((data) => {
-              console.log('Sending payload:', data);
-              const dataStore = data.products;
-              console.log('datastore is stored here', dataStore);
+      fetch('wp-json/quote/v1/price', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+      })
+      .then(response => response.json())
+      .then((data) => {
+          console.log('Sending payload:', data);
+          const dataStore = data.products;
+          console.log('datastore is stored here', dataStore);
 
-              dataStore.map(function(item) {
+          dataStore.map(function(item) {
 
-                  if(item.product.code === 'standard_car'){ 
+              if(item.product.code === 'standard_car'){ 
 
-                      const genPricing = `${item.price.total_charged}`;
-                      const pricingEle = Math.round(genPricing * 100) / 100;
+                  const genPricing = `${item.price.total_charged}`;
+                  const pricingEle = Math.round(genPricing * 100) / 100;
 
-                      localStorage.setItem('Price', pricingEle);
+                  localStorage.setItem('Price', pricingEle);
 
-                      if(pricingEle){
+                  if(pricingEle){
 
+                      setTimeout(() => {
+
+                          quoteBtn.style.display = 'flex';
+
+                          // CALL THE ANIMATION FUNCTION HERE
+                          animateGetQuoteBtn(quoteBtn);
+
+                          // Update text AFTER animation finishes (1 second timing kept)
                           setTimeout(() => {
+                              quoteBtn.innerHTML = `
+                                  <div class="pricing-element mk-z-[11] mk-color-white mk-flex mk-items-center mk-justify-center quote-container mk-mx-auto mk-text-[16px]">
+                                      <span class="mk-color-white">BOOK FROM</span>  
+                                      <div id="price-goes-here" class="mk-text-yellow mk-pl-[7px] mk-font-semibold">£${pricingEle}</div>
+                                  </div>
+                              `;
+                          }, 1000);
 
-                              quoteBtn.style.display = 'flex';
+                      }, 2000);
 
-                              // CALL THE ANIMATION FUNCTION HERE
-                              animateGetQuoteBtn(quoteBtn);
-
-                              // Update text AFTER animation finishes (1 second timing kept)
-                              setTimeout(() => {
-                                  quoteBtn.innerHTML = `
-                                      <div class="pricing-element mk-z-[11] mk-color-white mk-flex mk-items-center mk-justify-center quote-container mk-mx-auto mk-text-[16px]">
-                                          <span class="mk-color-white">BOOK FROM</span>  
-                                          <div id="price-goes-here" class="mk-text-yellow mk-pl-[7px] mk-font-semibold">£${pricingEle}</div>
-                                      </div>
-                                  `;
-                              }, 1000);
-
-                          }, 2000);
-
-                      }
                   }
-              })
+              }
           })
-          .catch(err => { 
-              console.error("Error fetching price:", err);
-              quoteBtn.textContent = "Please try again later";
-              quoteBtn.classList.remove("animate");
-            });
-            
-        }
+      })
+      .catch(err => { 
+          console.error("Error fetching price:", err);
+          quoteBtn.textContent = "Please try again later";
+          quoteBtn.classList.remove("animate");
+        });
+        
+    }
 
 
     function getFlightDetails(flightnumber, flightWidgetCalendar){
@@ -1269,14 +1342,15 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
             const air_code = `${item.arrival.airport_code}`; 
             const ex_arr_time = `${item.arrival.time}`;
             const date = new Date(ex_arr_time);
+            const formattedDate = `${date.toDateString()} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
             const carrier = `${item.carrier.icao}`;
             const flightNum = `${item.flight_no}`;
             const depCity = `${item.departure.city}`;
             const terminal = `${item.arrival.terminal}`;
             document.querySelector('ul#airport-arr__results').style.display = 'block';
             console.log('coming from these sides',arrCity);
-            const getFieldDetails = `<span class="mk-text-black mk-font-500 mk-pt-[10px] mk-pb-[20px] mk-text-[12px] mk-leading-[1.3] mk-absolute mk-top-[60px]">
-            Arrival at ${air_code},${terminal}, ${date}
+            const getFieldDetails = `<span class="airport-arr__results-text mk-text-black mk-font-500 mk-block mk-w-full mk-px-[14px] mk-py-[10px] mk-text-[12px] mk-leading-[1.3]">
+            Arrival at ${air_code},${terminal}, ${formattedDate}
             </span>`;
             document.querySelector('ul#airport-arr__results').innerHTML = getFieldDetails;
             localStorage.setItem('Terminal', terminal);
@@ -1308,11 +1382,14 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
 
                        // Assuming street is everything before the postcode
                       const street_selected = postcode ? address.split(postcode)[0].trim() : null;
-
+                      const lat = first?.data?.location?.lat;
+                      const lon = first?.data?.location?.lon;
                       // set localstorage
                       localStorage.setItem('Postcode', postcode);
                       localStorage.setItem('Street', street_selected);
-                      localStorage.setItem('pickup_address', street_selected);
+                      localStorage.setItem('pickup_address', street_selected);  
+                      localStorage.setItem('airport_lat', lat); 
+                      localStorage.setItem('airport_lon', lon);                
 
                       console.log(postcode, street_selected);
                   }).catch(err => console.log(err.message));
@@ -1328,6 +1405,7 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
 
 
     function clearLocalStorage(){
+    localStorage.removeItem('ASAP');
       localStorage.removeItem("pickup_address");
       localStorage.removeItem("Street");
       localStorage.removeItem("Postcode");
@@ -1351,6 +1429,8 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
       localStorage.removeItem('dropoff_google_id');
       localStorage.removeItem('dropoff_lat_refined');
       localStorage.removeItem('dropoff_pafid');
+      localStorage.removeItem('airport_lat');
+      localStorage.removeItem('airport_lon');
       
     }
 
@@ -1558,8 +1638,8 @@ document.addEventListener("click", (e) => {
     setTimeout(() => {
       console.log("Clearing dropoff data...");
       clearLocalStorage();
-      localStorage.removeItem('ASAP');
-      openCalendarModal('date-container', calendarHtml, '#arrivalDateTime');
+      //localStorage.removeItem('ASAP');
+      
 
     }, 50);
     
@@ -1585,7 +1665,8 @@ function updateCalendarButton() {
 
 
 function redirectParams(){
-  const pickup = localStorage.getItem('pickup_address');
+  console.log('Redirect Params TBC');
+  /*const pickup = localStorage.getItem('pickup_address');
   const dropoff = localStorage.getItem('Car Dropoff');
   const date = localStorage.getItem('Date Time');
   const price = localStorage.getItem('Price');
@@ -1602,38 +1683,91 @@ function redirectParams(){
 
   const payload = Base64url(params);
   console.log('deeplink data stuff is here', payload);
-
+ 
 
   https://webportal3.addlee-sandbox.net/al/booking-v6/new/car?pickup=${encodeURIComponent(pickup)}&dropoff=${encodeURIComponent(dropoff)}&date=${encodeURIComponent(date)}&price=${price}
   
   if(pickup && dropoff && date && price ){
-    const redirectUrl = `https://webportal3.addlee-sandbox.net/al/booking-v6/new/car?${payload}`;
-    console.log('deeplink stuff', redirectUrl);
+    //const redirectUrl = `https://webportal3.addlee-sandbox.net/al/booking-v6/new/car?${payload}`;
+    //console.log('deeplink stuff', redirectUrl);
     //window.location.href = redirectUrl;
   }
+    */
   
 
 }
 
-async function handleQuoteClick( button, tab, panel ) {
+function getPickupLocation() {
+  const lat = localStorage.getItem('Pick Latitude');
+  const lon = localStorage.getItem('Pick Longitude');
 
-  const location_cord_lat_pu = localStorage.getItem('Refined Lat');
-  const location_cord_loc_pu = localStorage.getItem('Refined Loc');
+  if (lat && lat !== '-' && lon && lon !== '-') {
+    return {
+      lat: Number(lat),
+      lon: Number(lon)
+    };
+  }
+
+  const refinedLat = localStorage.getItem('Refined Loc');
+  const refinedLon = localStorage.getItem('Refined Lat');
+
+  if (refinedLat && refinedLon) {
+    return {
+      lat: Number(refinedLat),
+      lon: Number(refinedLon)
+    };
+  }
+
+  const airportLat = localStorage.getItem('airport_lat');
+  const airportLon = localStorage.getItem('airport_lon');
+
+  if (airportLat && airportLon) {
+    return {
+      lat: Number(airportLat),
+      lon: Number(airportLon)
+    };
+  }
+
+  return null;
+}
+
+function getDropoffLocation() {
+  const lat = localStorage.getItem('Drop Latitude');
+  const lon = localStorage.getItem('Drop Longitude');
+
+  if (lat && lat !== '-' && lon && lon !== '-') {
+    return {
+      lat: Number(lat),
+      lon: Number(lon)
+    };
+  }
+
+  const refinedLat = localStorage.getItem('dropoff_lat_refined');
+  const refinedLon = localStorage.getItem('dropoff_lng_refined');
+
+  if (refinedLat && refinedLon) {
+    return {
+      lat: Number(refinedLat),
+      lon: Number(refinedLon)
+    };
+  }
+
+  return null;
+}
+
+async function handleQuoteClick( button, tab, panel ) {
 
   const formattedData = convertDateFormat();
   const payload = {
       booking: {
-        asap: false,
+        asap: localStorage.getItem('ASAP') === 'TRUE',
         date: formattedData,
         payment_type: 'credit_card',
         stops: [
           {
             type: 'ADDRESS',
             formatted_address: localStorage.getItem('pickup_address'),
-            location: {
-              lat: location_cord_lat_pu,
-              lon: location_cord_loc_pu
-            },
+            location: getPickupLocation(),
             address_components: {
               postal_code: localStorage.getItem('Postcode'),
               street_name: localStorage.getItem('Street'),
@@ -1644,10 +1778,7 @@ async function handleQuoteClick( button, tab, panel ) {
           {
             type: 'ADDRESS',
             formatted_address: localStorage.getItem('Car Dropoff'),
-            location: {
-              lat: 51.48252544272139,
-              lon: -0.2714334497907255
-            },
+            location: getDropoffLocation(),
             address_components: {
               postal_code: localStorage.getItem('Drop Postcode'),
               street_name: localStorage.getItem('Drop Street'),
@@ -1717,6 +1848,7 @@ async function handleQuoteClick( button, tab, panel ) {
 }
 
         if(tab?.id === 'tab-1'){
+          
           const flightDropoffContainer = document.getElementById('flightdropoff-container');
           const flightNumberContainer = document.getElementById('flightnumber-container');
           const flightInput = document.getElementById('my-flight-details').value.trim();
@@ -1773,6 +1905,7 @@ async function handleQuoteClick( button, tab, panel ) {
         }
 
         if(tab?.id == 'tab-2'){
+          localStorage.setItem('ASAP', 'true');
           const dateContainer = document.getElementById('date-container');
           const dateForm = document.getElementById('open-calendar').value;
           const a = document.getElementById('myInputDropOffCourier').value.trim();
@@ -1795,7 +1928,6 @@ async function handleQuoteClick( button, tab, panel ) {
           if(a && b){
             button.textContent = "GETTING YOUR QUOTE...";
             try {
-              console.log(payload);
               const response = await fetch('wp-json/quote/v1/courier-service', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -1839,7 +1971,7 @@ async function handleQuoteClick( button, tab, panel ) {
                   localStorage.setItem('Price', pricingEle);
                 }
 
-                if (code === 'bicycle_courier' && id === targetBicycleId) {
+                if (code === 'parcel_car' && id === targetBicycleId) {
                   // Prevent duplicate animation/state
                   if (!button.classList.contains('animation')) {
                     button.classList.add('animation');
@@ -1981,7 +2113,11 @@ function convertDateFormat(){
   const raw = localStorage.getItem('Date Time');
   
   // Split date + time
+  if(raw){
   const [dateStr, timeStr] = raw.split(" - "); 
+ 
+  
+  
   // dateStr = "27 March 2026"
   // timeStr = "14:26"
 
@@ -1998,60 +2134,38 @@ function convertDateFormat(){
 
   // Final ISO style output
   return `${yyyy}-${mm}-${dd}T${hh}:${min}:00`;
-
+  }
 }
 
+
 function getPayload() {
-  const get_location_lat = localStorage.getItem('Refined Lat');
-  const get_location_loc = localStorage.getItem('Refined Loc');
-  const get_pick_lon = localStorage.getItem('Pick Longitude');
-  const get_lick_lat = localStorage.getItem('Pick Latitude');
+  const get_ASAP = localStorage.getItem('ASAP');
+  const pickupLocation = getPickupLocation();
+  const dropoffLocation = getDropoffLocation();
 
-
-  const get_drop_location_lat = localStorage.getItem('dropoff_lat_refined');
-  const get_drop_location_lon = localStorage.getItem('dropoff_lng_refined');
-  const get_drop_lon = localStorage.getItem('Drop Longitude');
-  const get_drop_lat = localStorage.getItem('Drop Latitude');
-
-
-
-  const raw = localStorage.getItem('Date Time');
   
-  // Split date + time
-  const [dateStr, timeStr] = raw.split(" - "); 
-  // dateStr = "27 March 2026"
-  // timeStr = "14:26"
+  if (!pickupLocation || !dropoffLocation) {
+    console.error('Missing pickup or dropoff location');
+    return null;
+  }
 
-  // Build a real Date object
-  const date = new Date(`${dateStr} ${timeStr}`);
-
-  // Format YYYY-MM-DD
-  const yyyy = date.getFullYear();
-  const mm = String(date.getMonth() + 1).padStart(2, "0");
-  const dd = String(date.getDate()).padStart(2, "0");
-
-  // Format HH:MM
-  const [hh, min] = timeStr.split(":");
-
-  // Final ISO style output
-  const formatted = `${yyyy}-${mm}-${dd}T${hh}:${min}:00`;
-
-  console.log('date converted from localstorage', formatted);
+	if(get_ASAP == 'FALSE'){
+  localStorage.getItem('Date Time');
+  } else {
+		localStorage.removeItem("Date Time");
+	}
     
     return {
       booking: 
       {
-            asap: localStorage.getItem('ASAP'),
-            date: formatted,
+            asap: get_ASAP,
+            date: convertDateFormat(),
             payment_type: "credit_card",
             stops: [
                 {
                     type: "ADDRESS",
                     formatted_address: localStorage.getItem('pickup_address'),
-                      location: {
-                      lat: get_location_lat ? get_location_lat : get_lick_lat,
-                      lon: get_location_loc ? get_location_loc : get_pick_lon
-                      },
+                      location: pickupLocation,
                     address_components: {
                     postal_code: localStorage.getItem('Postcode'),
                     street_name: localStorage.getItem('Street'),
@@ -2062,10 +2176,7 @@ function getPayload() {
                 {
                     type: "ADDRESS",
                     formatted_address: localStorage.getItem('Car Dropoff'),
-                    location: {
-                      lat: get_drop_location_lat ? get_drop_location_lat : get_drop_lat,
-                      lon: get_drop_location_lon ? get_drop_location_lon : get_drop_lon
-                    },
+                    location: dropoffLocation,
                     address_components: {
                     postal_code: localStorage.getItem('Drop Postcode'),
                     street_name: localStorage.getItem('Drop Street'),
@@ -2083,5 +2194,87 @@ function getPayload() {
   
 }
 
+  // Handle click on field containers to activate field/set cursor focus
+  const ADDRESS_ROW_CONTAINER_SELECTOR =
+    '#pickup-container, #dropoff-container, #flightnumber-container, #flightdropoff-container, #courierpickup-container, #courierdropoff-container';
+
+  function getInputForAddressRowContainer(container) {
+    if (!container) return null;
+    switch (container.id) {
+      case 'pickup-container':
+        return document.getElementById('myInput');
+      case 'dropoff-container':
+        return document.getElementById('myInputDropOff');
+      case 'flightdropoff-container':
+        return document.getElementById('myInputDropOffArr');
+      case 'courierpickup-container':
+        return document.getElementById('myInputCourier');
+      case 'courierdropoff-container':
+        return document.getElementById('myInputDropOffCourier');
+      case 'flightnumber-container': {
+        const replacementRow = document.getElementById('flightNumberRow');
+        if (replacementRow && !replacementRow.hidden) {
+          return document.getElementById('arrivalAirport');
+        }
+        return document.getElementById('my-flight-details');
+      }
+      default:
+        return null;
+    }
+  }
+
+  const PLACEHOLDER_REST = '#9ca3af';
+  const PLACEHOLDER_FLASH_PEAK = '#000000';
+
+  function flashPlaceholderHint(input) {
+    if (!input || input.disabled || input.value.trim()) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    input.style.removeProperty('--qw-ph');
+    void input.offsetWidth;
+    input.style.setProperty('--qw-ph', PLACEHOLDER_FLASH_PEAK);
+    setTimeout(() => {
+      input.style.setProperty('--qw-ph', PLACEHOLDER_REST);
+    }, 320);
+    setTimeout(() => {
+      input.style.removeProperty('--qw-ph');
+    }, 900);
+  }
+
+  if (widget && !widget.dataset.qwDelegClickBound) {
+    widget.dataset.qwDelegClickBound = "1";
+    widget.addEventListener("click", (e) => {
+      const dateContainer = e.target.closest("#date-container");
+      if (dateContainer && e.isTrusted) {
+        if (!e.target.closest(".date-widget-btn")) {
+          const panel = dateContainer.closest(".tab-panel");
+          if (panel) {
+            const calBtn =
+              panel.querySelector("#open-calendar") ||
+              panel.querySelector("#flight-calendar") ||
+              panel.querySelector("#courier-calendar");
+            if (calBtn) {
+              calBtn.dispatchEvent(
+                new MouseEvent("click", { bubbles: false, cancelable: true, view: window })
+              );
+              e.stopPropagation();
+              return;
+            }
+          }
+        }
+      }
+
+      const container = e.target.closest(ADDRESS_ROW_CONTAINER_SELECTOR);
+      if (!container) return;
+      if (e.target.closest('button, a[href], [role="button"]')) return;
+      const input = getInputForAddressRowContainer(container);
+      if (input) {
+        input.focus();
+        flashPlaceholderHint(input);
+      }
+    });
+}
+
 
 })();
+

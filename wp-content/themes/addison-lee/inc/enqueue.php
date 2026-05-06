@@ -51,6 +51,11 @@ function addison_lee_scripts() {
 
 	// UTM tracking.
 	wp_enqueue_script( 'utm-tracking', get_template_directory_uri() . '/assets/dist/js/utm-tracker.js', array(), wp_get_theme()->get( 'Version' ), true );
+
+	// Fresh Form UTM tracking.
+    echo "\n<!-- Fresh Forms utm tracker" . get_stylesheet_directory_uri() . "/assets/dist/js/fresh-forms-utm.js -->\n";
+
+	wp_enqueue_script( 'fresh-forms-utm', get_template_directory_uri() . '/assets/dist/js/fresh-forms-utm.js', array(), false, true );
 }
 add_action( 'wp_enqueue_scripts', 'addison_lee_scripts' );
 

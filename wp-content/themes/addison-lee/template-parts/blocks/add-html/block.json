@@ -1,0 +1,16 @@
+{
+    "name": "add-html",
+    "title": "Add HTML",
+    "description": "Block for embedding HTML.",
+    "category": "layout",
+    "icon": "controls-repeat",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "add-html.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    }
+}

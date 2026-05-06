@@ -108,10 +108,10 @@ function quote_lockdown_fallback( $result, $request = null ) {
     // Whitelist exact public routes (adjust if you add methods/variations)
     $public_routes = [
         '/quote/v1/address-search',
-        '/quote/v1/price',
         '/quote/v1/courier-service',
         '/quote/v1/flight',
-        '/quote/v1/refine'
+        '/quote/v1/refine',
+        '/quote/v1/price',
     ];
 
     if ( in_array( $route, $public_routes, true ) ) {

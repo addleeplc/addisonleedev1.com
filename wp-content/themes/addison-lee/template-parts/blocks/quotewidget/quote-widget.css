@@ -3,7 +3,9 @@
 
 }
 
-#get-a-quote {
+
+
+/*#get-a-quote {
     justify-content: center;
     padding-top: 24px;
     padding-bottom: 24px;
@@ -33,6 +35,48 @@
     background-color: #000000;
 }
 
+.get-a-quote.btn{
+	position: relative;
+    border: none;
+    background-color: #fedb00;
+    color: #000;
+    overflow: hidden;
+	width:100%;
+}
+.get-a-quote.btn:hover{
+	background-color: #fedb00;
+    color: #000;
+    font-size: 17px;
+	font-weight:bold;
+}
+.get-a-quote.btn::before{
+	width:0;
+	background-color: #000;
+    color: #fff;
+    position: absolute;
+    inset: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: width 0.3s ease;
+    z-index: 0;
+}
+.get-a-quote.btn.clicked{
+	background-color: #000;
+    color: #fff;
+}
+.get-a-quote.btn.clicked:hover{
+	background-color: #000 !important;
+    color: #fff !important;
+    font-size: 17px;
+	font-weight:bold;
+}
+.get-a-quote.btn.clicked:hover #price-goes-here{
+	color:#fedb00 !important;
+}
+.get-a-quote.btn.clicked::before{
+	transform: scaleX(1);
+}
+
 .quote-container #price-goes-here:hover,
 .quote-container span:hover {
     color: #fff;
@@ -42,6 +86,8 @@
     position: relative;
     display: block;
 }
+*/
+
 
 .tab-panel { display: none; }
 .tab-panel.active { display: block;}
@@ -222,7 +268,9 @@ ul#address-search-courier-dropoff__results {
 }
 
 
-ul#address-search-dropoff__results
+ul#address-search-dropoff__results,
+ul#address-search-airport-arrival__results,
+ul#airport-arr__results
  {
     height: auto;
     max-height: 187px;
@@ -234,7 +282,7 @@ ul#address-search-dropoff__results
     display: none;
     background-color: #fff;
     position: absolute;
-    z-index:1;
+    z-index:999;
     top: 61px;
     
 }
@@ -245,7 +293,6 @@ ul#courier-address-search__results {
     width: 100%;
     overflow-y: scroll;
     border-left: solid 1px #B4B4B4;
-    border-right: solid 1pc #B4B4B4;
     border-top: none;
     border-bottom: none;
     display: none;
@@ -259,7 +306,9 @@ ul#address-search__results li button,
 ul#address-search-dropoff__results li button,
 ul#address-search-airport-dropoff__results li button,
 ul#courier-address-search__results li button,
-ul#address-search-courier-dropoff__results li button {
+ul#address-search-courier-dropoff__results li button,
+ul#address-search-airport-arrival__results li button,
+ul#airport-arr__results li button {
     border: none;
     background-color: #fff;
     color:#000;
@@ -298,6 +347,10 @@ ul#address-search-dropoff__results li button:hover {
     color: #000;
     height: 24px;
     
+}
+/* Quote widget block: placeholder flash when user clicks an address row (quote-widget.js). */
+#quote-widget .form-control input::placeholder {
+    color: var(--qw-ph, #9ca3af);
 }
 
 .form-control label {
@@ -347,6 +400,7 @@ ul#address-search-dropoff__results li button:hover {
   backdrop-filter: blur(3px);
 }
 .calendar-modal {
+  z-index:99999;
   animation: popIn 0.25s ease forwards;
 }
 @keyframes popIn {
@@ -505,7 +559,9 @@ a.second-state {
 #display_errors_fl,
 #display_errors_airdrop,
 #display_errors_couriers,
-#display_errors_pick_courier {
+#display_errors_pick_courier,
+#display_errors_air_arr,
+#display_errors_date_widget  {
     color: #ff0000;
     position: absolute;
     top: 65px;
@@ -537,77 +593,120 @@ a.second-state {
   margin-top: 4px;
 }
 
-.button {
-  border-radius: 3px;
-  width: 100%;
-  max-width: 500px;
-  height: 100%;
-  display: block;
-  background: linear-gradient(to right, black 50%, #ffd900 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
-  transition: all 1s ease-out;
-  padding: 24px 158px;
-
-}
-
-.button.active {
-    border: 1px solid #000;
-}
-
-
-.text {
-  font-size: 16px;
-  line-height: 30px; 
-  color: black;
-  transition: all .6s ease-out;
-  display: block;
-  text-decoration: none;
-  transition: font-size 300ms ease;
-}
-
 #pickup-container, 
 #dropoff-container, 
 #flightnumber-container, 
-#flightdropoff-container, #courierpickup-container, #courierdropoff-container {
+#flightdropoff-container, #courierpickup-container, #courierdropoff-container,  #date-container {
     border-bottom-color: #B4B4B4;
     border-bottom-width: 1px;
-    
+}
+
+.pointer, .pointer label{
+    cursor: pointer;
 }
 
 
 
-.animate {
-    background-color: #000;
-    border: 1px solid #000;
-    white-space: nowrap; 
-    color: white;
-    font-size: 20px;
+
+/* button animation starts for get quote*/
+
+.qqw-wrapper{
+    position: relative;
+}
+
+.qqw-wrapper a{
+    display: flex;
+    line-height: 40px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #000; /* default text black*/
+    background: #FFD900;
+    /* letter-spacing: 2px; */
+    text-align: center;
+    position: relative;
     overflow: hidden;
-    transform: translate(0%, 0%);
-    -ms-transform: translate(0%, 0%);
-    animation: slideIn 0.25s ease forwards;
+    transition: all .65s ease;
+    border: 2px solid transparent;
+    position: absolute;
+    top: 0;
+    justify-content: center;
+    align-items: center;
 }
 
-@keyframes slideIn {
-  from { width: 0%; position: absolute; left: 0; opacity: 0;}
-  to { width: 100%; opacity: 1;}
+.qqw-wrapper a span{
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+
+    /* Text starts fully visible but BLACK */
+    opacity: 1;
+    color: #000;
+
+    transition:
+    transform .45s ease,
+    font-size .65s ease,
+    opacity 1s ease 1.4s,  /* fade timing */
+    color .2s ease 1.4s;    /* color changes AFTER overlay */
 }
+
+.qqw-wrapper a::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0px;
+    width: 0%;
+    height: 100%;
+    /* Smooth ease-out overlay animation */
+    transition:
+    width .9s cubic-bezier(0.25, 1, 0.5, 1) 0.5s,
+    border .65s ease 0.5s;
+    opacity: 0;
+    background: #1A1A1A;
+    z-index: 1;
+    border: 1px solid #1A1A1A;
+}
+
+.qqw-wrapper a.animation::after {
+    width: 100%;
+    opacity: 1;
+}
+
+.qqw-wrapper a.animation {
+    border-color: #000;
+}
+
+/* Text only turns white AFTER overlay has reached 100% */
+.qqw-wrapper a.animation span {
+    opacity: 1;
+    color: #fff;   /* new color AFTER overlay fills */
+}
+
+/*  Text scale */
+.qqw-wrapper .get-a-quote .scale {
+    transform: scale(1.15);
+}
+
+
+/* end button animation */
+
+
 
 /* Calendar Widget */
 :root{--bg:#0f1724;--card:#0b1220;--accent:#D9D9D9;--muted:#949494;--surface:#0b1220}
     *{box-sizing:border-box}
+    .calendar-widget-wrap { padding: 50px;  }
     #today-btn { background-color: #000; color: #fff; border: solid 1px #fff}
     #today-btn:hover {background-color: #fff; color: #000; border: solid 1px #000 }
     /*body{font-family:Inter, system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial; background:linear-gradient(180deg,#071426 0%, #051024 100%); color:#e6eef8; padding:32px;}*/
     .qq-calendar-widget{width:340px;background:#fff;border-radius:7px;padding:16px;box-shadow:0 6px 24px rgba(2,6,23,0.7);position:absolute;z-index:1}
     .qq-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-    .month-nav{display:flex;gap:50px;align-items:center;width:100%}
-    .month-nav button { color: #000;}
-    .month-nav .btn { background-color: #fff; border: none}
+    .header{width:100%}
+    .month-nav{display:flex;align-items:center;width:100%;min-width:0}
+    .month-nav button{color:#000;flex:0 0 auto}
+    .month-nav .btn{background-color:#fff;border:none}
     .qq-btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:6px 8px;border-radius:8px;color:inherit;cursor:pointer}
     .qq-btn:active{transform:translateY(1px)}
-    .month-title{font-weight:600; color: #000;}
+    .month-title{flex:1 1 auto;min-width:0;text-align:center;font-weight:600;color:#000}
     #title { color: #000;}
     .calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
     .weekday{font-size:18px;color:var(--muted);text-align:center;text-transform: uppercase;}
@@ -616,10 +715,10 @@ a.second-state {
     .day.outside{color:rgba(230,238,248,0.35);cursor:default}
     .day.today{box-shadow:inset 0 0 0 1px rgba(59,130,246,0.18)}
     .day.selected{background:var(--accent);color:var(--card);}
-
+    .day.disabled{color: #949494}
     .time-area{display:flex;gap:8px;align-items:center;margin-top:12px}
     .time-area input[type=number]{width:42px;padding:2px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
-	.time-area #title { margin-right:200px;}
+	.time-area #title { margin-right:146px;}
     .controls{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
     .primary{background:#000;border:none;padding:8px 12px;border-radius:4px;color:#fff;cursor:pointer;font-weight:300;}
 	.controls .btn{background:rgb(255 217 0 / var(--tw-bg-opacity));border:none;padding:8px 12px;border-radius:4px;color:#000;cursor:pointer;font-weight:300;}
@@ -630,7 +729,7 @@ a.second-state {
     @media (max-width:380px){.widget{width:100%}} 
 
     /* focus styles for accessibility */
-    .btn:focus,.day:focus,.primary:focus,.ghost:focus{outline:2px solid rgba(59,130,246,0.34);outline-offset:2px}
+    .btn:focus,.day:focus,.primary:focus,.ghost:focus{outline:0px solid rgba(59,130,246,0.34);outline-offset:2px}
 	.quote-widget input, .quote-widget input:focus{border:0px !important;outline:0px !important;}
 
 @media screen and (max-width: 1300px) {
@@ -650,3 +749,50 @@ a.second-state {
         padding-left: 0;
     }
 }
+@media screen and (max-width: 450px) {
+    .calendar-widget-wrap {
+        padding:20px;
+    }
+    .time-area #title {
+        margin-right:50px;
+    }
+}
+
+/* Quote widget — panels container: height is animated in quote-widget.js on tab change (overflow hidden applied inline during animation) */
+#quote-widget-panels.quote-widget-panels {
+    box-sizing: border-box;
+}
+
+/* Quote widget — tab-1 flight number: #airport-arr__results full width under .form-control (absolute; inset + width:auto matches padded container better than shrink-to-fit). Overflow visible: inner markup is a lone position:absolute span (no in-flow height); scroll/max-height from address dropdowns would clip it. */
+#quote-widget ul#airport-arr__results {
+    top: 70px;
+    left: -55px;
+    right: 0;
+    width: auto;
+    border-left:0px;
+    box-sizing: border-box;
+    overflow: visible;
+    max-height: none;
+}
+
+/* Quote widget — tab-1 flight number row: nested #flightOriginalRow used to shrink-wrap; min-width 0 lets flex children use the full grid column so the arrival message matches input width */
+#quote-widget .flightnumber-row,
+#quote-widget #flightOriginalRow,
+#quote-widget #flightOriginalRow > .mk-flex {
+    min-width: 0;
+}
+
+#quote-widget .flightnumber-row .airport-pickup-container {
+    flex-shrink: 0;
+}
+
+#quote-widget #flightOriginalRow .form-control {
+    min-width: 0;
+}
+
+#quote-widget ul#airport-arr__results .airport-arr__results-text {
+    box-sizing: border-box;
+    font-weight: 500;
+}
+
+

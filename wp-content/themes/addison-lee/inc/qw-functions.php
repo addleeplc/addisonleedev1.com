@@ -50,48 +50,6 @@ add_action('rest_api_init', function () {
 });
 
 
-
-
-// get price request 
-add_action('rest_api_init', function () {
-    register_rest_route('quote/v1', '/price', [
-        'methods'  => 'POST',
-        'permission_callback' => '__return_true', // REQUIRED
-        'callback' => function (WP_REST_Request $request) {
-
-            // Get full JSON payload from JS
-            $payload = $request->get_json_params();
-
-            if (empty($payload)) {
-                return new WP_Error('missing_payload', 'Payload is required', ['status' => 400]);
-            }
-
-            // External API URL
-            $api_url = SHAMROCK_PRODUCT_CATALOGUE_SERVICE;
-
-            // Forward entire payload to external API
-            $response = wp_remote_post($api_url, [
-                'headers' => [
-                    'x-api-key' => SHAMROCK_QWKEY,
-                    'Content-Type'  => 'application/json'
-                ],
-                'body' => wp_json_encode($payload)
-            ]);
-
-            if (is_wp_error($response)) {
-                return new WP_Error('api_error', 'Failed to fetch API', ['status' => 500]);
-            }
-
-            $body = wp_remote_retrieve_body($response);
-            $data = json_decode($body, true);
-
-            // Return full API response or raw body if decoding fails
-            return $data ?: ['raw' => $body];
-        }
-    ]);
-});
-
-
 // get flight search request 
 add_action('rest_api_init', function () {
     register_rest_route('quote/v1', '/flight', [
@@ -201,3 +159,42 @@ add_action('rest_api_init', function() {
     ]);
 });
 
+
+// get price request 
+add_action('rest_api_init', function () {
+    register_rest_route('quote/v1', '/price', [
+        'methods'  => 'POST',
+        'permission_callback' => '__return_true', // REQUIRED
+        'callback' => function (WP_REST_Request $request) {
+
+            // Get full JSON payload from JS
+            $payload = $request->get_json_params();
+
+            if (empty($payload)) {
+                return new WP_Error('missing_payload', 'Payload is required', ['status' => 400]);
+            }
+
+            // External API URL
+            $api_url = SHAMROCK_PRODUCT_CATALOGUE_SERVICE;
+
+            // Forward entire payload to external API
+            $response = wp_remote_post($api_url, [
+                'headers' => [
+                    'x-api-key' => SHAMROCK_QWKEY,
+                    'Content-Type'  => 'application/json'
+                ],
+                'body' => wp_json_encode($payload)
+            ]);
+
+            if (is_wp_error($response)) {
+                return new WP_Error('api_error', 'Failed to fetch API', ['status' => 500]);
+            }
+
+            $body = wp_remote_retrieve_body($response);
+            $data = json_decode($body, true);
+
+            // Return full API response or raw body if decoding fails
+            return $data ?: ['raw' => $body];
+        }
+    ]);
+});

@@ -56,7 +56,7 @@ $label = $size['choices'][ $value ];
   </div>
 
   <!-- Panels -->
-  <div class="mk-relative mk-bg-white mk-rounded-t-none mk-rounded-b-lg mk-rounded-tr-lg sm-max:mk-rounded-tr-none mk-shadow-sm mk-pt-[32px] mk-pb-2 sm-max:mk-px-[10px] sm-max:mk-pt-[22px] sm-max:mk-pb-[10px] mk-px-[50px]">
+  <div class="mk-relative mk-bg-white mk-rounded-t-none mk-rounded-b-lg mk-rounded-tr-lg sm-max:mk-rounded-tr-none mk-shadow-sm mk-pt-[32px] mk-pb-2 sm-max:mk-px-[10px] sm-max:mk-pt-[22px] sm-max:mk-pb-[33px] mk-px-[50px]">
     <?php 
       $i = 0;
       if ( have_rows('tabs') ) : 
@@ -67,7 +67,7 @@ $label = $size['choices'][ $value ];
         role="tabpanel"
         data-loaded="false" 
         aria-labelledby="tab-<?php echo $i; ?>" 
-        class="tab-panel <?php echo $i === 0 ? '' : 'mk-hidden'; ?>"
+        class="tab-panel <?php echo $i === 0 ? '' : ''; ?>"
       >
         <div data-loaded="false" id="content-<?php echo $i; ?>" class="mk-text-slate-500">Loading…</div>
       </section>

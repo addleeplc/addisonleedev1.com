@@ -499,7 +499,12 @@ if ( ! empty( $block['className'] ) ) {
 				</div>
 			</div>
 			<div id="debitcard">
-				<iframe src="" style="height: 2221px; width: 100%; margin-bottom: 30px" id="directDebitFormUrl" frameborder="0" scrolling="no" onload=""></iframe>
+				<iframe src="" style="height: 2221px; width: 100%; margin-bottom: 30px" id="directDebitFormUrl" frameborder="0" scrolling="no" onload="scrollToiFrame();"></iframe>
+				<script>
+				function scrollToiFrame() { 
+					document.getElementById('banner_head').scrollIntoView();
+				}
+				</script>
 			</div>
 			<div id="creditcard_details" class="mk-mb-4 mk-mt-8">
 				<label class="mk-mb-2">Type of Credit Card</label>

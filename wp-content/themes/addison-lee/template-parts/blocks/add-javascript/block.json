@@ -1,0 +1,16 @@
+{
+    "name": "add-javascript",
+    "title": "Add JavaScript",
+    "description": "Block for embedding JavaScript.",
+    "category": "layout",
+    "icon": "controls-repeat",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "add-javascript.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "anchor": true
+    }
+}

@@ -38,7 +38,7 @@ if ( ! empty( $block['className'] ) ) {
 	<?php } ?>
 	<div class="mk-absolute mk-inset-0 mk-flex mk-items-end md:mk-items-center mk-w-full mk-h-full mk-px-4 mk-pb-36 md:mk-py-24 mk-bg-hero-gradient-mob md:mk-bg-hero-gradient-video">
 		<div class="mk-w-full mk-max-w-site mk-mx-auto">
-			<div class="mk-text-lg-title lg:mk-text-3xl-title mk-font-medium mk-uppercase mk-mb-4">
+			<h1 class="mk-text-lg-title lg:mk-text-3xl-title mk-font-medium mk-uppercase mk-mb-4">
 				<?php if ( $heading_white_ticker && $show_ticker_white ) { ?>
 					<div class="text-ticker-container mk-hidden md:mk-block mk-relative mk-h-14 lg:mk-h-20 mk-overflow-hidden">
 						<div class="text-ticker mk-absolute mk-top-0 mk-left-0">
@@ -69,7 +69,7 @@ if ( ! empty( $block['className'] ) ) {
 				<?php } else { ?>
 					<p class="mk-block mk-text-yellow md:mk-ml-40"><?php echo esc_html( $heading_yellow_text ); ?></p>
 				<?php } ?>
-			</div>
+			</h1>
 			<?php if(is_front_page()) : ?>
 				<div class="md:mk-pl-0">
 				<?php else : ?>

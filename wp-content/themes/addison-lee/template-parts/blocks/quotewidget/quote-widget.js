@@ -1218,10 +1218,6 @@ openCalendarModal("courier-calendar", calendarHtml, "#courierDateTime");  // Tab
   });
 
 
-  
-
-
-
 
     function getPrice(button, btn = null) {
 
@@ -1971,7 +1967,7 @@ async function handleQuoteClick( button, tab, panel ) {
                   localStorage.setItem('Price', pricingEle);
                 }
 
-                if (code === 'parcel_car' && id === targetBicycleId) {
+                if (code === 'bycycle_courier' && id === targetBicycleId) {
                   // Prevent duplicate animation/state
                   if (!button.classList.contains('animation')) {
                     button.classList.add('animation');
@@ -1997,7 +1993,7 @@ async function handleQuoteClick( button, tab, panel ) {
             console.log('we have the quote generated for courier flow');
             quoteGenerated = true;
             } else {
-              //redirectParams();
+              redirectParams();
             }
 
             

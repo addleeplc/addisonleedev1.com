@@ -1,6 +1,27 @@
-    // Account form javsascript.
-      
-      // Declaration
+      // Declaration - V1.0
+var MS_RETURL = "https://addisonlee1dev.wpenginepowered.com/business/apply/";
+//var MS_RETURL = "https://www.addisonlee.com/business/apply/";
+var MS_BASE_URL = "https://sandbox.api.aws.uk.addisonleeglobal.net";
+//var MS_BASE_URL = "https://api.uk.addisonleeglobal.net";
+var MS_VERIFICATION = MS_BASE_URL + "/api-wpforms/v2/api/verifications";
+var MS_VERIFICATION_CHECK = MS_BASE_URL + "/api-wpforms/v2/api/verifications/checks";
+var MS_COMPANY_SEARCH = MS_BASE_URL + "/api-dnb/v1/api/companies/quicksearch";
+var MS_COMPANY = MS_BASE_URL + "/api-dnb/v1/api/company/";
+var MS_COMPANY_CREDCHECK = "/credit/check";
+var MS_DD_STATUS = MS_BASE_URL + "/api-wpforms/v2/api/direct-debit/statuses";
+var MS_DD_WEBFORM = MS_BASE_URL + "/api-direct-debit/v1/api/direct-debit/webform";
+var MS_ACCOUNTS = MS_BASE_URL + "/api-wpforms/v2/api/accounts";
+var MS_ADDRESSES = MS_BASE_URL + "/api-wpforms/v2/api/addresses";
+// Sandbox
+var MS_CID = "8f082bed9b4944f6a62ea5a217dc1ebb";
+var MS_CS = "428e097bbB054E3aaA761A09E5C42E6F";
+var API_KEY = "FHwpJgFMHV6kjvbzyo8AK7eKp8MukN6W8gTL8v5V";
+// Production - TBD
+// var MS_CID = "a4cc854e0112491ab37ed920b4d48775";
+// var MS_CS = "C57eda74Ea254192b63910434D0ABbBd";
+
+var WF_BASE_URL = "https://webforms.uk.pt-x.com/forms/addisonlee/debit";
+	  
       let currentTab = 0;
       let lastTab = 0;
       let b_emailSegment = false;
@@ -31,7 +52,7 @@
       let b_registered_companyName_segment = false;
       let p_registered_companyName_segment = false;
       let creditcheck;
-      let companyNumber = 0;
+      let companyNumber = "";
       let no_of_employee = "";
       let riskSegment = "";
       let organization_duns_business = "";
@@ -49,47 +70,80 @@
 
       let globalQueryParamStage = "";
 
-	  window.enableNextButton = function() {
-    document.getElementById("nextbtn_1").classList.add("enabled");
-};
+      function enableNextButton() {
+        document.getElementById("nextbtn_1").classList.add("enabled");
+      }
 
+function isAllowedEmail(email) {
+  // List of restricted domains
+  const blockedDomains = [
+    "@email.com",
+    "@ymail.com",
+    "@mail.com",
+    "@proton.me",
+    "@protonmail.com",
+    "@yopmail.com",
+    "@consultant.com",
+    "@workmail.com",
+    "@euro5pe.com",
+    "@mailinator.com"
+  ];
+
+  // Convert email to lowercase for case-insensitive matching
+  const lowerEmail = email.toLowerCase();
+
+  // Check if email ends with any blocked domain
+  return !blockedDomains.some(domain => lowerEmail.endsWith(domain));
+}
 
       document.addEventListener("DOMContentLoaded", (event) => {
-        const accountForm = document.querySelector(".account-form");
-        // if (localStorage.getItem("personal_flow_selected")) {
+        console.log("DOM fully loaded and parsed");
+        if (localStorage.getItem("personal_flow_selected")) {
  
-        //   setTimeout(() => {
-        //     document.getElementById("personal_type").checked = true;
-        //     document.getElementById("personal_type").click();
-        //     enableNextButton();
-        //   }, 100);
-        // }
-        // if (localStorage.getItem("business_flow_selected")) {
+							   
+																	   
+          console.log("1", document.getElementById("personal_type").checked);
+								  
+					 
+			
+																
 
-        //   setTimeout(() => {
-
-        //     document.getElementById("bussiness_type").checked = true;
-        //     document.getElementById("bussiness_type").click();
-        //     enableNextButton();
-        //   }, 100);
-        // }
+          setTimeout(() => {
+            console.log("personal type timeout");
+																		
+																 
+								  
+					 
+			
 
   
-          if (accountForm.classList.contains("personal")) {
-              setTimeout(() => {
-                  // document.getElementById("personal_type").checked = true;
-                  document.getElementById("personal_type").click();
-                  enableNextButton();
-              }, 500);
-          } else if (accountForm.classList.contains("business")) {
-              setTimeout(() => {
-                  // document.getElementById("bussiness_type").checked = true;
-                  document.getElementById("bussiness_type").click();
-                  enableNextButton();
-              }, 500);
-          }
-        
+														   
+								
+            document.getElementById("personal_type").checked = true;
+            document.getElementById("personal_type").click();
+            enableNextButton();
+					  
+																  
+								
+																			  
+																	
+									 
+          }, 1000);
+		   
+		
 
+          // localStorage.removeItem("personal_flow_selected");
+        }
+        if (localStorage.getItem("business_flow_selected")) {
+          console.log("2", document.getElementById("bussiness_type").checked);
+          setTimeout(() => {
+            console.log("business type timeout");
+            document.getElementById("bussiness_type").checked = true;
+            document.getElementById("bussiness_type").click();
+            enableNextButton();
+          }, 1000);
+          // localStorage.removeItem("business_flow_selected");
+        }
       });
       //submit function
 
@@ -125,7 +179,7 @@
             if (checkbox_personal.checked) {
               localStorage.setItem("checkbox_personal", true);
             }
-            location.href = 'https://addisonlee2.wpengine.com/business/apply2/';
+            location.href = MS_RETURL;
 
           });
         document
@@ -206,7 +260,7 @@
             if (checkbox_personal.checked) {
               localStorage.setItem("checkbox_personal", true);
             }
-            location.href = 'https://addisonlee2.wpengine.com/business/apply2/';
+            location.href = MS_RETURL;
 
           });
         document
@@ -278,7 +332,7 @@
               localStorage.setItem("checkbox_personal", true);
             }
 
-            location.href = 'https://addisonlee2.wpengine.com/business/apply2/';
+            location.href = MS_RETURL;
 
           });
         document
@@ -420,7 +474,7 @@
               localStorage.setItem("checkbox_personal", true);
             }
 
-            location.href = 'https://addisonlee2.wpengine.com/business/apply2/';
+            location.href = MS_RETURL;
 
           });
 
@@ -463,7 +517,7 @@
               );
             }
 
-            location.href = 'https://addisonlee2.wpengine.com/business/apply2/';
+            location.href = MS_RETURL;
 
           });
 
@@ -567,7 +621,7 @@
                 );
               }
             }
-            location.href = 'https://addisonlee2.wpengine.com/business/apply2/';
+            location.href = MS_RETURL;
 
           });
         //personal payment
@@ -670,7 +724,7 @@
                 );
               }
             }
-            location.href = 'https://addisonlee2.wpengine.com/business/apply2/';
+            location.href = MS_RETURL;
 
           });
         //submit
@@ -913,7 +967,7 @@
             if (finalSubmit_checkbox.checked) {
               localStorage.setItem("finalSubmit_checkbox", true);
             }
-            location.href = 'https://addisonlee2.wpengine.com/business/apply2/';
+            location.href = MS_RETURL;
 
           });
 
@@ -1032,6 +1086,11 @@
                 buttonSpinner2.style.display = "block";
 
                 verificationCode = document.getElementById("email").value;
+                verificationPayload = {
+                  to: email,
+                  channel: 'email',
+                  code: verificationCode
+                };
                 if (verificationCode.length === 0) {
                   button2.disabled = false;
                   buttonText2.style.display = "block";
@@ -1043,11 +1102,19 @@
                     .getElementById("submitAndVerifyBtn")
                     .classList.remove("enabled");
                 } else {
-                  fetch(
-                    `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?code=${encodeURIComponent(
-                      verificationCode
-                    )}&email=${encodeURIComponent(email)}`
-                  )
+                  fetch(  
+                        MS_VERIFICATION_CHECK,
+                        {
+                          method: "POST", // Specify the HTTP method
+                          headers: {
+                            "Content-Type": "application/json",
+                            "client_id": MS_CID,
+                            "client_secret": MS_CS,
+                            "x-api-key": API_KEY
+                          },
+                          body: JSON.stringify(verificationPayload), // Collect form data
+                        }
+                    )
                     .then((response) => {
                       button2.disabled = false;
                       buttonText2.style.display = "block";
@@ -1064,7 +1131,7 @@
                       button2.disabled = false;
                       buttonText2.style.display = "block";
                       buttonSpinner2.style.display = "none";
-                      const result = JSON.parse(data).data;
+                      const result = JSON.parse(data);
                       if (
                         result.status == 200 &&
                         result.message == "approved"
@@ -1499,7 +1566,7 @@
               window.location.search = "";
               window.parent.location.search = "";
               window.parent.location.href =
-                'https://addisonlee2.wpengine.com/business/apply2/';
+                MS_RETURL;
             }
             let accountType = document.getElementById("personal_type");
             localStorage.setItem("personal_flow_selected", true);
@@ -1567,10 +1634,17 @@
                 mode: "no-cors",
               };
               fetch(
-                `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?searchTerm=${encodeURIComponent(
+                MS_COMPANY_SEARCH + `?searchTerm=${encodeURIComponent(
                   typedValue
-                )}`
-              )
+                )}`,  {
+                     headers: {
+                      //"Content-Type": "application/json",
+                      "client_id": MS_CID,
+                      "client_secret": MS_CS,
+                      "x-api-key": API_KEY
+                    },
+                  }
+                )
                 .then((response) => {
                   if (!response.ok) {
                     spinner.style.display = "none";
@@ -1584,12 +1658,16 @@
                 })
                 .then((data) => {
                   spinner.style.display = "none";
-                  const result = JSON.parse(data).data;
+                  const result = JSON.parse(data);
                   datalist.innerHTML = ""; // Clear the dropdown
                   if (result.length != 0) {
                     result.forEach((item) => {
                       let option = document.createElement("li");
                       //option.value = item.duns;
+                       option.setAttribute(
+                        "data-id",
+                        item.duns ? item.duns : ""
+                      );
                       option.setAttribute(
                         "data-name",
                         item.primary_name ? item.primary_name : ""
@@ -1702,10 +1780,17 @@
               mode: "no-cors",
             };
             fetch(
-              `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?searchTerm=${encodeURIComponent(
+              MS_COMPANY_SEARCH + `?searchTerm=${encodeURIComponent(
                 typedValue
-              )}`
-            )
+              )}`,  {
+                   headers: {
+                    //"Content-Type": "application/json",
+                    "client_id": MS_CID,
+                    "client_secret": MS_CS,
+                    "x-api-key": API_KEY
+                  },
+                }
+              )
               .then((response) => {
                 if (!response.ok) {
                   spinner.style.display = "none";
@@ -1719,7 +1804,7 @@
               })
               .then((data) => {
                 spinner.style.display = "none";
-                const result = JSON.parse(data).data;
+                const result = JSON.parse(data);
                 datalist.innerHTML = ""; // Clear the dropdown
                 if (result.length != 0) {
                   result.forEach((item) => {
@@ -1727,7 +1812,7 @@
 
                     option.setAttribute(
                       "data-id",
-                      item.duns ? item.duns : "0"
+                      item.duns ? item.duns : ""
                     );                    
                     option.setAttribute(
                       "data-name",
@@ -1824,11 +1909,18 @@
             primary_address_locality = selectedOption.dataset.locality;
             primary_address_region = selectedOption.dataset.region;
             primary_address_postalcode = selectedOption.dataset.postcode;
-            localStorage.setItem("duns", selectedOption.dataset.id);
+            localStorage.setItem("duns", selectedOption.value);
             fetch(
-              `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?dunsId=${encodeURIComponent(
-                selectedOption.dataset.id
-              )}`
+              MS_COMPANY + `${encodeURIComponent(
+                selectedOption.dataset.id.toString()
+              )}`+ MS_COMPANY_CREDCHECK +`?productId=cmptcs&versionId=v1&tradeUp=hq`, {
+                  headers: {
+                    //"Content-Type": "application/json",
+                    "client_id": MS_CID,
+                    "client_secret": MS_CS,
+                    "x-api-key": API_KEY
+                },
+              } 
             )
               .then((response) => {
                 document.getElementById("inputSpinner2").style.display = "none";
@@ -1836,7 +1928,7 @@
               })
               .then((data) => {
                 document.getElementById("inputSpinner2").style.display = "none";
-                const result = JSON.parse(data).data;
+                const result = JSON.parse(data);
                 console.log("duns response 1 --->", result);
                 creditcheck = result.hasPassedCreditCheck
                   ? result.hasPassedCreditCheck
@@ -1844,7 +1936,7 @@
 
                 organization_duns_business = result?.organization?.duns
                   ? result.organization.duns
-                  : 0;
+                  : "";
 
                 companyNumber = organization_duns_business;
                 riskSegment = result.organization.dnbAssessment.standardRating
@@ -2106,6 +2198,8 @@
                 nextTab();
               }
             }
+			// Fix to enable buttons in payments
+			document.getElementById("button_3_debit").style.display = "block";
           });
 
         document
@@ -2384,7 +2478,7 @@
                 dynamicDdplanreference
               );
               // Update https://addisonlee1dev.wpengine.com/ to https://www.addisonlee.com for production
-              let queryparams = `showerrordetail=true&ttl=${ttl}&ddplanreference=${dynamicDdplanreference}&callbackurl=https://sandbox.api.eu.addisonleeglobal.net/api-wpforms/v2/api/direct-debit/statuses&redirecturl=https://addisonlee2.wpengine.com/business/apply2/&firstname=${firstName_business}&lastname=${lastName_business}&email=${email}&mobile=${mobile_business}&requestid=${randomGUID}&applyingascompany=true&currentpostcode=${removeSpaces(
+              let queryparams = `showerrordetail=true&ttl=${ttl}&ddplanreference=${dynamicDdplanreference}&callbackurl=`+ MS_DD_STATUS +`&redirecturl=`+MS_RETURL+`&firstname=${firstName_business}&lastname=${lastName_business}&email=${email}&mobile=${mobile_business}&requestid=${randomGUID}&applyingascompany=true&currentpostcode=${removeSpaces(
                 primary_address_postalcode
                   ? primary_address_postalcode
                   : postCode_international
@@ -2398,10 +2492,17 @@
                 method: "GET",
                 mode: "no-cors",
               };
-              fetch(
-                `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?edata=${encodeURIComponent(
-                  queryparams
-                )}`
+              fetch(  
+                MS_DD_WEBFORM + `?${queryparams}`,
+                {
+                  method: "GET", // Specify the HTTP method
+                  headers: {
+                  "Content-Type": "application/json",
+                  "client_id": MS_CID,
+                  "client_secret": MS_CS,
+                  "x-api-key": API_KEY
+                  }
+                }
               )
                 .then((response) => {
                   if (!response.ok) {
@@ -2413,7 +2514,7 @@
                 })
                 .then((data) => {
                   let edata = JSON.parse(data);
-                  let url = `https://webforms.uk.pt-x.com/forms/addisonlee/debit?edata=${edata}`;
+                  let url = WF_BASE_URL+ `?edata=${edata}`;
                   let iframe = document.getElementById("directDebitFormUrl");
 				  console.log('change');
                   iframe.src = url;
@@ -2445,7 +2546,7 @@
                 });
             }
           });
-
+	
         document.addEventListener("click", function (event) {
           var searchResults = document.getElementById("companyList");
           var searchInput = document.getElementById("registered_company_name");
@@ -2525,6 +2626,11 @@
             buttonSpinner2.style.display = "block";
 
             verificationCode = document.getElementById("email").value;
+            verificationPayload = {
+              to: email,
+              channel: 'email',
+              code: verificationCode
+            };
             if (verificationCode.length === 0) {
               button2.disabled = false;
               buttonText2.style.display = "block";
@@ -2536,12 +2642,20 @@
                 .getElementById("submitAndVerifyBtn")
                 .classList.remove("enabled");
             } else {
-              fetch(
-                `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?code=${encodeURIComponent(
-                  verificationCode
-                )}&email=${encodeURIComponent(email)}`
+              fetch(  
+                  MS_VERIFICATION_CHECK,
+                  {
+                    method: "POST", // Specify the HTTP method
+                    headers: {
+                      "Content-Type": "application/json",
+                      "client_id": MS_CID,
+                      "client_secret": MS_CS,
+                      "x-api-key": API_KEY
+                    },
+                    body: JSON.stringify(verificationPayload), // Collect form data
+                  }
               )
-                .then((response) => {
+               .then((response) => {
                   button2.disabled = false;
                   buttonText2.style.display = "block";
                   buttonSpinner2.style.display = "none";
@@ -2556,7 +2670,7 @@
                   button2.disabled = false;
                   buttonText2.style.display = "block";
                   buttonSpinner2.style.display = "none";
-                  const result = JSON.parse(data).data;
+                  const result = JSON.parse(data);
                   if (result.status == 200 && result.message == "approved") {
                     nextTab();
                     document.getElementById(
@@ -2613,7 +2727,10 @@
           .getElementById("nextbtn_3_ukcompany")
           .addEventListener("click", function () {
             nextTab();
-          });
+          // Fix to enable buttons in payments
+			document.getElementById("button_3_debit").style.display = "block";
+			//alert('here');
+	    });
         if (localStorage.getItem("bussinessCompanyName")) {
           document.getElementById("registered_company_name").value =
             localStorage.getItem("bussinessCompanyName");
@@ -2853,8 +2970,9 @@
             circle.style.backgroundPosition = "center";
           }
         });
-
+		
         function nextTab() {
+			window.scrollTo(0, 0);
 			const accountForm = document.querySelector(".account-form");
 			if (accountForm) {
 			accountForm.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -3125,17 +3243,29 @@
           .getElementById("resendcode")
           .addEventListener("click", function (event) {
             console.log("entered resend", localStorage.getItem("email"));
-            fetch(
-              `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?email=${encodeURIComponent(
-                localStorage.getItem("email")
-              )}`
+            emailPayload = {
+                to: localStorage.getItem("email"),
+                channel: "email",   
+            };
+            fetch(  
+              MS_VERIFICATION,
+              {
+                method: "POST", // Specify the HTTP method
+                headers: {
+                "Content-Type": "application/json",
+                "client_id": MS_CID,
+                "client_secret": MS_CS,
+                "x-api-key": API_KEY
+                },
+                body: JSON.stringify(emailPayload), // Collect form data
+              }
             )
               .then((response) => {
                 return response.text();
               })
               .then((data) => {
                 console.log({ data });
-                const result = JSON.parse(data).data;
+                const result = JSON.parse(data);
 
                 let resendcode = document.getElementById("resendcode");
                 resendcode.textContent = "Code sent";
@@ -3213,6 +3343,15 @@
                     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
                   )
                 ) {
+					if(!isAllowedEmail(email)){
+					  button.disabled = false;
+						  buttonText.style.display = "block";
+						  buttonSpinner.style.display = "none";
+						  document.getElementById("email").style.borderColor = "red";
+						  document.getElementById("errors").innerHTML =
+							"Please enter a valid email. This domain emails are blocked with us.";
+					}
+					else{
                   let button = document.getElementById("nextbtn_2");
                   let buttonText = document.getElementById(
                     "sendCodeText-business"
@@ -3224,11 +3363,23 @@
                   buttonText.style.display = "none";
                   buttonSpinner.style.display = "block";
                   localStorage.setItem("email", email);
-                  fetch(
-                    `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?email=${encodeURIComponent(
-                      email
-                    )}`
-                  )
+                  emailPayload = {
+                    to: email,
+                    channel: "email",   
+                  };
+                  fetch(  
+                      MS_VERIFICATION,
+                      {
+                        method: "POST", // Specify the HTTP method
+                        headers: {
+                        "Content-Type": "application/json",
+                        "client_id": MS_CID,
+                        "client_secret": MS_CS,
+                        "x-api-key": API_KEY
+                        },
+                        body: JSON.stringify(emailPayload), // Collect form data
+                      }
+                    )
                     .then((response) => {
                       button.disabled = false;
                       buttonText.style.display = "block";
@@ -3249,7 +3400,7 @@
                       buttonText.style.display = "block";
                       buttonSpinner.style.display = "none";
                       console.log({ data });
-                      const result = JSON.parse(data)?.data;
+                      const result = JSON.parse(data);
                       console.log({ result });
                       b_emailSegment = true;
                       localStorage.setItem("b_emailSegment", true);
@@ -3325,12 +3476,25 @@
                                 .getElementById("submitAndVerifyBtn")
                                 .classList.remove("enabled");
                             } else {
-                              fetch(
-                                `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?code=${encodeURIComponent(
-                                  verificationCode
-                                )}&email=${encodeURIComponent(email)}`
-                              )
-                                .then((response) => {
+                              verificationPayload = {
+                                to: email,
+                                channel: 'email',
+                                code: verificationCode
+                              };
+                              fetch(  
+                                  MS_VERIFICATION_CHECK,
+                                  {
+                                    method: "POST", // Specify the HTTP method
+                                    headers: {
+                                      "Content-Type": "application/json",
+                                      "client_id": MS_CID,
+                                      "client_secret": MS_CS,
+                                      "x-api-key": API_KEY
+                                    },
+                                    body: JSON.stringify(verificationPayload), // Collect form data
+                                  }
+                                )
+								.then((response) => {
                                   button2.disabled = false;
                                   buttonText2.style.display = "block";
                                   buttonSpinner2.style.display = "none";
@@ -3348,7 +3512,7 @@
                                   button2.disabled = false;
                                   buttonText2.style.display = "block";
                                   buttonSpinner2.style.display = "none";
-                                  const result = JSON.parse(data).data;
+                                  const result = JSON.parse(data);
                                   console.log({ result });
                                   if (
                                     result.status == 200 &&
@@ -3402,6 +3566,7 @@
                           "Please enter a valid email";
                       }
                     });
+				}
                 } else {
                   button.disabled = false;
                   buttonText.style.display = "block";
@@ -3481,8 +3646,8 @@
                   }
                   var b_companyCountry = "United Kingdom";
                   if (localStorage.getItem("registered_company_number")) {
-                    var b_companyNumber = parseInt(
-                      localStorage.getItem("registered_company_number")
+                    var b_companyNumber = 
+                      localStorage.getItem("registered_company_number"
                     );
                   } else {
                     var b_companyNumber = document
@@ -3514,15 +3679,14 @@
                     .value
                     ? document.getElementById("countryname").value.trim()
                     : "";
-                  var b_companyNumber = parseInt(
-                    document.getElementById("cnum").value.trim()
-                  );
+                  var b_companyNumber =
+                    document.getElementById("cnum").value.trim();
                   if (
                     b_companyNumber == null ||
                     b_companyNumber == undefined ||
                     isNaN(b_companyNumber) == true
                   ) {
-                    b_companyNumber = 0;
+                    b_companyNumber = "";
                   }
                 }
               }
@@ -3588,7 +3752,7 @@
                 p_companyPostalCode = document.getElementById(
                   "span_personal_company_postalcode"
                 ).textContent;
-                p_companyNumber = parseInt(companyNumber);
+                p_companyNumber = companyNumber;
               }
               if (soleTrader == false) {
                 p_companyName = p_firstName + "" + p_lastName;
@@ -3600,7 +3764,7 @@
                 p_companyCountry = "United Kingdom";
                 p_companyPostalCode =
                   document.getElementById("postcode_personal").value;
-                p_companyNumber = 0;
+                p_companyNumber = "";
               }
 
               let p_paymentType = "Credit Card";
@@ -3609,14 +3773,14 @@
                 document.getElementById("SubmitCheckbox").checked;
 
               let dnbRecommendation = localStorage.getItem("riskSegment")
-                ? parseInt(localStorage.getItem("riskSegment"))
-                : 0;
+                ? localStorage.getItem("riskSegment")
+                : "";
               let dnbCreditLimit = localStorage.getItem("creditLimit")
-                ? parseInt(localStorage.getItem("creditLimit"))
-                : 0;
+                ? localStorage.getItem("creditLimit")
+                : "";
               let dnbTotalEmployees = localStorage.getItem("no_of_employee")
-                ? parseInt(localStorage.getItem("no_of_employee"))
-                : 0;
+                ? localStorage.getItem("no_of_employee")
+                : "";
               let utm_source = localStorage.getItem("utm_source")
                 ? localStorage.getItem("utm_source")
                 : "";
@@ -3657,8 +3821,8 @@
                 dnbCreditLimit: dnbCreditLimit,
                 dnbTotalEmployees: dnbTotalEmployees,
                 duns_no: localStorage.getItem("duns")
-                  ? parseInt(localStorage.getItem("duns"))
-                  : 0,
+                  ? localStorage.getItem("duns")
+                  : "",
                 utm_source: utm_source,
                 utm_campaign: utm_campaign,
                 utm_medium: utm_medium,
@@ -3687,15 +3851,23 @@
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
+                  "client_id": MS_CID,
+                  "client_secret": MS_CS,
+                  "x-api-key": API_KEY
+                  /*"Access-Control-Allow-Origin": "addisonlee1dev.wpenginepowered.com"*/
                 },
-                data: JSON.stringify(submissionPayload),
+                data: submissionPayload,
               };
-              fetch(
-                `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?submissionData=true`,
+              fetch(     
+                MS_ACCOUNTS,
                 {
                   method: "POST", // Specify the HTTP method
                   headers: {
                     "Content-Type": "application/json",
+                    "client_id": MS_CID,
+                    "client_secret": MS_CS,
+                    "x-api-key": API_KEY
+                    /*"Access-Control-Allow-Origin": "addisonlee1dev.wpenginepowered.com"*/
                   },
                   body: JSON.stringify(submissionPayload), // Collect form data
                 }
@@ -4060,7 +4232,7 @@
               window.location.search = "";
               window.parent.location.search = "";
               window.parent.location.href =
-                'https://addisonlee2.wpengine.com/business/apply2/';
+                MS_RETURL;
             }
             let accountType = document.getElementById("bussiness_type");
             localStorage.setItem("business_flow_selected", true);
@@ -4088,7 +4260,7 @@
               window.location.search = "";
               window.parent.location.search = "";
               window.parent.location.href =
-                'https://addisonlee2.wpengine.com/business/apply2/';
+                MS_RETURL;
             }
             let accountType = document.getElementById("personal_type");
             localStorage.setItem("personal_flow_selected", true);
@@ -4105,19 +4277,31 @@
             }
           });
 
+          emailPayload = {
+            to: email,
+            channel: "email",   
+          };
         document
           .getElementById("resendcode")
           .addEventListener("click", function (event) {
-            fetch(
-              `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?email=${encodeURIComponent(
-                email
-              )}`
+            fetch(  
+              MS_VERIFICATION,
+              {
+                method: "POST", // Specify the HTTP method
+                headers: {
+                "Content-Type": "application/json",
+                "client_id": MS_CID,
+                "client_secret": MS_CS,
+                "x-api-key": API_KEY
+                },
+                body: JSON.stringify(emailPayload), // Collect form data
+              }
             )
               .then((response) => {
                 return response.text();
               })
               .then((data) => {
-                const result = JSON.parse(data).data;
+                const result = JSON.parse(data);
 
                 let resendcode = document.getElementById("resendcode");
                 resendcode.textContent = "Code sent";
@@ -4217,6 +4401,17 @@
                     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
                   )
                 ) {
+					if(!isAllowedEmail(email)){
+						//alert("h1");
+					  button.disabled = false;
+						  buttonText.style.display = "block";
+						  buttonSpinner.style.display = "none";
+						  document.getElementById("email").style.borderColor = "red";
+						  document.getElementById("errors").innerHTML =
+							"Please enter a valid email. This domain emails are blocked with us.";
+					}
+					else{
+						//alert("h2");
                   let button = document.getElementById("nextbtn_2");
                   let buttonText = document.getElementById(
                     "sendCodeText-business"
@@ -4228,11 +4423,23 @@
                   buttonText.style.display = "none";
                   buttonSpinner.style.display = "block";
                   localStorage.setItem("email", email);
-                  fetch(
-                    `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?email=${encodeURIComponent(
-                      email
-                    )}`
-                  )
+                  emailPayload = {
+                      to: email,
+                      channel: "email",   
+                  };
+                  fetch(  
+                      MS_VERIFICATION,
+                      {
+                        method: "POST", // Specify the HTTP method
+                        headers: {
+                        "Content-Type": "application/json",
+                        "client_id": MS_CID,
+                        "client_secret": MS_CS,
+                        "x-api-key": API_KEY
+                        },
+                        body: JSON.stringify(emailPayload), // Collect form data
+                      }
+                    )
                     .then((response) => {
                       button.disabled = false;
                       buttonText.style.display = "block";
@@ -4253,7 +4460,7 @@
                       buttonText.style.display = "block";
                       buttonSpinner.style.display = "none";
                       console.log({ data });
-                      const result = JSON.parse(data)?.data;
+                      const result = JSON.parse(data);
                       console.log({ result });
                       b_emailSegment = true;
                       localStorage.setItem("b_emailSegment", true);
@@ -4316,6 +4523,11 @@
 
                             verificationCode =
                               document.getElementById("email").value;
+                              verificationPayload = {
+                                to: email,
+                                channel: 'email',
+                                code: verificationCode
+                              };
                             if (verificationCode.length === 0) {
                               button2.disabled = false;
                               buttonText2.style.display = "block";
@@ -4329,10 +4541,18 @@
                                 .getElementById("submitAndVerifyBtn")
                                 .classList.remove("enabled");
                             } else {
-                              fetch(
-                                `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?code=${encodeURIComponent(
-                                  verificationCode
-                                )}&email=${encodeURIComponent(email)}`
+                              fetch(  
+                                  MS_VERIFICATION_CHECK,
+                                  {
+                                    method: "POST", // Specify the HTTP method
+                                    headers: {
+                                      "Content-Type": "application/json",
+                                      "client_id": MS_CID,
+                                      "client_secret": MS_CS,
+                                      "x-api-key": API_KEY
+                                    },
+                                    body: JSON.stringify(verificationPayload), // Collect form data
+                                  }
                               )
                                 .then((response) => {
                                   button2.disabled = false;
@@ -4352,7 +4572,7 @@
                                   button2.disabled = false;
                                   buttonText2.style.display = "block";
                                   buttonSpinner2.style.display = "none";
-                                  const result = JSON.parse(data).data;
+                                  const result = JSON.parse(data);
                                   console.log({ result });
                                   if (
                                     result.status == 200 &&
@@ -4406,6 +4626,7 @@
                           "Please enter a valid email";
                       }
                     });
+				}
                 } else {
                   button.disabled = false;
                   buttonText.style.display = "block";
@@ -4425,16 +4646,29 @@
               "contactDetails_personal"
             );
             var parsedData = JSON.parse(p_contactDetails);
-            fetch(
-              `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?email=${encodeURIComponent(
-                personal_email ? personal_email : parsedData.email_personal
-              )}`
-            )
+            
+            emailPayload = {
+                to: personal_email ? personal_email : parsedData.email_personal,
+                channel: "email",   
+            };
+            fetch(  
+                MS_VERIFICATION,
+                {
+                  method: "POST", // Specify the HTTP method
+                  headers: {
+                  "Content-Type": "application/json",
+                  "client_id": MS_CID,
+                  "client_secret": MS_CS,
+                  "x-api-key": API_KEY
+                  },
+                  body: JSON.stringify(emailPayload), // Collect form data
+                }
+              )
               .then((response) => {
                 return response.text();
               })
               .then((data) => {
-                const result = JSON.parse(data).data;
+                const result = JSON.parse(data);
                 let resendcode = document.getElementById("resendcode_personal");
                 resendcode.textContent = "Code sent";
                 setTimeout(() => {
@@ -4538,7 +4772,15 @@
                   personal_email.match(
                     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
                   )
-                ) {
+                ) 
+				{
+				if(!isAllowedEmail(personal_email)){
+				  document.getElementById("email_personal").style.borderColor =
+                    "red";
+                  document.getElementById("errors_personal").innerHTML =
+                    "Please enter a valid email. This domain emails are blocked with us.";
+				}
+				else{
                   var spinner = document.getElementById("spinner");
 
                   document.getElementById("nextbtn_2_personal").disabled = true;
@@ -4547,16 +4789,24 @@
                   spinner.style.display = "inline-block";
 
                   localStorage.setItem("personal_email", personal_email);
-                  // fetch(
-                  //   `https://www.google.com?email=${encodeURIComponent(
-                  //     personal_email
-                  //   )}`
-                  // )
-                  fetch(
-                    `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?email=${encodeURIComponent(
-                      personal_email
-                    )}`
-                  )
+                 
+                  emailPayload = {
+                      to: personal_email,
+                      channel: "email",   
+                  };
+                  fetch(  
+                      MS_VERIFICATION,
+                      {
+                        method: "POST", // Specify the HTTP method
+                        headers: {
+                        "Content-Type": "application/json",
+                        "client_id": MS_CID,
+                        "client_secret": MS_CS,
+                        "x-api-key": API_KEY
+                        },
+                        body: JSON.stringify(emailPayload), // Collect form data
+                      }
+                    )
                     .then((response) => {
                       if (response.status == 500) {
                         document.getElementById(
@@ -4571,7 +4821,7 @@
                       console.log({ data });
                       p_emailSegment = true;
                       localStorage.setItem("p_emailSegment", true);
-                      const result = JSON.parse(data).data;
+                      const result = JSON.parse(data);
                       if (
                         result &&
                         result.status == 200 &&
@@ -4660,6 +4910,7 @@
                           "Please enter a valid code";
                       }
                     });
+				}
                 } else {
                   document.getElementById("email_personal").style.borderColor =
                     "red";
@@ -4691,11 +4942,23 @@
               ).disabled = true;
               document.getElementById("verify").style.display = "none";
               spinner.style.display = "inline-block";
-
-              fetch(
-                `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?code=${encodeURIComponent(
-                  personal_verification_code
-                )}&email=${encodeURIComponent(personal_email)}`
+              verificationPayload = {
+                to: personal_email,
+                channel: 'email',
+                code: personal_verification_code
+              };
+              fetch(  
+                MS_VERIFICATION_CHECK,
+                {
+                  method: "POST", // Specify the HTTP method
+                  headers: {
+                  "Content-Type": "application/json",
+                  "client_id": MS_CID,
+                  "client_secret": MS_CS,
+                  "x-api-key": API_KEY
+                  },
+                  body: JSON.stringify(verificationPayload), // Collect form data
+                }
               )
                 .then((response) => {
                   if (response.status == 500) {
@@ -4713,7 +4976,7 @@
                   return response.text();
                 })
                 .then((data) => {
-                  const result = JSON.parse(data).data;
+                  const result = JSON.parse(data);
                   console.log(data);
                   if (result?.status == 200 && result?.message == "approved") {
                     document.getElementById(
@@ -4788,16 +5051,23 @@
             }
 
             fetch(
-              `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?postcode=${encodeURIComponent(
+              MS_ADDRESSES + `?postCode=${encodeURIComponent(
                 postcode
-              )}`
+              )}`, {
+                 headers: {
+                  //"Content-Type": "application/json",
+                  "client_id": MS_CID,
+                  "client_secret": MS_CS,
+                  "x-api-key": API_KEY
+                  },
+              }
             )
               .then((response) => {
                 console.log({ response });
                 return response.text();
               })
               .then((data) => {
-                const result = JSON.parse(data).data;
+                const result = JSON.parse(data);
 
                 if (result.length == 0) {
                   button.disabled = false;
@@ -4903,6 +5173,7 @@
             let city = document.getElementById("townCity_personal").value;
             if (
               postcode.length === 0 ||
+              buldingNum_Name.length === 0 ||
               address.length === 0 ||
               city.length === 0
             ) {
@@ -4910,6 +5181,13 @@
                 document.getElementById("postcode_personal").style.borderColor =
                   "red";
                 document.getElementById("p_postcode_err_msg").innerHTML =
+                  "Please fill this mandatory field";
+              }
+              if (buldingNum_Name === "") {
+                document.getElementById(
+                  "buildingNoName_personal"
+                ).style.borderColor = "red";
+                document.getElementById("p_buildingNoName_err_msg").innerHTML =
                   "Please fill this mandatory field";
               }
               if (address === "") {
@@ -5241,9 +5519,16 @@
                 mode: "no-cors",
               };
               fetch(
-                `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?searchTerm=${encodeURIComponent(
+                MS_COMPANY_SEARCH + `?searchTerm=${encodeURIComponent(
                   typedValue
-                )}`
+                )}`,  {
+                   headers: {
+                    //"Content-Type": "application/json",
+                    "client_id": MS_CID,
+                    "client_secret": MS_CS,
+                    "x-api-key": API_KEY
+                  },
+                }
               )
                 .then((response) => {
                   spinner.style.display = "none";
@@ -5258,7 +5543,7 @@
                 })
                 .then((data) => {
                   spinner.style.display = "none";
-                  const result = JSON.parse(data).data;
+                  const result = JSON.parse(data);
                   datalist.innerHTML = ""; // Clear the dropdown
                   console.log("result : ", result);
                   if (result.length != 0) {
@@ -5266,7 +5551,7 @@
                       let option = document.createElement("li");
                       option.setAttribute(
                         "data-id",
-                        item.duns ? item.duns : "0"
+                        item.duns ? item.duns : ""
                       );
                       option.setAttribute(
                         "data-name",
@@ -5390,10 +5675,17 @@
               mode: "no-cors",
             };
             fetch(
-              `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?searchTerm=${encodeURIComponent(
+              MS_COMPANY_SEARCH + `?searchTerm=${encodeURIComponent(
                 typedValue
-              )}`
-            )
+              )}`,  {
+                   headers: {
+                    //"Content-Type": "application/json",
+                    "client_id": MS_CID,
+                    "client_secret": MS_CS,
+                    "x-api-key": API_KEY
+                  },
+                }
+              )
               .then((response) => {
                 spinner.style.display = "none";
                 if (!response.ok) {
@@ -5407,7 +5699,7 @@
               })
               .then((data) => {
                 spinner.style.display = "none";
-                const result = JSON.parse(data).data;
+                const result = JSON.parse(data);
                 datalist.innerHTML = ""; // Clear the dropdown
                 console.log("result : ", result);
                 if (result.length != 0) {
@@ -5415,7 +5707,7 @@
                     let option = document.createElement("li");
                     option.setAttribute(
                       "data-id",
-                      item.duns ? item.duns : "0"
+                      item.duns ? item.duns : ""
                     );
                     option.setAttribute(
                       "data-name",
@@ -5510,11 +5802,18 @@
             primary_address_locality = selectedOption.dataset.locality;
             primary_address_region = selectedOption.dataset.region;
             primary_address_postalcode = selectedOption.dataset.postcode;
-            localStorage.setItem("duns", selectedOption.dataset.id);
+            localStorage.setItem("duns", selectedOption.dataset.id.toString()); 
             fetch(
-              `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?dunsId=${encodeURIComponent(
-                selectedOption.dataset.id
-              )}`
+              MS_COMPANY + `${encodeURIComponent(
+                selectedOption.dataset.id.toString()
+              )}`+ MS_COMPANY_CREDCHECK +`?productId=cmptcs&versionId=v1&tradeUp=hq`,{
+                  headers: {
+                    //"Content-Type": "application/json",
+                    "client_id": MS_CID,
+                    "client_secret": MS_CS,
+                    "x-api-key": API_KEY
+                },
+              } 
             )
               .then((response) => {
                 document.getElementById("inputSpinner2").style.display = "none";
@@ -5522,7 +5821,7 @@
               })
               .then((data) => {
                 document.getElementById("inputSpinner2").style.display = "none";
-                const result = JSON.parse(data).data;
+                const result = JSON.parse(data);
                 console.log("duns response 2 --->", result);
 
                 creditcheck = result.hasPassedCreditCheck
@@ -5537,8 +5836,12 @@
                 riskSegment = result.organization.dnbAssessment.standardRating
                   .riskSegment
                   ? result.organization.dnbAssessment.standardRating.riskSegment
-                  : "";
-                localStorage.setItem("riskSegment", riskSegment);
+                  : ""; 
+
+                var updateRiskSegment = riskSegment.replace('-', '0');
+                riskSegment = '-'
+                ? localStorage.setItem('riskSegment', updateRiskSegment)
+                : localStorage.setItem("riskSegment", riskSegment);
                 creditLimit = result.organization?.dnbAssessment
                   ?.creditLimitRecommendation?.maximumRecommendedLimit?.value
                   ? result.organization.dnbAssessment.creditLimitRecommendation
@@ -5650,9 +5953,16 @@
                     mode: "no-cors",
                   };
                   fetch(
-                    `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?searchTerm=${encodeURIComponent(
+                    MS_COMPANY_SEARCH + `?searchTerm=${encodeURIComponent(
                       typedValue
-                    )}`
+                    )}` ,  {
+                       headers: {
+                        //"Content-Type": "application/json",
+                        "client_id": MS_CID,
+                        "client_secret": MS_CS,
+                        "x-api-key": API_KEY
+                      },
+                    }
                   )
                     .then((response) => {
                       spinner.style.display = "none";
@@ -5672,14 +5982,14 @@
                     })
                     .then((data) => {
                       spinner.style.display = "none";
-                      const result = JSON.parse(data).data;
+                      const result = JSON.parse(data);
                       datalist.innerHTML = ""; // Clear the dropdown
                       if (result.length != 0) {
                         result.forEach((item) => {
                           let option = document.createElement("li");
                           option.setAttribute(
                             "data-id",
-                            item.duns ? item.duns : "0"
+                            item.duns ? item.duns : ""
                           );
                           option.setAttribute(
                             "data-name",
@@ -5796,9 +6106,16 @@
                 mode: "no-cors",
               };
               fetch(
-                `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?searchTerm=${encodeURIComponent(
+                MS_COMPANY_SEARCH + `?searchTerm=${encodeURIComponent(
                   typedValue
-                )}`
+                )}`,  {
+                   headers: {
+                    //"Content-Type": "application/json",
+                    "client_id": MS_CID,
+                    "client_secret": MS_CS,
+                    "x-api-key": API_KEY
+                  },
+                }
               )
                 .then((response) => {
                   spinner.style.display = "none";
@@ -5813,14 +6130,14 @@
                 })
                 .then((data) => {
                   spinner.style.display = "none";
-                  const result = JSON.parse(data).data;
+                  const result = JSON.parse(data);
                   datalist.innerHTML = ""; // Clear the dropdown
                   if (result.length != 0) {
                     result.forEach((item) => {
                       let option = document.createElement("li");
                       option.setAttribute(
                         "data-id",
-                        item.duns ? item.duns : "0"
+                        item.duns ? item.duns : ""
                       );
                       option.setAttribute(
                         "data-name",
@@ -5920,11 +6237,18 @@
               primary_address_locality = selectedOption.dataset.locality;
               primary_address_region = selectedOption.dataset.region;
               primary_address_postalcode = selectedOption.dataset.postcode;
-              localStorage.setItem("duns", selectedOption.dataset.id);
+              localStorage.setItem("duns", selectedOption.dataset.id.toString());
               fetch(
-                `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?dunsId=${encodeURIComponent(
-                  selectedOption.dataset.id
-                )}`
+              MS_COMPANY + `${encodeURIComponent(
+                selectedOption.dataset.id.toString()
+              )}`+ MS_COMPANY_CREDCHECK +`?productId=cmptcs&versionId=v1&tradeUp=hq`, {
+                  headers: {
+                    //"Content-Type": "application/json",
+                    "client_id": MS_CID,
+                    "client_secret": MS_CS,
+                    "x-api-key": API_KEY
+                },
+              } 
               )
                 .then((response) => {
                   document.getElementById("inputSpinner2").style.display =
@@ -5934,7 +6258,7 @@
                 .then((data) => {
                   document.getElementById("inputSpinner2").style.display =
                     "none";
-                  const result = JSON.parse(data).data;
+                  const result = JSON.parse(data);
                   console.log("duns response 3 --->", result);
 
                   creditcheck = result.hasPassedCreditCheck
@@ -6325,7 +6649,7 @@
               // https://sandbox.api.eu.addisonleeglobal.net - staging
               // Redirects: https://www.addisonlee.com -production
               // https://addisonlee1dev.wpengine.com/ - staging
-              let queryparams = `showerrordetail=true&ttl=${ttl}&ddplanreference=${dynamicDdplanreference}&callbackurl=https://sandbox.api.eu.addisonleeglobal.net/api-wpforms/v2/api/direct-debit/statuses&redirecturl=https://addisonlee2.wpengine.com/business/apply2/&firstname=${firstName_business}&lastname=${lastName_business}&email=${email}&mobile=${mobile_business}&requestid=${randomGUID}&applyingascompany=true&currentpostcode=${removeSpaces(
+              let queryparams = `showerrordetail=true&ttl=${ttl}&ddplanreference=${dynamicDdplanreference}&callbackurl=`+ MS_DD_STATUS +`&redirecturl=`+MS_RETURL+`&firstname=${firstName_business}&lastname=${lastName_business}&email=${email}&mobile=${mobile_business}&requestid=${randomGUID}&applyingascompany=true&currentpostcode=${removeSpaces(
                 primary_address_postalcode
                   ? primary_address_postalcode
                   : postCode_international
@@ -6335,14 +6659,21 @@
                   : companyName_international
               )}&requestuserid=${randomGUID}&texttitle=Direct%20Debit%20Application&textsubtitle=Please%20ensure%20that%20all%20data%20is%20typed%20correctly&textapplybutton=Apply&showformheader=visible&currentaddresslegend=Current%20address&showtitle=hidden&showfirstname=readonly&showlastname=readonly&showdob=hidden&showemail=readonly&showmobile=readonly&showbankaccount=visible&showcompanyregistrationnumber=visible&showcompanyname=hidden&CompanyRegistrationNumber=${comp_reg_no}`;
               console.log("queryparams --->", queryparams);
-              var requestOptions = {
+              /*var requestOptions = {
                 method: "GET",
                 mode: "no-cors",
-              };
-              fetch(
-                `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?edata=${encodeURIComponent(
-                  queryparams
-                )}`
+              };*/
+              fetch(  
+                MS_DD_WEBFORM + `?${queryparams}`,
+                {
+                  method: "GET", // Specify the HTTP method
+                  headers: {
+                  "Content-Type": "application/json",
+                  "client_id": MS_CID,
+                  "client_secret": MS_CS,
+                  "x-api-key": API_KEY
+                  },
+                }
               )
                 .then((response) => {
                   if (!response.ok) {
@@ -6354,7 +6685,7 @@
                 })
                 .then((data) => {
                   let edata = JSON.parse(data);
-                  let url = `https://webforms.uk.pt-x.com/forms/addisonlee/debit?edata=${edata}`;
+                  let url = WF_BASE_URL + `?edata=${edata}`;
                   let iframe = document.getElementById("directDebitFormUrl");
                   iframe.src = url;
                   document.getElementById("debitcard").style.display = "block";
@@ -6514,9 +6845,16 @@
                   mode: "no-cors",
                 };
                 fetch(
-                  `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?searchTerm=${encodeURIComponent(
+                  MS_COMPANY_SEARCH + `?searchTerm=${encodeURIComponent(
                     typedValue
-                  )}`
+                  )}`,  {
+                   headers: {
+                    //"Content-Type": "application/json",
+                    "client_id": MS_CID,
+                    "client_secret": MS_CS,
+                    "x-api-key": API_KEY
+                  },
+                }
                 )
                   .then((response) => {
                     if (!response.ok) {
@@ -6532,14 +6870,14 @@
                   })
                   .then((data) => {
                     inputSpinner.style.display = "none";
-                    const result = JSON.parse(data).data;
+                    const result = JSON.parse(data);
                     datalist.innerHTML = ""; // Clear the dropdown
                     if (result.length != 0) {
                       result.forEach((item) => {
                         let option = document.createElement("li");
                         option.setAttribute(
                           "data-id",
-                          item.duns ? item.duns : "0"
+                          item.duns ? item.duns : ""
                         );
                         option.setAttribute(
                           "data-name",
@@ -6608,7 +6946,7 @@
                           );
                           companyNumber = selectedOption.value
                             ? selectedOption.value
-                            : 0;
+                            : "";
                           sole_companyName = selectedOption.dataset.name;
                           sole_company_address =
                             selectedOption.dataset.street_address;
@@ -6617,7 +6955,7 @@
                           sole_company_region = selectedOption.dataset.region;
                           sole_company_postcode =
                             selectedOption.dataset.postcode;
-                          localStorage.setItem("duns", selectedOption.dataset.id);
+                          localStorage.setItem("duns", selectedOption.dataset.id.toString());
                           inputSpinner.style.display = "none";
                           display_label.innerHTML = `<label
                               class="fieldname"
@@ -6729,9 +7067,16 @@
                 mode: "no-cors",
               };
               fetch(
-                `https://us-central1-konnectify-d1.cloudfunctions.net/Addison_DNB?searchTerm=${encodeURIComponent(
+                MS_COMPANY_SEARCH + `?searchTerm=${encodeURIComponent(
                   typedValue
-                )}`
+                )}`,  {
+                   headers: {
+                    //"Content-Type": "application/json",
+                    "client_id": MS_CID,
+                    "client_secret": MS_CS,
+                    "x-api-key": API_KEY
+                  },
+                }
               )
                 .then((response) => {
                   if (!response.ok) {
@@ -6747,14 +7092,14 @@
                 })
                 .then((data) => {
                   inputSpinner.style.display = "none";
-                  const result = JSON.parse(data).data;
+                  const result = JSON.parse(data);
                   datalist.innerHTML = ""; // Clear the dropdown
                   if (result.length != 0) {
                     result.forEach((item) => {
                       let option = document.createElement("li");
                       option.setAttribute(
                         "data-id",
-                        item.duns ? item.duns : "0"
+                        item.duns ? item.duns : ""
                       );
                       option.setAttribute(
                         "data-name",
@@ -6823,7 +7168,7 @@
                         );
                         companyNumber = selectedOption.value
                           ? selectedOption.value
-                          : 0;
+                          : "";
                         sole_companyName = selectedOption.dataset.name;
                         sole_company_address =
                           selectedOption.dataset.street_address;
@@ -7388,20 +7733,20 @@
                   }
                   var b_companyCountry = "United Kingdom";
                   if (localStorage.getItem("registered_company_number")) {
-                    var b_companyNumber = parseInt(
-                      localStorage.getItem("registered_company_number")
-                    );
+                    var b_companyNumber = 
+                      localStorage.getItem("registered_company_number");
+					  
                   } else {
                     var b_companyNumber = document
                       .getElementById("span_company_number1")
                       .getAttribute("data-cno")
-                      ? parseInt(
+                      ? 
                           document
                             .getElementById("span_company_number1")
                             .getAttribute("data-cno")
                             .trim()
-                        )
-                      : 0;
+                      : "";
+						  
                   }
                 }
                 if (document.getElementById("companytype_2").checked == true) {
@@ -7421,15 +7766,15 @@
                     .value
                     ? document.getElementById("countryname").value.trim()
                     : "";
-                  var b_companyNumber = parseInt(
-                    document.getElementById("cnum").value.trim()
-                  );
+                  var b_companyNumber = 
+                    document.getElementById("cnum").value.trim();
+					
                   if (
                     b_companyNumber == null ||
                     b_companyNumber == undefined ||
                     isNaN(b_companyNumber) == true
                   ) {
-                    b_companyNumber = 0;
+                    b_companyNumber = "";
                   }
                 }
               }
@@ -7494,7 +7839,7 @@
                 p_companyPostalCode = document.getElementById(
                   "span_personal_company_postalcode"
                 ).textContent;
-                p_companyNumber = parseInt(companyNumber);
+                p_companyNumber = companyNumber;
               }
               if (soleTrader == false) {
                 p_companyName = p_firstName + "" + p_lastName;
@@ -7506,7 +7851,7 @@
                 p_companyCountry = "United Kingdom";
                 p_companyPostalCode =
                   document.getElementById("postcode_personal").value;
-                p_companyNumber = 0;
+                p_companyNumber = "";
               }
 
               let p_paymentType = "Credit Card";
@@ -7515,12 +7860,12 @@
                 document.getElementById("SubmitCheckbox").checked;
 
               let dnbRecommendation = localStorage.getItem("riskSegment")
-                ? parseInt(localStorage.getItem("riskSegment"))
-                : 0;
-              let dnbCreditLimit = creditLimit ? parseInt(creditLimit) : 0;
+                ? localStorage.getItem("riskSegment")
+                : "";
+              let dnbCreditLimit = creditLimit ? creditLimit : "";
               let dnbTotalEmployees = localStorage.getItem("no_of_employee")
-                ? parseInt(localStorage.getItem("no_of_employee"))
-                : 0;
+                ? localStorage.getItem("no_of_employee")
+                : "";
               let utm_source = localStorage.getItem("utm_source")
                 ? localStorage.getItem("utm_source")
                 : "";
@@ -7561,8 +7906,8 @@
                 dnbCreditLimit: dnbCreditLimit,
                 dnbTotalEmployees: dnbTotalEmployees,
                 duns_no: localStorage.getItem("duns")
-                  ? parseInt(localStorage.getItem("duns"))
-                  : 0,
+                  ? localStorage.getItem("duns")
+                  : "",
                 utm_source: utm_source,
                 utm_campaign: utm_campaign,
                 utm_medium: utm_medium,
@@ -7594,20 +7939,24 @@
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
-                  "client_id": "8f082bed9b4944f6a62ea5a217dc1ebb",
-                  "client_secret": "428e097bbB054E3aaA761A09E5C42E6F"
+                  "client_id": MS_CID,
+                  "client_secret": MS_CS,
+                  "x-api-key": API_KEY
+                  /*"Access-Control-Allow-Origin": "addisonlee1dev.wpenginepowered.com"*/
                 },
                 data: submissionPayload,
               };
               fetch(
      
-                `https://sandbox.api.eu.addisonleeglobal.net/api-wpforms/v2/api/accounts`,
+                MS_ACCOUNTS,
                 {
                   method: "POST", // Specify the HTTP method
                   headers: {
                     "Content-Type": "application/json",
-                    "client_id": "8f082bed9b4944f6a62ea5a217dc1ebb",
-                    "client_secret": "428e097bbB054E3aaA761A09E5C42E6F"
+                    "client_id": MS_CID,
+                    "client_secret": MS_CS,
+                    "x-api-key": API_KEY
+                    /*"Access-Control-Allow-Origin": "addisonlee1dev.wpenginepowered.com"*/
                   },
                   body: JSON.stringify(submissionPayload), // Collect form data
                 }
